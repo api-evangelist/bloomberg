@@ -1,0 +1,137 @@
+{
+    "name": "Bloomberg",
+    "description": "Bloomberg delivers business and markets news, data, analysis, and video to the world, featuring stories from Businessweek and Bloomberg News",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/18926-bloomberg.jpg",
+    "tags": [
+        "financial services",
+        "have api",
+        "news"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/bloomberg\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Bloomberg",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/18926-bloomberg.jpg",
+            "humanURL": "http:\/\/bloomberg.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/bloomberg-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.reuters.com\/reuters\/technologyNews"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.reuters.com\/reuters\/technologysectorNews"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.reuters.com\/reuters\/governmentfilingsNews"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.reuters.com\/reuters\/companyNews"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/reuters"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/newyorktimes"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/the-economist-group\/timeline"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/bloomberg"
+        },
+        {
+            "type": "Email",
+            "url": "letters@economist.com"
+        },
+        {
+            "type": "Email",
+            "url": "nharland1@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "cthomas106@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "inquiry1@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "belina.tan@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "pamsnook@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "release@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "bnbrazil@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "newsalert@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "tokyonews@bloomberg.net"
+        },
+        {
+            "type": "Email",
+            "url": "sydnews@bloomberg.net"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/Reuters"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/nytimes"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/TheEconomist"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/business"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.reuters.com\/"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/economist.com"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/bloomberg.com"
+        }
+    ]
+}
