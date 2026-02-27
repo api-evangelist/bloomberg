@@ -1,0 +1,64 @@
+name: Bloomberg
+description: Bloomberg delivers business and markets news, data, analysis, and video to the world, featuring stories from Businessweek and Bloomberg News.
+url: https://www.bloomberg.com
+created: '2024-01-20'
+modified: '2024-01-20'
+specificationVersion: '0.18'
+apis:
+- name: Bloomberg Market Data API
+  description: Provides real-time and historical market data, including stock prices, indices, commodities, and currencies
+  image: https://www.bloomberg.com/favicon.ico
+  humanURL: https://www.bloomberg.com/professional/support/api-library/
+  baseURL: https://api.bloomberg.com/market-data/v1
+  tags:
+  - Financial Data
+  - Market Data
+  - Real-time
+  - Stocks
+  - Indices
+  properties:
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/support/api-library/
+  - type: Authentication
+    url: https://www.bloomberg.com/professional/support/api-library/#authentication
+  contact:
+  - FN: Bloomberg API Support
+    email: apisupport@bloomberg.net
+- name: Bloomberg Terminal API
+  description: Enterprise-level API providing access to Bloomberg Terminal data and analytics
+  image: https://www.bloomberg.com/favicon.ico
+  humanURL: https://www.bloomberg.com/professional/support/api-library/
+  baseURL: https://api.bloomberg.com/terminal/v1
+  tags:
+  - Terminal
+  - Analytics
+  - Enterprise
+  - Financial Services
+  properties:
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/support/api-library/
+  - type: Pricing
+    url: https://www.bloomberg.com/professional/pricing/
+- name: Bloomberg News API
+  description: Access to Bloomberg News articles, headlines, and business journalism content
+  image: https://www.bloomberg.com/favicon.ico
+  humanURL: https://www.bloomberg.com/professional/product/news-data-feeds/
+  baseURL: https://api.bloomberg.com/news/v1
+  tags:
+  - News
+  - Content
+  - Business News
+  - Financial News
+  properties:
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/product/news-data-feeds/
+maintainers:
+- FN: Bloomberg L.P.
+  email: feedback@bloomberg.net
+  url: https://www.bloomberg.com
+tags:
+- Financial Services
+- Market Data
+- News
+- Business Intelligence
+- Analytics
