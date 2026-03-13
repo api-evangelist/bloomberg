@@ -1,0 +1,456 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bbg": "https://www.bloomberg.com/ns/",
+    "blpapi": "https://bloomberg.github.io/blpapi-docs/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "fibo-fnd": "https://spec.edmcouncil.org/fibo/ontology/FND/",
+    "fibo-sec": "https://spec.edmcouncil.org/fibo/ontology/SEC/",
+
+    "Security": {
+      "@id": "fibo-sec:Security",
+      "@context": {
+        "bbuid": "bbg:bbuid",
+        "figi": {
+          "@id": "bbg:figi",
+          "@type": "xsd:string"
+        },
+        "ticker": "bbg:ticker",
+        "isin": {
+          "@id": "fibo-sec:ISIN",
+          "@type": "xsd:string"
+        },
+        "cusip": {
+          "@id": "bbg:cusip",
+          "@type": "xsd:string"
+        },
+        "sedol": {
+          "@id": "bbg:sedol",
+          "@type": "xsd:string"
+        },
+        "name": "schema:name",
+        "shortName": "schema:alternateName",
+        "longCompanyName": "bbg:longCompanyName",
+        "securityDescription": "bbg:securityDescription",
+        "securityType": "bbg:securityType",
+        "exchange": "bbg:exchangeCode",
+        "currency": "bbg:currency",
+        "country": {
+          "@id": "schema:addressCountry",
+          "@type": "xsd:string"
+        },
+        "sector": "bbg:gicsSector",
+        "industryGroup": "bbg:gicsIndustryGroup",
+        "industry": "bbg:bicsIndustry",
+        "subIndustry": "bbg:gicsSubIndustry",
+        "marketCap": {
+          "@id": "bbg:marketCap",
+          "@type": "xsd:double"
+        },
+        "sharesOutstanding": {
+          "@id": "bbg:sharesOutstanding",
+          "@type": "xsd:double"
+        },
+        "active": {
+          "@id": "bbg:active",
+          "@type": "xsd:boolean"
+        },
+        "pricing": {
+          "@id": "bbg:pricing",
+          "@type": "@id"
+        },
+        "fundamentals": {
+          "@id": "bbg:fundamentals",
+          "@type": "@id"
+        },
+        "referenceData": {
+          "@id": "bbg:referenceData",
+          "@type": "@id"
+        },
+        "esgScores": {
+          "@id": "bbg:esgScores",
+          "@type": "@id"
+        },
+        "creditRatings": {
+          "@id": "bbg:creditRating",
+          "@container": "@set"
+        },
+        "dividends": {
+          "@id": "bbg:dividends",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "PricingSnapshot": {
+      "@id": "blpapi:PricingSnapshot",
+      "@context": {
+        "lastPrice": {
+          "@id": "blpapi:pxLast",
+          "@type": "xsd:double"
+        },
+        "bidPrice": {
+          "@id": "blpapi:pxBid",
+          "@type": "xsd:double"
+        },
+        "askPrice": {
+          "@id": "blpapi:pxAsk",
+          "@type": "xsd:double"
+        },
+        "midPrice": {
+          "@id": "blpapi:pxMid",
+          "@type": "xsd:double"
+        },
+        "openPrice": {
+          "@id": "blpapi:pxOpen",
+          "@type": "xsd:double"
+        },
+        "highPrice": {
+          "@id": "blpapi:pxHigh",
+          "@type": "xsd:double"
+        },
+        "lowPrice": {
+          "@id": "blpapi:pxLow",
+          "@type": "xsd:double"
+        },
+        "volume": {
+          "@id": "blpapi:volume",
+          "@type": "xsd:long"
+        },
+        "vwap": {
+          "@id": "blpapi:vwap",
+          "@type": "xsd:double"
+        },
+        "previousClose": {
+          "@id": "blpapi:previousClose",
+          "@type": "xsd:double"
+        },
+        "priceChange": {
+          "@id": "blpapi:netChg",
+          "@type": "xsd:double"
+        },
+        "priceChangePct": {
+          "@id": "blpapi:chgPct1d",
+          "@type": "xsd:double"
+        },
+        "fiftyTwoWeekHigh": {
+          "@id": "blpapi:high52Week",
+          "@type": "xsd:double"
+        },
+        "fiftyTwoWeekLow": {
+          "@id": "blpapi:low52Week",
+          "@type": "xsd:double"
+        },
+        "asOf": {
+          "@id": "blpapi:asOf",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Fundamentals": {
+      "@id": "blpapi:Fundamentals",
+      "@context": {
+        "earningsPerShare": {
+          "@id": "blpapi:epsAnnualized",
+          "@type": "xsd:double"
+        },
+        "priceToEarnings": {
+          "@id": "blpapi:peRatio",
+          "@type": "xsd:double"
+        },
+        "priceToBook": {
+          "@id": "blpapi:pxToBookRatio",
+          "@type": "xsd:double"
+        },
+        "returnOnEquity": {
+          "@id": "blpapi:returnComEqy",
+          "@type": "xsd:double"
+        },
+        "debtToEquity": {
+          "@id": "blpapi:totDebtToComEqy",
+          "@type": "xsd:double"
+        },
+        "revenuePerShare": {
+          "@id": "blpapi:salesRevTurn",
+          "@type": "xsd:double"
+        },
+        "dividendYield": {
+          "@id": "blpapi:eqyDvdYldInd",
+          "@type": "xsd:double"
+        },
+        "beta": {
+          "@id": "blpapi:betaRaw",
+          "@type": "xsd:double"
+        },
+        "fiscalYearEnd": {
+          "@id": "blpapi:fiscalYearEnd",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "ReferenceData": {
+      "@id": "blpapi:ReferenceData",
+      "@context": {
+        "businessDescription": "bbg:businessDescription",
+        "numberOfEmployees": {
+          "@id": "bbg:numberOfEmployees",
+          "@type": "xsd:integer"
+        },
+        "yearFounded": {
+          "@id": "bbg:yearFounded",
+          "@type": "xsd:integer"
+        },
+        "headquarters": "bbg:headquarters",
+        "website": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "ceo": "bbg:ceo",
+        "bloombergIndustryGroup": "bbg:bicsIndustryGroup",
+        "bloombergSubIndustry": "bbg:bicsSubIndustry",
+        "companyAddress": {
+          "@id": "schema:address",
+          "@container": "@list"
+        },
+        "lei": {
+          "@id": "bbg:lei",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "EsgScores": {
+      "@id": "bbg:EsgScores",
+      "@context": {
+        "overallScore": {
+          "@id": "bbg:esgOverallScore",
+          "@type": "xsd:double"
+        },
+        "environmentalScore": {
+          "@id": "bbg:esgEnvironmentalScore",
+          "@type": "xsd:double"
+        },
+        "socialScore": {
+          "@id": "bbg:esgSocialScore",
+          "@type": "xsd:double"
+        },
+        "governanceScore": {
+          "@id": "bbg:esgGovernanceScore",
+          "@type": "xsd:double"
+        },
+        "disclosureScore": {
+          "@id": "bbg:esgDisclosureScore",
+          "@type": "xsd:double"
+        },
+        "asOfDate": {
+          "@id": "dcterms:date",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "CreditRating": {
+      "@id": "bbg:CreditRating",
+      "@context": {
+        "agency": "bbg:ratingAgency",
+        "rating": "bbg:ratingSymbol",
+        "outlook": "bbg:ratingOutlook",
+        "ratedAt": {
+          "@id": "bbg:ratedAt",
+          "@type": "xsd:date"
+        },
+        "ratingType": "bbg:ratingType"
+      }
+    },
+
+    "DividendData": {
+      "@id": "bbg:DividendData",
+      "@context": {
+        "indicatedAnnualDividend": {
+          "@id": "bbg:indicatedAnnualDividend",
+          "@type": "xsd:double"
+        },
+        "dividendFrequency": "bbg:dividendFrequency",
+        "exDividendDate": {
+          "@id": "bbg:exDividendDate",
+          "@type": "xsd:date"
+        },
+        "dividendPayDate": {
+          "@id": "bbg:dividendPayDate",
+          "@type": "xsd:date"
+        },
+        "dividendAmount": {
+          "@id": "bbg:dividendAmount",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "ReferenceDataResponse": {
+      "@id": "blpapi:ReferenceDataResponse",
+      "@context": {
+        "securityData": {
+          "@id": "blpapi:securityData",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "SecurityDataElement": {
+      "@id": "blpapi:SecurityDataElement",
+      "@context": {
+        "security": "bbg:ticker",
+        "sequenceNumber": {
+          "@id": "blpapi:sequenceNumber",
+          "@type": "xsd:integer"
+        },
+        "fieldData": "blpapi:fieldData",
+        "fieldExceptions": {
+          "@id": "blpapi:fieldException",
+          "@container": "@set"
+        },
+        "securityError": {
+          "@id": "blpapi:securityError",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "HistoricalDataResponse": {
+      "@id": "blpapi:HistoricalDataResponse",
+      "@context": {
+        "securityData": {
+          "@id": "blpapi:securityData",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "HistoricalDataPoint": {
+      "@id": "blpapi:HistoricalDataPoint",
+      "@context": {
+        "date": {
+          "@id": "dcterms:date",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "IntradayBar": {
+      "@id": "blpapi:IntradayBar",
+      "@context": {
+        "time": {
+          "@id": "blpapi:barTime",
+          "@type": "xsd:dateTime"
+        },
+        "open": {
+          "@id": "blpapi:barOpen",
+          "@type": "xsd:double"
+        },
+        "high": {
+          "@id": "blpapi:barHigh",
+          "@type": "xsd:double"
+        },
+        "low": {
+          "@id": "blpapi:barLow",
+          "@type": "xsd:double"
+        },
+        "close": {
+          "@id": "blpapi:barClose",
+          "@type": "xsd:double"
+        },
+        "volume": {
+          "@id": "blpapi:barVolume",
+          "@type": "xsd:long"
+        },
+        "value": {
+          "@id": "blpapi:barValue",
+          "@type": "xsd:double"
+        },
+        "numEvents": {
+          "@id": "blpapi:barNumEvents",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "TickEvent": {
+      "@id": "blpapi:TickEvent",
+      "@context": {
+        "time": {
+          "@id": "blpapi:tickTime",
+          "@type": "xsd:dateTime"
+        },
+        "type": "blpapi:tickType",
+        "value": {
+          "@id": "blpapi:tickValue",
+          "@type": "xsd:double"
+        },
+        "size": {
+          "@id": "blpapi:tickSize",
+          "@type": "xsd:long"
+        },
+        "conditionCodes": "blpapi:conditionCodes",
+        "exchangeCode": "blpapi:exchangeCode"
+      }
+    },
+
+    "MarketDataSubscriptionEvent": {
+      "@id": "blpapi:MarketDataSubscriptionEvent",
+      "@context": {
+        "security": "bbg:ticker",
+        "correlationId": {
+          "@id": "blpapi:correlationId",
+          "@type": "xsd:integer"
+        },
+        "eventType": "blpapi:eventType",
+        "fields": "blpapi:subscriptionFields",
+        "timestamp": {
+          "@id": "blpapi:eventTimestamp",
+          "@type": "xsd:dateTime"
+        },
+        "isDelayed": {
+          "@id": "blpapi:isDelayed",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "FieldOverride": {
+      "@id": "blpapi:FieldOverride",
+      "@context": {
+        "fieldId": "blpapi:overrideFieldId",
+        "value": "blpapi:overrideValue"
+      }
+    },
+
+    "FieldException": {
+      "@id": "blpapi:FieldException",
+      "@context": {
+        "fieldId": "blpapi:exceptionFieldId",
+        "errorInfo": {
+          "@id": "blpapi:errorInfo",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "SecurityError": {
+      "@id": "blpapi:SecurityError",
+      "@context": {
+        "source": "blpapi:errorSource",
+        "code": {
+          "@id": "blpapi:errorCode",
+          "@type": "xsd:integer"
+        },
+        "category": "blpapi:errorCategory",
+        "message": "blpapi:errorMessage",
+        "subcategory": "blpapi:errorSubcategory"
+      }
+    }
+  }
+}

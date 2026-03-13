@@ -1,0 +1,440 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/json-schema/bloomberg-security-schema.json",
+  "title": "Bloomberg Security",
+  "description": "A financial security as represented in the Bloomberg BLPAPI data universe. Bloomberg tracks over 35 million instruments across equities, fixed income, derivatives, commodities, currencies, and alternative assets through services including //blp/refdata, //blp/mktdata, and //blp/mktbar. Securities are identified using Bloomberg tickers, FIGI, ISIN, CUSIP, SEDOL, and Bloomberg Unique Identifiers (BBUID). Based on bloomberg.github.io/blpapi-docs.",
+  "type": "object",
+  "required": ["ticker", "securityType"],
+  "properties": {
+    "bbuid": {
+      "type": "string",
+      "description": "Bloomberg Unique Identifier (BBUID) - the primary internal Bloomberg security identifier."
+    },
+    "figi": {
+      "type": "string",
+      "description": "Financial Instrument Global Identifier (FIGI) assigned by Bloomberg as the open, standard global identifier.",
+      "pattern": "^[A-Z]{2}[0-9A-Z]{10}$"
+    },
+    "ticker": {
+      "type": "string",
+      "description": "Bloomberg ticker symbol including asset class suffix used in BLPAPI requests (e.g., AAPL US Equity, CL1 Comdty, SPX Index, JPY Curncy)."
+    },
+    "isin": {
+      "type": "string",
+      "description": "International Securities Identification Number (ISIN) for cross-border security identification.",
+      "pattern": "^[A-Z]{2}[0-9A-Z]{10}$"
+    },
+    "cusip": {
+      "type": "string",
+      "description": "Committee on Uniform Securities Identification Procedures (CUSIP) identifier, used primarily for US and Canadian securities.",
+      "pattern": "^[0-9A-Z]{9}$"
+    },
+    "sedol": {
+      "type": "string",
+      "description": "Stock Exchange Daily Official List (SEDOL) identifier. BLPAPI supports symbology lookup via /sedol1/ prefix (e.g., /sedol1/2840215).",
+      "pattern": "^[0-9B-DF-HJ-NP-TV-Z]{7}$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full legal name of the security or issuer (BLPAPI field: Security_Name or NAME)."
+    },
+    "shortName": {
+      "type": "string",
+      "description": "Abbreviated name of the security as displayed on Bloomberg Terminal (BLPAPI field: SHORT_NAME)."
+    },
+    "longCompanyName": {
+      "type": "string",
+      "description": "Extended company or instrument description (BLPAPI field: LONG_COMP_NAME)."
+    },
+    "securityDescription": {
+      "type": "string",
+      "description": "Bloomberg security description providing concise instrument details (BLPAPI field: SECURITY_DES)."
+    },
+    "securityType": {
+      "type": "string",
+      "description": "Bloomberg security type classification determining which market data fields and services are available.",
+      "enum": [
+        "Equity",
+        "Corp",
+        "Govt",
+        "Mtge",
+        "M-Mkt",
+        "Muni",
+        "Pfd",
+        "Comdty",
+        "Index",
+        "Curncy",
+        "Equity Option",
+        "Fut",
+        "FX Option"
+      ]
+    },
+    "exchange": {
+      "type": "string",
+      "description": "Primary exchange where the security is listed, using Bloomberg exchange codes (BLPAPI field: EXCH_CODE)."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 three-letter currency code for the security's primary trading currency (BLPAPI field: CRNCY).",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "country": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code of the security's country of domicile (BLPAPI field: COUNTRY_ISO).",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "sector": {
+      "type": "string",
+      "description": "GICS sector classification for the security (BLPAPI field: GICS_SECTOR_NAME)."
+    },
+    "industryGroup": {
+      "type": "string",
+      "description": "GICS industry group classification (BLPAPI field: GICS_INDUSTRY_GROUP_NAME)."
+    },
+    "industry": {
+      "type": "string",
+      "description": "Bloomberg Industry Classification Standard (BICS) industry code (BLPAPI field: INDUSTRY_GROUP)."
+    },
+    "subIndustry": {
+      "type": "string",
+      "description": "GICS sub-industry classification (BLPAPI field: GICS_SUB_INDUSTRY_NAME)."
+    },
+    "marketCap": {
+      "type": "number",
+      "format": "double",
+      "minimum": 0,
+      "description": "Market capitalization in the security's primary trading currency (BLPAPI field: MARKET_CAP or CUR_MKT_CAP)."
+    },
+    "sharesOutstanding": {
+      "type": "number",
+      "format": "double",
+      "minimum": 0,
+      "description": "Total number of shares currently outstanding (BLPAPI field: EQY_SH_OUT)."
+    },
+    "pricing": {
+      "$ref": "#/$defs/PricingSnapshot"
+    },
+    "fundamentals": {
+      "$ref": "#/$defs/Fundamentals"
+    },
+    "referenceData": {
+      "$ref": "#/$defs/ReferenceData"
+    },
+    "esgScores": {
+      "$ref": "#/$defs/EsgScores"
+    },
+    "creditRatings": {
+      "type": "array",
+      "description": "Credit ratings from major rating agencies as reported via Bloomberg (BLPAPI fields: RTG_MOODY, RTG_SP, RTG_FITCH).",
+      "items": {
+        "$ref": "#/$defs/CreditRating"
+      }
+    },
+    "dividends": {
+      "$ref": "#/$defs/DividendData"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the security is currently active and trading on its primary exchange."
+    }
+  },
+  "$defs": {
+    "PricingSnapshot": {
+      "type": "object",
+      "description": "Current and recent pricing data for a Bloomberg security, corresponding to fields available via the //blp/mktdata subscription service and //blp/refdata ReferenceDataRequest.",
+      "properties": {
+        "lastPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Most recent trade price (BLPAPI field: PX_LAST or LAST_PRICE for subscriptions)."
+        },
+        "bidPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Current best bid price (BLPAPI field: PX_BID for requests, BID for subscriptions)."
+        },
+        "askPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Current best ask price (BLPAPI field: PX_ASK for requests, ASK for subscriptions)."
+        },
+        "midPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Mid-point of the last bid and last offer (BLPAPI field: PX_MID)."
+        },
+        "openPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Opening price for the current trading session (BLPAPI field: PX_OPEN or OPEN for subscriptions)."
+        },
+        "highPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Intraday high price for the current session (BLPAPI field: PX_HIGH or HIGH for subscriptions)."
+        },
+        "lowPrice": {
+          "type": "number",
+          "format": "double",
+          "description": "Intraday low price for the current session (BLPAPI field: PX_LOW or LOW for subscriptions)."
+        },
+        "volume": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "description": "Total trading volume for the current session (BLPAPI field: VOLUME)."
+        },
+        "vwap": {
+          "type": "number",
+          "format": "double",
+          "description": "Volume-weighted average price for the current session (BLPAPI field: EQY_WEIGHTED_AVG_PX, available via //blp/mktvwap)."
+        },
+        "previousClose": {
+          "type": "number",
+          "format": "double",
+          "description": "Previous trading session close price (BLPAPI field: PX_LAST for prior session)."
+        },
+        "priceChange": {
+          "type": "number",
+          "format": "double",
+          "description": "Absolute price change from previous close (BLPAPI field: NET_CHG)."
+        },
+        "priceChangePct": {
+          "type": "number",
+          "format": "double",
+          "description": "Percentage price change from previous close (BLPAPI field: CHG_PCT_1D)."
+        },
+        "fiftyTwoWeekHigh": {
+          "type": "number",
+          "format": "double",
+          "description": "Highest price over the trailing 52-week period (BLPAPI field: HIGH_52WEEK)."
+        },
+        "fiftyTwoWeekLow": {
+          "type": "number",
+          "format": "double",
+          "description": "Lowest price over the trailing 52-week period (BLPAPI field: LOW_52WEEK)."
+        },
+        "asOf": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when pricing data was last updated."
+        }
+      }
+    },
+    "Fundamentals": {
+      "type": "object",
+      "description": "Key fundamental financial data available via BLPAPI ReferenceDataRequest.",
+      "properties": {
+        "earningsPerShare": {
+          "type": "number",
+          "format": "double",
+          "description": "Annualized earnings per share (BLPAPI field: EPS_ANNUALIZED or IS_EPS)."
+        },
+        "priceToEarnings": {
+          "type": "number",
+          "format": "double",
+          "description": "Price-to-earnings ratio (BLPAPI field: PE_RATIO)."
+        },
+        "priceToBook": {
+          "type": "number",
+          "format": "double",
+          "description": "Price-to-book value ratio (BLPAPI field: PX_TO_BOOK_RATIO)."
+        },
+        "returnOnEquity": {
+          "type": "number",
+          "format": "double",
+          "description": "Return on equity as a percentage (BLPAPI field: RETURN_COM_EQY)."
+        },
+        "debtToEquity": {
+          "type": "number",
+          "format": "double",
+          "description": "Total debt to common equity ratio (BLPAPI field: TOT_DEBT_TO_COM_EQY)."
+        },
+        "revenuePerShare": {
+          "type": "number",
+          "format": "double",
+          "description": "Revenue per share (BLPAPI field: SALES_REV_TURN)."
+        },
+        "dividendYield": {
+          "type": "number",
+          "format": "double",
+          "description": "Indicated dividend yield as a percentage (BLPAPI field: EQY_DVD_YLD_IND)."
+        },
+        "beta": {
+          "type": "number",
+          "format": "double",
+          "description": "Beta relative to the benchmark index (BLPAPI field: BETA_RAW_OVERRIDABLE)."
+        },
+        "fiscalYearEnd": {
+          "type": "string",
+          "format": "date",
+          "description": "Most recent fiscal year end date."
+        }
+      }
+    },
+    "ReferenceData": {
+      "type": "object",
+      "description": "Descriptive and reference data for a Bloomberg security, retrieved via //blp/refdata ReferenceDataRequest.",
+      "properties": {
+        "businessDescription": {
+          "type": "string",
+          "description": "Business description of the issuing company (BLPAPI field: CIE_DES_BULK or BUSINESS_DESCRIPTION)."
+        },
+        "numberOfEmployees": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of employees reported by the company (BLPAPI field: NUM_OF_EMPLOYEES)."
+        },
+        "yearFounded": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 9999,
+          "description": "Year the company was founded (BLPAPI field: YEAR_FOUNDED)."
+        },
+        "headquarters": {
+          "type": "string",
+          "description": "City and country where the company is headquartered."
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Company website URL (BLPAPI field: COMPANY_WEB_ADDRESS)."
+        },
+        "ceo": {
+          "type": "string",
+          "description": "Name of the Chief Executive Officer."
+        },
+        "bloombergIndustryGroup": {
+          "type": "string",
+          "description": "Bloomberg Industry Classification Standard (BICS) industry group."
+        },
+        "bloombergSubIndustry": {
+          "type": "string",
+          "description": "Bloomberg Industry Classification Standard (BICS) sub-industry."
+        },
+        "companyAddress": {
+          "type": "array",
+          "description": "Company address lines returned as a bulk field (BLPAPI bulk field: COMPANY_ADDRESS).",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lei": {
+          "type": "string",
+          "description": "Legal Entity Identifier (LEI) of the issuing entity.",
+          "pattern": "^[A-Z0-9]{18}[0-9]{2}$"
+        }
+      }
+    },
+    "EsgScores": {
+      "type": "object",
+      "description": "Bloomberg ESG scores for the security's issuer, available through Bloomberg Data License and BLPAPI reference data.",
+      "properties": {
+        "overallScore": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Overall Bloomberg ESG score on a 0-100 scale."
+        },
+        "environmentalScore": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Environmental pillar score on a 0-100 scale."
+        },
+        "socialScore": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Social pillar score on a 0-100 scale."
+        },
+        "governanceScore": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Governance pillar score on a 0-100 scale."
+        },
+        "disclosureScore": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "ESG disclosure quality score reflecting completeness of reported data."
+        },
+        "asOfDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date for which the ESG scores are reported."
+        }
+      }
+    },
+    "CreditRating": {
+      "type": "object",
+      "description": "A credit rating issued by a major rating agency for the security, as reported via BLPAPI reference data fields.",
+      "required": ["agency", "rating"],
+      "properties": {
+        "agency": {
+          "type": "string",
+          "description": "Name of the credit rating agency.",
+          "enum": ["Moody's", "S&P", "Fitch", "DBRS", "Kroll", "AM Best"]
+        },
+        "rating": {
+          "type": "string",
+          "description": "Credit rating symbol (e.g., AAA, Aaa, BB+). BLPAPI fields: RTG_MOODY, RTG_SP, RTG_FITCH."
+        },
+        "outlook": {
+          "type": "string",
+          "description": "Rating outlook indicating potential direction of future rating changes.",
+          "enum": ["Positive", "Stable", "Negative", "Watch Positive", "Watch Negative", "Review"]
+        },
+        "ratedAt": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the credit rating was assigned or most recently affirmed."
+        },
+        "ratingType": {
+          "type": "string",
+          "description": "Type of rating scope.",
+          "enum": ["long-term", "short-term"]
+        }
+      }
+    },
+    "DividendData": {
+      "type": "object",
+      "description": "Dividend information for the security, available via BLPAPI reference data.",
+      "properties": {
+        "indicatedAnnualDividend": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "description": "Indicated annual dividend amount per share (BLPAPI field: EQY_DVD_YLD_IND)."
+        },
+        "dividendFrequency": {
+          "type": "string",
+          "description": "Frequency of dividend payments (BLPAPI field: DVD_FREQ).",
+          "enum": ["Annual", "Semi-Annual", "Quarterly", "Monthly", "Irregular", "None"]
+        },
+        "exDividendDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Next or most recent ex-dividend date (BLPAPI field: DVD_EX_DT)."
+        },
+        "dividendPayDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Next or most recent dividend payment date (BLPAPI field: DVD_PAY_DT)."
+        },
+        "dividendAmount": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "description": "Most recent dividend amount per share (BLPAPI field: DVD_SH_LAST)."
+        }
+      }
+    }
+  }
+}

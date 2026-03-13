@@ -1,0 +1,555 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/json-schema/bloomberg-market-data-schema.json",
+  "title": "Bloomberg Market Data",
+  "description": "Market data structures used by the Bloomberg BLPAPI, modeling the core request/response and subscription paradigms for the //blp/refdata, //blp/mktdata, //blp/mktbar, and //blp/mktvwap services. Covers ReferenceDataRequest, HistoricalDataRequest, IntradayBarRequest, IntradayTickRequest, and real-time subscription data. Based on bloomberg.github.io/blpapi-docs.",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/ReferenceDataResponse" },
+    { "$ref": "#/$defs/HistoricalDataResponse" },
+    { "$ref": "#/$defs/IntradayBarResponse" },
+    { "$ref": "#/$defs/IntradayTickResponse" },
+    { "$ref": "#/$defs/MarketDataSubscriptionEvent" }
+  ],
+  "$defs": {
+    "ReferenceDataRequest": {
+      "type": "object",
+      "description": "Request structure for the BLPAPI ReferenceDataRequest sent to the //blp/refdata service. Retrieves point-in-time field values for one or more securities.",
+      "required": ["securities", "fields"],
+      "properties": {
+        "securities": {
+          "type": "array",
+          "description": "Array of Bloomberg security identifiers (e.g., IBM US Equity, AAPL US Equity).",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "fields": {
+          "type": "array",
+          "description": "Array of Bloomberg field mnemonics to retrieve (e.g., PX_LAST, NAME, EPS_ANNUALIZED, MARKET_CAP).",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "overrides": {
+          "type": "array",
+          "description": "Optional field overrides to modify the request context (e.g., EQY_FUND_CRNCY, END_DATE_OVERRIDE).",
+          "items": {
+            "$ref": "#/$defs/FieldOverride"
+          }
+        },
+        "returnFormattedValue": {
+          "type": "boolean",
+          "description": "When true, returns values as formatted display strings rather than raw typed values."
+        },
+        "returnEids": {
+          "type": "boolean",
+          "description": "When true, returns the entitlement identifiers (EIDs) associated with each field."
+        }
+      }
+    },
+    "ReferenceDataResponse": {
+      "type": "object",
+      "description": "Response structure for a BLPAPI ReferenceDataRequest, containing an array of security data elements.",
+      "required": ["securityData"],
+      "properties": {
+        "securityData": {
+          "type": "array",
+          "description": "Array of security data elements, one per requested security.",
+          "items": {
+            "$ref": "#/$defs/SecurityDataElement"
+          }
+        }
+      }
+    },
+    "SecurityDataElement": {
+      "type": "object",
+      "description": "A single security's data within a ReferenceDataResponse, including field values and any field-level exceptions.",
+      "required": ["security", "fieldData"],
+      "properties": {
+        "security": {
+          "type": "string",
+          "description": "The Bloomberg security identifier as specified in the request."
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "description": "Sequence number indicating the order of this security in the response."
+        },
+        "fieldData": {
+          "type": "object",
+          "description": "Key-value pairs of requested field mnemonics and their returned values. Values may be strings, numbers, booleans, dates, or arrays for bulk fields.",
+          "additionalProperties": true
+        },
+        "fieldExceptions": {
+          "type": "array",
+          "description": "Array of exceptions for fields that could not be returned for this security.",
+          "items": {
+            "$ref": "#/$defs/FieldException"
+          }
+        },
+        "securityError": {
+          "$ref": "#/$defs/SecurityError"
+        },
+        "eidData": {
+          "type": "array",
+          "description": "Entitlement identifier data when returnEids is enabled.",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "HistoricalDataRequest": {
+      "type": "object",
+      "description": "Request structure for the BLPAPI HistoricalDataRequest sent to the //blp/refdata service. Retrieves time-series data for a set of securities and fields over a date range.",
+      "required": ["securities", "fields", "startDate", "endDate"],
+      "properties": {
+        "securities": {
+          "type": "array",
+          "description": "Array of Bloomberg security identifiers.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "fields": {
+          "type": "array",
+          "description": "Array of Bloomberg field mnemonics for historical retrieval (e.g., PX_LAST, OPEN, HIGH, LOW, VOLUME).",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "startDate": {
+          "type": "string",
+          "pattern": "^[0-9]{8}$",
+          "description": "Start date in YYYYMMDD format."
+        },
+        "endDate": {
+          "type": "string",
+          "pattern": "^[0-9]{8}$",
+          "description": "End date in YYYYMMDD format."
+        },
+        "periodicitySelection": {
+          "type": "string",
+          "description": "Periodicity of the historical data bars.",
+          "enum": ["DAILY", "WEEKLY", "MONTHLY", "QUARTERLY", "SEMI_ANNUALLY", "YEARLY"]
+        },
+        "periodicityAdjustment": {
+          "type": "string",
+          "description": "How to handle non-trading day data.",
+          "enum": ["ACTUAL", "CALENDAR", "FISCAL"]
+        },
+        "adjustmentNormal": {
+          "type": "boolean",
+          "description": "Adjust for normal cash dividends (CshAdjNormal)."
+        },
+        "adjustmentAbnormal": {
+          "type": "boolean",
+          "description": "Adjust for abnormal cash dividends (CshAdjAbnormal)."
+        },
+        "adjustmentSplit": {
+          "type": "boolean",
+          "description": "Adjust for stock splits (CapChg)."
+        },
+        "maxDataPoints": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum number of data points to return."
+        },
+        "overrides": {
+          "type": "array",
+          "description": "Optional field overrides.",
+          "items": {
+            "$ref": "#/$defs/FieldOverride"
+          }
+        }
+      }
+    },
+    "HistoricalDataResponse": {
+      "type": "object",
+      "description": "Response structure for a BLPAPI HistoricalDataRequest, containing time-series data for a single security.",
+      "required": ["securityData"],
+      "properties": {
+        "securityData": {
+          "$ref": "#/$defs/HistoricalSecurityData"
+        }
+      }
+    },
+    "HistoricalSecurityData": {
+      "type": "object",
+      "description": "Historical data for a single security within a HistoricalDataResponse.",
+      "required": ["security", "fieldData"],
+      "properties": {
+        "security": {
+          "type": "string",
+          "description": "The Bloomberg security identifier."
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "description": "Sequence number for this security in the response."
+        },
+        "fieldData": {
+          "type": "array",
+          "description": "Array of dated data points, each containing the requested field values for that date.",
+          "items": {
+            "$ref": "#/$defs/HistoricalDataPoint"
+          }
+        },
+        "fieldExceptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldException"
+          }
+        },
+        "securityError": {
+          "$ref": "#/$defs/SecurityError"
+        }
+      }
+    },
+    "HistoricalDataPoint": {
+      "type": "object",
+      "description": "A single dated data point in a historical time series.",
+      "required": ["date"],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date for this data point in ISO 8601 format."
+        }
+      },
+      "additionalProperties": true
+    },
+    "IntradayBarRequest": {
+      "type": "object",
+      "description": "Request structure for the BLPAPI IntradayBarRequest sent to the //blp/refdata service. Retrieves summarized intraday bar data (OHLCV) for a single security.",
+      "required": ["security", "eventType", "startDateTime", "endDateTime", "interval"],
+      "properties": {
+        "security": {
+          "type": "string",
+          "description": "Bloomberg security identifier (only one security per request)."
+        },
+        "eventType": {
+          "type": "string",
+          "description": "Type of market event for bar construction.",
+          "enum": ["TRADE", "BID", "ASK", "BID_BEST", "ASK_BEST", "BEST_BID", "BEST_ASK"]
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start date and time for the bar request in ISO 8601 format."
+        },
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End date and time for the bar request in ISO 8601 format."
+        },
+        "interval": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1440,
+          "description": "Bar interval in minutes (1-1440)."
+        },
+        "gapFillInitialBar": {
+          "type": "boolean",
+          "description": "When true, fills the initial bar with data from the previous trading session."
+        },
+        "adjustmentNormal": {
+          "type": "boolean",
+          "description": "Adjust for normal cash dividends."
+        },
+        "adjustmentAbnormal": {
+          "type": "boolean",
+          "description": "Adjust for abnormal cash dividends."
+        },
+        "adjustmentSplit": {
+          "type": "boolean",
+          "description": "Adjust for stock splits."
+        }
+      }
+    },
+    "IntradayBarResponse": {
+      "type": "object",
+      "description": "Response structure for a BLPAPI IntradayBarRequest, containing an array of OHLCV bar data.",
+      "required": ["barData"],
+      "properties": {
+        "barData": {
+          "type": "object",
+          "properties": {
+            "barTickData": {
+              "type": "array",
+              "description": "Array of intraday bar data points.",
+              "items": {
+                "$ref": "#/$defs/IntradayBar"
+              }
+            },
+            "eidData": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "IntradayBar": {
+      "type": "object",
+      "description": "A single intraday bar containing OHLCV data and trade statistics.",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start timestamp of the bar interval in ISO 8601 format."
+        },
+        "open": {
+          "type": "number",
+          "format": "double",
+          "description": "Opening price of the bar interval."
+        },
+        "high": {
+          "type": "number",
+          "format": "double",
+          "description": "Highest price during the bar interval."
+        },
+        "low": {
+          "type": "number",
+          "format": "double",
+          "description": "Lowest price during the bar interval."
+        },
+        "close": {
+          "type": "number",
+          "format": "double",
+          "description": "Closing price of the bar interval."
+        },
+        "volume": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "description": "Total volume traded during the bar interval."
+        },
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "Total value traded during the bar interval (price times volume)."
+        },
+        "numEvents": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of trade events (ticks) during the bar interval (num_trds)."
+        }
+      }
+    },
+    "IntradayTickRequest": {
+      "type": "object",
+      "description": "Request structure for the BLPAPI IntradayTickRequest sent to the //blp/refdata service. Retrieves individual tick-level data for a single security.",
+      "required": ["security", "startDateTime", "endDateTime"],
+      "properties": {
+        "security": {
+          "type": "string",
+          "description": "Bloomberg security identifier (only one security per request)."
+        },
+        "eventTypes": {
+          "type": "array",
+          "description": "Types of tick events to include.",
+          "items": {
+            "type": "string",
+            "enum": ["TRADE", "AT_TRADE", "BID", "ASK", "MID_PRICE", "BID_BEST", "ASK_BEST"]
+          }
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start date and time in ISO 8601 format."
+        },
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End date and time in ISO 8601 format."
+        },
+        "includeConditionCodes": {
+          "type": "boolean",
+          "description": "When true, includes trade condition codes in the response."
+        },
+        "includeExchangeCodes": {
+          "type": "boolean",
+          "description": "When true, includes exchange codes identifying where the tick occurred."
+        }
+      }
+    },
+    "IntradayTickResponse": {
+      "type": "object",
+      "description": "Response structure for a BLPAPI IntradayTickRequest, containing an array of individual tick data.",
+      "required": ["tickData"],
+      "properties": {
+        "tickData": {
+          "type": "object",
+          "properties": {
+            "tickData": {
+              "type": "array",
+              "description": "Array of individual tick events.",
+              "items": {
+                "$ref": "#/$defs/TickEvent"
+              }
+            },
+            "eidData": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "TickEvent": {
+      "type": "object",
+      "description": "A single tick event representing a market activity at a specific point in time.",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the tick event."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of tick event (TRADE, BID, ASK, etc.)."
+        },
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "Price or value of the tick event."
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "description": "Volume or size associated with the tick event."
+        },
+        "conditionCodes": {
+          "type": "string",
+          "description": "Trade condition codes when includeConditionCodes is enabled (cond)."
+        },
+        "exchangeCode": {
+          "type": "string",
+          "description": "Exchange code identifying where the tick occurred (exch)."
+        }
+      }
+    },
+    "MarketDataSubscriptionEvent": {
+      "type": "object",
+      "description": "A real-time market data event received via //blp/mktdata subscription. Uses the Subscribe paradigm where field mnemonics differ from request fields (BID instead of PX_BID, ASK instead of PX_ASK). Delivered as MarketDataEvents messages.",
+      "properties": {
+        "security": {
+          "type": "string",
+          "description": "The subscribed Bloomberg security identifier (topic)."
+        },
+        "correlationId": {
+          "type": "integer",
+          "description": "Unique correlation identifier mapping this event to the original subscription."
+        },
+        "eventType": {
+          "type": "string",
+          "description": "Type of subscription event message.",
+          "enum": ["MarketDataEvents", "SubscriptionStarted", "SubscriptionFailure", "SubscriptionStreaming"]
+        },
+        "fields": {
+          "type": "object",
+          "description": "Key-value pairs of real-time subscription field mnemonics and their current values. Common fields include BID, ASK, LAST_PRICE, OPEN, HIGH, LOW, VOLUME, BEST_BID, BEST_ASK.",
+          "additionalProperties": true
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the market data event."
+        },
+        "isDelayed": {
+          "type": "boolean",
+          "description": "Indicates whether the data is delayed rather than real-time, based on subscription options."
+        }
+      }
+    },
+    "FieldOverride": {
+      "type": "object",
+      "description": "A field override modifying the context of a BLPAPI data request (e.g., currency adjustment, date override).",
+      "required": ["fieldId", "value"],
+      "properties": {
+        "fieldId": {
+          "type": "string",
+          "description": "Bloomberg field mnemonic to override (e.g., EQY_FUND_CRNCY, END_DATE_OVERRIDE, IVOL_DELTA_LEVEL)."
+        },
+        "value": {
+          "description": "Override value. Type depends on the field being overridden.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        }
+      }
+    },
+    "FieldException": {
+      "type": "object",
+      "description": "An exception indicating a specific field could not be returned for a requested security.",
+      "properties": {
+        "fieldId": {
+          "type": "string",
+          "description": "The field mnemonic that generated the exception."
+        },
+        "errorInfo": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "description": "Source of the error."
+            },
+            "code": {
+              "type": "integer",
+              "description": "Numeric error code."
+            },
+            "category": {
+              "type": "string",
+              "description": "Error category."
+            },
+            "message": {
+              "type": "string",
+              "description": "Human-readable error message."
+            },
+            "subcategory": {
+              "type": "string",
+              "description": "Error subcategory for more specific classification."
+            }
+          }
+        }
+      }
+    },
+    "SecurityError": {
+      "type": "object",
+      "description": "An error indicating the security itself could not be resolved or processed.",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Source of the security error."
+        },
+        "code": {
+          "type": "integer",
+          "description": "Numeric error code."
+        },
+        "category": {
+          "type": "string",
+          "description": "Error category (e.g., BAD_SEC)."
+        },
+        "message": {
+          "type": "string",
+          "description": "Human-readable error message describing why the security could not be processed."
+        },
+        "subcategory": {
+          "type": "string",
+          "description": "Error subcategory."
+        }
+      }
+    }
+  }
+}
