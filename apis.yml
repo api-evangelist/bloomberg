@@ -1,272 +1,119 @@
+aid: bloomberg
 name: Bloomberg
-description: Bloomberg delivers business and markets news, data, analysis, and video to the world, featuring stories from Businessweek and Bloomberg News.
-url: https://www.bloomberg.com
-created: '2024-01-20'
-modified: '2026-03-03'
-specificationVersion: '0.18'
-apis:
-- name: Bloomberg Market Data API
-  description: Provides real-time and historical market data, including stock prices, indices, commodities, and currencies
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/support/api-library/
-  baseURL: https://api.bloomberg.com/market-data/v1
-  tags:
-  - Financial Data
-  - Market Data
-  - Real-time
-  - Stocks
-  - Indices
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/support/api-library/
-  - type: Authentication
-    url: https://www.bloomberg.com/professional/support/api-library/#authentication
-  - type: SDKs
-    url: https://bloomberg.github.io/blpapi-docs/
-  - type: JSONSchema
-    url: json-schema/bloomberg-market-data-schema.json
-  - type: JSONSchema
-    url: json-schema/bloomberg-security-schema.json
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg Desktop API (DAPI)
-  description: Provides programmatic access to Bloomberg Terminal data for desktop applications, connecting through the locally running Bloomberg Professional software. Supports C++, .NET, Java, Python, and VBA for building custom analytics, data retrieval, and workflow automation tools that leverage Terminal authentication.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/support/api-library/
-  tags:
-  - Desktop API
-  - Terminal
-  - Analytics
-  - Market Data
-  - Reference Data
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/support/api-library/
-  - type: SDKs
-    url: https://bloomberg.github.io/blpapi-docs/
-  - type: GettingStarted
-    url: https://data.bloomberglp.com/professional/sites/10/2017/03/BLPAPI-Core-Developer-Guide.pdf
-  - type: JSONSchema
-    url: json-schema/bloomberg-security-schema.json
-  - type: JSONSchema
-    url: json-schema/bloomberg-market-data-schema.json
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg News API
-  description: Access to Bloomberg News articles, headlines, and business journalism content
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/product/news-data-feeds/
-  baseURL: https://api.bloomberg.com/news/v1
-  tags:
-  - News
-  - Content
-  - Business News
-  - Financial News
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/product/news-data-feeds/
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg Server API (SAPI)
-  description: Delivers real-time market data, historical data, reference data, and calculation engine capabilities from the Bloomberg Terminal for use in proprietary and third-party server applications, with support for C++, .NET, Java, Python, and VBA.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/
-  tags:
-  - Server API
-  - Market Data
-  - Real-time
-  - Historical Data
-  - Reference Data
-  - Enterprise
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/
-  - type: SDKs
-    url: https://bloomberg.github.io/blpapi-docs/
-  - type: JSONSchema
-    url: json-schema/bloomberg-security-schema.json
-  - type: JSONSchema
-    url: json-schema/bloomberg-market-data-schema.json
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg Market Data Feed (B-PIPE)
-  description: High-performance global connectivity to consolidated, normalized real-time market data covering 35 million instruments from more than 330 exchanges and 5,000 pricing contributors across all asset classes, available on-premises and in the cloud via AWS, Azure, and Google Cloud.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/products/data/enterprise-catalog/real-time-data-feed/
-  tags:
-  - Market Data Feed
-  - Real-time
-  - Streaming Data
-  - Enterprise
-  - Cloud
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/products/data/enterprise-catalog/real-time-data-feed/
-  - type: SDKs
-    url: https://bloomberg.github.io/blpapi-docs/
-  - type: JSONSchema
-    url: json-schema/bloomberg-market-data-schema.json
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg Data License API
-  description: Provides programmatic access to Bloomberg Data License content including reference, pricing, regulatory, ESG, corporate actions, fundamentals, and alternative data via RESTful Hypermedia API, SFTP, or direct cloud delivery.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
-  tags:
-  - Data License
-  - Reference Data
-  - Pricing Data
-  - Regulatory Data
-  - ESG
-  - Enterprise
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
-  - type: SDKs
-    url: https://bloomberg.github.io/blpapi-docs/
-  - type: JSONSchema
-    url: json-schema/bloomberg-security-schema.json
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg EMSX API
-  description: Enables programmatic management and automation of equities, futures, and options trading through the Bloomberg Execution Management System, providing access to 2,000+ global execution venues with support for C++, C#, Python, Java, and Excel/VBA.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/products/trading/execution-management-system/
-  tags:
-  - Execution Management
-  - Trading
-  - Orders
-  - Equities
-  - Futures
-  - Options
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/products/trading/execution-management-system/
-  - type: GettingStarted
-    url: https://emsx-api-doc.readthedocs.io/
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg IOI API
-  description: Enables programmatic publishing and subscribing to Indications of Interest (IOI) messages through Bloomberg API 3.0, allowing sell-side firms to automate IOI workflows and integrate streaming real-time IOI data into custom applications.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://ioi-api-doc.readthedocs.io/
-  tags:
-  - Indications of Interest
-  - Trading
-  - Sell-Side
-  - Automation
-  properties:
-  - type: Documentation
-    url: https://ioi-api-doc.readthedocs.io/
-  - type: SDKs
-    url: https://bloomberg.github.io/blpapi-docs/
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg BLPAPI HTTP API
-  description: HTTP and WebSocket wrapper for the Bloomberg Open API, enabling clients to access reference and historical request/response data as well as make subscriptions for live streaming market data over standard web protocols.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://github.com/bloomberg/blpapi-http
-  tags:
-  - HTTP API
-  - WebSocket
-  - Market Data
-  - REST
-  - Real-time
-  properties:
-  - type: Documentation
-    url: https://github.com/bloomberg/blpapi-http/blob/develop/doc/http-api-guide.md
-  - type: GitHubRepository
-    url: https://github.com/bloomberg/blpapi-http
-  - type: JSONSchema
-    url: json-schema/bloomberg-security-schema.json
-  - type: JSONSchema
-    url: json-schema/bloomberg-market-data-schema.json
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg Transaction Cost Analysis API (BTCA)
-  description: Multi-asset transaction cost analysis solution that combines trade data with Bloomberg market data to deliver analysis against a wide range of benchmarks, with Data Access API enabling programmatic retrieval of TCA data via Python and other languages.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/products/trading/post-trade-services/btca/
-  tags:
-  - Transaction Cost Analysis
-  - Trading
-  - Post-Trade
-  - Analytics
-  - Multi-Asset
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/products/trading/post-trade-services/btca/
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-- name: Bloomberg BQuant API
-  description: Turnkey quantitative analysis platform combining advanced compute power with programmatic access to Bloomberg data and analytics, built on open source tools like Python and JupyterLab and fully integrated with the Bloomberg Terminal. Includes Bloomberg Query Language (BQL) for performing custom calculations in the Bloomberg cloud.
-  image: https://www.bloomberg.com/favicon.ico
-  humanURL: https://www.bloomberg.com/professional/products/bloomberg-terminal/research/bquant/
-  tags:
-  - Quantitative Analysis
-  - Python
-  - BQL
-  - Research
-  - Data Science
-  properties:
-  - type: Documentation
-    url: https://www.bloomberg.com/professional/products/bloomberg-terminal/research/bquant/
-  contact:
-  - FN: Bloomberg API Support
-    email: apisupport@bloomberg.net
-common:
-- type: Portal
-  url: https://developer.bloomberg.com/
-- type: Documentation
-  url: https://www.bloomberg.com/professional/support/api-library/
-- type: SDKs
-  url: https://bloomberg.github.io/blpapi-docs/
-- type: GitHub
-  url: https://github.com/bloomberg
-- type: OpenSource
-  url: https://bloomberg.github.io/
-- type: GettingStarted
-  url: https://www.bloomberg.com/professional/solutions/asset-management/developer/
-- type: Login
-  url: https://console.bloomberg.com/
-- type: TermsOfService
-  url: https://console.bloomberg.com/about/82
-- type: Support
-  url: https://www.blpprofessional.com/
-- type: PrivacyPolicy
-  url: https://www.bloomberg.com/privacy
-- type: About
-  url: https://www.bloomberg.com/company/
-- type: JSON-LD
-  url: json-ld/bloomberg-context.jsonld
-- type: JSONSchema
-  url: json-schema/bloomberg-security-schema.json
-- type: JSONSchema
-  url: json-schema/bloomberg-market-data-schema.json
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-  url: http://apievangelist.com
+description: >-
+  Bloomberg delivers business and markets news, data, analysis, and video to
+  the world, featuring stories from Businessweek and Bloomberg News. Bloomberg
+  provides a suite of developer APIs including BLPAPI, Server API, and the
+  Hypermedia API for programmatic access to market data, analytics, and
+  enterprise services.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Financial Services
-- Market Data
-- News
-- Business Intelligence
-- Analytics
-- Trading
-- Data License
-- Enterprise
-- Quantitative Analysis
-- Transaction Cost Analysis
-- Indications of Interest
-- Execution Management
+  - Financial Services
+  - Market Data
+  - News
+  - Business Intelligence
+  - Analytics
+  - Trading
+  - Data License
+  - Enterprise
+  - Quantitative Analysis
+  - Transaction Cost Analysis
+  - Execution Management
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
+created: '2024-01-20'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: bloomberg:bloomberg-market-data-api
+    name: Bloomberg Market Data API
+    description: >-
+      Provides real-time and historical market data, including stock prices,
+      indices, commodities, and currencies.
+    humanURL: https://www.bloomberg.com/professional/support/api-library/
+    tags:
+      - Financial Data
+      - Market Data
+      - Real-time
+      - Stocks
+      - Indices
+    properties:
+      - type: Documentation
+        url: https://www.bloomberg.com/professional/support/api-library/
+      - type: SDKs
+        url: https://bloomberg.github.io/blpapi-docs/
+  - aid: bloomberg:bloomberg-server-api
+    name: Bloomberg Server API (SAPI)
+    description: >-
+      Delivers real-time market data, historical data, reference data, and
+      calculation engine capabilities from the Bloomberg Terminal for server
+      applications.
+    humanURL: https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/
+    tags:
+      - Server API
+      - Market Data
+      - Real-time
+      - Historical Data
+      - Reference Data
+      - Enterprise
+    properties:
+      - type: Documentation
+        url: https://www.bloomberg.com/professional/support/api-library/
+      - type: SDKs
+        url: https://bloomberg.github.io/blpapi-docs/
+  - aid: bloomberg:bloomberg-data-license-api
+    name: Bloomberg Data License API
+    description: >-
+      Provides programmatic access to Bloomberg Data License content including
+      reference, pricing, regulatory, ESG, corporate actions, fundamentals, and
+      alternative data.
+    humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+    tags:
+      - Data License
+      - Reference Data
+      - Pricing Data
+      - Regulatory Data
+      - ESG
+      - Enterprise
+    properties:
+      - type: Documentation
+        url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+  - aid: bloomberg:bloomberg-emsx-api
+    name: Bloomberg EMSX API
+    description: >-
+      Enables programmatic management and automation of equities, futures, and
+      options trading through the Bloomberg Execution Management System.
+    humanURL: https://www.bloomberg.com/professional/products/trading/execution-management-system/
+    tags:
+      - Execution Management
+      - Trading
+      - Orders
+      - Equities
+      - Futures
+      - Options
+    properties:
+      - type: Documentation
+        url: https://emsx-api-doc.readthedocs.io/
+common:
+  - type: Portal
+    url: https://developer.bloomberg.com/
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/support/api-library/
+  - type: SDKs
+    url: https://bloomberg.github.io/blpapi-docs/
+  - type: GitHub Organization
+    url: https://github.com/bloomberg
+  - type: Getting Started
+    url: https://www.bloomberg.com/professional/solutions/asset-management/developer/
+  - type: Login
+    url: https://console.bloomberg.com/
+  - type: Terms of Service
+    url: https://www.bloomberg.com/notices/tos/
+  - type: Privacy Policy
+    url: https://www.bloomberg.com/privacy
+  - type: Support
+    url: https://www.bloomberg.com/professional/support/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
