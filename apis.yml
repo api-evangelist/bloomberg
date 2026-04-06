@@ -23,7 +23,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
-modified: '2026-03-16'
+modified: '2026-04-06'
 specificationVersion: '0.19'
 apis:
   - aid: bloomberg:bloomberg-market-data-api
@@ -95,6 +95,42 @@ apis:
     properties:
       - type: Documentation
         url: https://emsx-api-doc.readthedocs.io/
+  - aid: bloomberg:bloomberg-blpapi-core
+    name: Bloomberg BLPAPI Core
+    description: >-
+      The Bloomberg Open API (BLPAPI) Core — the foundational service-oriented,
+      socket-based API used by the Desktop API, Server API (SAPI), B-PIPE, and
+      Bloomberg Platform products. Provides Request/Response, Subscription, and
+      Publishing paradigms across services including //blp/refdata,
+      //blp/mktdata, //blp/mktbar, //blp/mktvwap, //blp/mktdepthdata,
+      //blp/apiflds, //blp/instruments, //blp/pagedata, and //blp/tasvc.
+    humanURL: https://www.bloomberg.com/professional/support/api-library/
+    tags:
+      - BLPAPI
+      - Open API
+      - Market Data
+      - Reference Data
+      - Historical Data
+      - Intraday Bars
+      - Intraday Ticks
+      - Subscription
+      - Request Response
+      - Desktop API
+      - Server API
+      - B-PIPE
+    properties:
+      - type: Documentation
+        url: https://www.bloomberg.com/professional/support/api-library/
+      - type: SDKs
+        url: https://bloomberg.github.io/blpapi-docs/
+      - type: Core Developer Guide (PDF)
+        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/BLPAPI-Core-Developer-Guide%20(1).pdf
+      - type: Core User Guide (PDF)
+        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/BLPAPI-Core-User-Guide.pdf
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/openapi/blpapi-core.yml
+      - type: JSON Schema
+        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/json-schema/blpapi-core-messages-schema.json
 common:
   - type: Portal
     url: https://developer.bloomberg.com/

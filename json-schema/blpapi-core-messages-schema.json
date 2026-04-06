@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bloomberg/main/json-schema/blpapi-core-messages-schema.json",
+  "title": "Bloomberg BLPAPI Core Message Types",
+  "description": "JSON Schema definitions for Bloomberg Open API (BLPAPI) Core message types, derived from the BLPAPI Core Developer Guide v1.6 and Core User Guide. Covers Subscription, Request/Response, Session, Service, and Error message structures used by Desktop API, Server API (SAPI), B-PIPE, and Platform products.",
+  "type": "object",
+  "$defs": {
+    "CorrelationId": {
+      "type": ["integer", "string"],
+      "description": "Unique identifier (per session) tagging a request/subscription so incoming messages can be mapped back to the originating call."
+    },
+    "EventType": {
+      "type": "string",
+      "enum": [
+        "ADMIN",
+        "SESSION_STATUS",
+        "SUBSCRIPTION_STATUS",
+        "REQUEST_STATUS",
+        "RESPONSE",
+        "PARTIAL_RESPONSE",
+        "SUBSCRIPTION_DATA",
+        "SERVICE_STATUS",
+        "TIMEOUT",
+        "AUTHORIZATION_STATUS",
+        "RESOLUTION_STATUS",
+        "TOPIC_STATUS",
+        "TOKEN_STATUS",
+        "REQUEST"
+      ]
+    },
+    "Subscription": {
+      "type": "object",
+      "description": "A subscription specification submitted via Session.subscribe.",
+      "properties": {
+        "service": {
+          "type": "string",
+          "description": "Service name, e.g. //blp/mktdata, //blp/mktbar, //blp/mktvwap.",
+          "default": "//blp/mktdata"
+        },
+        "topic": {
+          "type": "string",
+          "description": "Topic identifier, optionally prefixed by a symbology (e.g. /cusip/097023105, /ticker/IBM US Equity, /isin/US0970231058)."
+        },
+        "fields": {
+          "type": "array",
+          "description": "API fields to retrieve for the topic (e.g. LAST_PRICE, BID, ASK).",
+          "items": { "type": "string" }
+        },
+        "options": {
+          "type": "object",
+          "description": "Optional qualifiers such as interval=n (conflation interval in seconds), delayed, useGMT, or //blp/mktvwap override field/value pairings.",
+          "additionalProperties": { "type": ["string", "number", "boolean"] }
+        },
+        "correlationId": { "$ref": "#/$defs/CorrelationId" }
+      },
+      "required": ["topic"]
+    },
+    "SubscriptionList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Subscription" }
+    },
+    "MarketDataEvent": {
+      "type": "object",
+      "description": "A SUBSCRIPTION_DATA message body for the //blp/mktdata service.",
+      "properties": {
+        "LAST_PRICE": { "type": "number" },
+        "BID": { "type": "number" },
+        "ASK": { "type": "number" },
+        "BID_SIZE": { "type": "number" },
+        "ASK_SIZE": { "type": "number" },
+        "LAST_TRADE": { "type": "number" },
+        "LAST_TRADE_ACTUAL": { "type": "number" },
+        "MKTDATA_EVENT_TYPE": { "type": "string", "enum": ["SUMMARY", "TRADE", "QUOTE", "UPDATE"] },
+        "MKTDATA_EVENT_SUBTYPE": { "type": "string", "enum": ["INITPAINT", "NEW", "INTRADAY"] },
+        "IS_DELAYED_STREAM": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "SubscriptionStarted": {
+      "type": "object",
+      "properties": {
+        "exceptions": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "SubscriptionFailure": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "object",
+          "properties": {
+            "source": { "type": "string" },
+            "errorCode": { "type": "integer" },
+            "category": {
+              "type": "string",
+              "enum": ["BAD_SEC", "BAD_FLD", "NO_AUTH", "LIMIT", "TIMEOUT", "INVALID_SUBSCRIPTION_STRING", "INTERNAL_ERROR"]
+            },
+            "description": { "type": "string" },
+            "subcategory": { "type": "string" }
+          },
+          "required": ["category", "description"]
+        }
+      },
+      "required": ["reason"]
+    },
+    "ReferenceDataRequest": {
+      "type": "object",
+      "description": "Request body sent to //blp/refdata for ReferenceDataRequest.",
+      "properties": {
+        "securities": { "type": "array", "items": { "type": "string" }, "maxItems": 65535 },
+        "fields": { "type": "array", "items": { "type": "string" }, "maxItems": 400 },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fieldId": { "type": "string" },
+              "value": { "type": "string" }
+            },
+            "required": ["fieldId", "value"]
+          }
+        },
+        "returnEids": { "type": "boolean" },
+        "returnFormattedValue": { "type": "boolean" },
+        "useUTCTime": { "type": "boolean" },
+        "forcedDelay": { "type": "boolean" }
+      },
+      "required": ["securities", "fields"]
+    },
+    "HistoricalDataRequest": {
+      "type": "object",
+      "description": "Request body sent to //blp/refdata for HistoricalDataRequest.",
+      "properties": {
+        "securities": { "type": "array", "items": { "type": "string" } },
+        "fields": { "type": "array", "items": { "type": "string" }, "maxItems": 25 },
+        "startDate": { "type": "string", "pattern": "^[0-9]{8}$" },
+        "endDate": { "type": "string", "pattern": "^[0-9]{8}$" },
+        "periodicityAdjustment": { "type": "string", "enum": ["ACTUAL", "CALENDAR", "FISCAL"] },
+        "periodicitySelection": { "type": "string", "enum": ["DAILY", "WEEKLY", "MONTHLY", "QUARTERLY", "SEMI_ANNUALLY", "YEARLY"] },
+        "currency": { "type": "string" },
+        "overrideOption": { "type": "string", "enum": ["OVERRIDE_OPTION_CLOSE", "OVERRIDE_OPTION_GPA"] },
+        "pricingOption": { "type": "string", "enum": ["PRICING_OPTION_PRICE", "PRICING_OPTION_YIELD"] },
+        "nonTradingDayFillOption": { "type": "string", "enum": ["NON_TRADING_WEEKDAYS", "ALL_CALENDAR_DAYS", "ACTIVE_DAYS_ONLY"] },
+        "nonTradingDayFillMethod": { "type": "string", "enum": ["PREVIOUS_VALUE", "NIL_VALUE"] },
+        "maxDataPoints": { "type": "integer" },
+        "returnEids": { "type": "boolean" },
+        "adjustmentNormal": { "type": "boolean" },
+        "adjustmentAbnormal": { "type": "boolean" },
+        "adjustmentSplit": { "type": "boolean" },
+        "adjustmentFollowDPDF": { "type": "boolean" }
+      },
+      "required": ["securities", "fields", "startDate", "endDate"]
+    },
+    "IntradayBarRequest": {
+      "type": "object",
+      "description": "Request body sent to //blp/refdata for IntradayBarRequest.",
+      "properties": {
+        "security": { "type": "string" },
+        "eventType": { "type": "string", "enum": ["TRADE", "BID", "ASK", "BID_BEST", "ASK_BEST", "BEST_BID", "BEST_ASK"] },
+        "interval": { "type": "integer", "minimum": 1, "maximum": 1440 },
+        "startDateTime": { "type": "string", "format": "date-time" },
+        "endDateTime": { "type": "string", "format": "date-time" },
+        "gapFillInitialBar": { "type": "boolean" },
+        "returnEids": { "type": "boolean" },
+        "adjustmentNormal": { "type": "boolean" },
+        "adjustmentAbnormal": { "type": "boolean" },
+        "adjustmentSplit": { "type": "boolean" },
+        "adjustmentFollowDPDF": { "type": "boolean" }
+      },
+      "required": ["security", "eventType", "interval", "startDateTime", "endDateTime"]
+    },
+    "IntradayTickRequest": {
+      "type": "object",
+      "description": "Request body sent to //blp/refdata for IntradayTickRequest.",
+      "properties": {
+        "security": { "type": "string" },
+        "eventTypes": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["TRADE", "BID", "ASK", "BID_BEST", "ASK_BEST", "BEST_BID", "BEST_ASK", "AT_TRADE"] }
+        },
+        "startDateTime": { "type": "string", "format": "date-time" },
+        "endDateTime": { "type": "string", "format": "date-time" },
+        "includeConditionCodes": { "type": "boolean" },
+        "includeNonPlottableEvents": { "type": "boolean" },
+        "includeExchangeCodes": { "type": "boolean" },
+        "returnEids": { "type": "boolean" },
+        "includeBrokerCodes": { "type": "boolean" },
+        "includeRpsCodes": { "type": "boolean" }
+      },
+      "required": ["security", "eventTypes", "startDateTime", "endDateTime"]
+    },
+    "FieldInfoRequest": {
+      "type": "object",
+      "description": "Request body sent to //blp/apiflds for FieldInfoRequest.",
+      "properties": {
+        "id": { "type": "array", "items": { "type": "string" } },
+        "returnFieldDocumentation": { "type": "boolean" }
+      },
+      "required": ["id"]
+    },
+    "FieldSearchRequest": {
+      "type": "object",
+      "description": "Request body sent to //blp/apiflds for FieldSearchRequest.",
+      "properties": {
+        "searchSpec": { "type": "string" },
+        "include": {
+          "type": "object",
+          "properties": {
+            "fieldType": { "type": "string", "enum": ["All", "Static", "RealTime"] },
+            "productType": { "type": "string" }
+          }
+        },
+        "exclude": { "type": "object" },
+        "returnFieldDocumentation": { "type": "boolean" }
+      },
+      "required": ["searchSpec"]
+    },
+    "ErrorMessage": {
+      "type": "object",
+      "description": "Common error message structure (see Core Developer Guide §9 Error Codes).",
+      "properties": {
+        "source": { "type": "string" },
+        "errorCode": { "type": "integer" },
+        "category": { "type": "string" },
+        "subcategory": { "type": "string" },
+        "message": { "type": "string" }
+      },
+      "required": ["category", "message"]
+    }
+  }
+}
