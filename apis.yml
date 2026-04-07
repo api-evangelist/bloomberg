@@ -9,17 +9,17 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Analytics
+  - Business Intelligence
+  - Data License
+  - Enterprise
+  - Execution Management
   - Financial Services
   - Market Data
   - News
-  - Business Intelligence
-  - Analytics
-  - Trading
-  - Data License
-  - Enterprise
   - Quantitative Analysis
+  - Trading
   - Transaction Cost Analysis
-  - Execution Management
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
@@ -34,10 +34,10 @@ apis:
     humanURL: https://www.bloomberg.com/professional/support/api-library/
     tags:
       - Financial Data
-      - Market Data
-      - Real-time
-      - Stocks
       - Indices
+      - Market Data
+      - Real-Time
+      - Stocks
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
@@ -51,12 +51,12 @@ apis:
       applications.
     humanURL: https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/
     tags:
-      - Server API
-      - Market Data
-      - Real-time
-      - Historical Data
-      - Reference Data
       - Enterprise
+      - Historical Data
+      - Market Data
+      - Real-Time
+      - Reference Data
+      - Server API
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
@@ -71,11 +71,11 @@ apis:
     humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
     tags:
       - Data License
-      - Reference Data
-      - Pricing Data
-      - Regulatory Data
-      - ESG
       - Enterprise
+      - ESG
+      - Pricing Data
+      - Reference Data
+      - Regulatory Data
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
@@ -86,12 +86,12 @@ apis:
       options trading through the Bloomberg Execution Management System.
     humanURL: https://www.bloomberg.com/professional/products/trading/execution-management-system/
     tags:
-      - Execution Management
-      - Trading
-      - Orders
       - Equities
+      - Execution Management
       - Futures
       - Options
+      - Orders
+      - Trading
     properties:
       - type: Documentation
         url: https://emsx-api-doc.readthedocs.io/
@@ -106,18 +106,18 @@ apis:
       //blp/apiflds, //blp/instruments, //blp/pagedata, and //blp/tasvc.
     humanURL: https://www.bloomberg.com/professional/support/api-library/
     tags:
+      - B-PIPE
       - BLPAPI
-      - Open API
-      - Market Data
-      - Reference Data
+      - Desktop API
       - Historical Data
       - Intraday Bars
       - Intraday Ticks
-      - Subscription
+      - Market Data
+      - Open API
+      - Reference Data
       - Request Response
-      - Desktop API
       - Server API
-      - B-PIPE
+      - Subscription
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
