@@ -1,0 +1,166 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Bloomberg BLPAPI Core"
+  description: "Bloomberg BLPAPI Core services for reference data, historical data, intraday bars/ticks, and field discovery."
+  tags:
+    - Bloomberg
+    - Market Data
+    - Financial Services
+    - BLPAPI
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      BLOOMBERG_SESSION_TOKEN: BLOOMBERG_SESSION_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: blpapi
+      baseUri: tcp://localhost:8194
+      description: "Bloomberg BLPAPI Core services for market data and reference data."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{BLOOMBERG_SESSION_TOKEN}}"
+        placement: header
+      resources:
+        - name: reference-data
+          path: /refdata
+          description: "Reference and historical data services."
+          operations:
+            - name: reference-data-request
+              method: POST
+              description: "Request reference data for securities and fields."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  securities: "{{tools.securities}}"
+                  fields: "{{tools.fields}}"
+            - name: historical-data-request
+              method: POST
+              description: "Request end-of-day historical data."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  securities: "{{tools.securities}}"
+                  fields: "{{tools.fields}}"
+                  startDate: "{{tools.startDate}}"
+                  endDate: "{{tools.endDate}}"
+            - name: intraday-bar-request
+              method: POST
+              description: "Request intraday OHLC bars for a security."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  security: "{{tools.security}}"
+                  eventType: "{{tools.eventType}}"
+                  interval: "{{tools.interval}}"
+            - name: intraday-tick-request
+              method: POST
+              description: "Request raw intraday tick data."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  security: "{{tools.security}}"
+                  eventTypes: "{{tools.eventTypes}}"
+        - name: field-discovery
+          path: /apiflds
+          description: "Bloomberg field discovery and metadata."
+          operations:
+            - name: field-info-request
+              method: POST
+              description: "Look up metadata for Bloomberg field mnemonics."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  id: "{{tools.fieldId}}"
+            - name: field-search-request
+              method: POST
+              description: "Search the Bloomberg API Data Dictionary."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  searchSpec: "{{tools.searchSpec}}"
+        - name: market-data-subscriptions
+          path: /mktdata
+          description: "Real-time market data subscriptions."
+          operations:
+            - name: subscribe-market-data
+              method: POST
+              description: "Subscribe to streaming real-time market data."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  topics: "{{tools.topics}}"
+                  fields: "{{tools.fields}}"
+        - name: market-bar-subscriptions
+          path: /mktbar
+          description: "Real-time bar subscriptions."
+          operations:
+            - name: subscribe-market-bar
+              method: POST
+              description: "Subscribe to interval-based real-time bars."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  topics: "{{tools.topics}}"
+        - name: vwap-subscriptions
+          path: /mktvwap
+          description: "VWAP subscriptions."
+          operations:
+            - name: subscribe-market-vwap
+              method: POST
+              description: "Subscribe to custom VWAP stream."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  topics: "{{tools.topics}}"

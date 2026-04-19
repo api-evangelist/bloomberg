@@ -1,0 +1,173 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Bloomberg Market Data"
+  description: "Unified workflow for accessing Bloomberg reference data, historical data, intraday analytics, and field discovery. Used by quantitative analysts and portfolio managers."
+  tags:
+    - Bloomberg
+    - Market Data
+    - Financial Services
+    - Quantitative Analysis
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      BLOOMBERG_SESSION_TOKEN: BLOOMBERG_SESSION_TOKEN
+
+capability:
+  consumes:
+    - import: blpapi
+      location: ./shared/blpapi-core.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: market-data-api
+      description: "Unified REST API for Bloomberg market data access."
+      resources:
+        - path: /v1/reference-data
+          name: reference-data
+          description: "Reference data queries."
+          operations:
+            - method: POST
+              name: reference-data-request
+              description: "Request reference data."
+              call: "blpapi.reference-data-request"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/historical-data
+          name: historical-data
+          description: "Historical data queries."
+          operations:
+            - method: POST
+              name: historical-data-request
+              description: "Request historical data."
+              call: "blpapi.historical-data-request"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/intraday-bars
+          name: intraday-bars
+          description: "Intraday bar queries."
+          operations:
+            - method: POST
+              name: intraday-bar-request
+              description: "Request intraday bars."
+              call: "blpapi.intraday-bar-request"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/intraday-ticks
+          name: intraday-ticks
+          description: "Intraday tick queries."
+          operations:
+            - method: POST
+              name: intraday-tick-request
+              description: "Request intraday ticks."
+              call: "blpapi.intraday-tick-request"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/fields
+          name: fields
+          description: "Field discovery."
+          operations:
+            - method: POST
+              name: field-info-request
+              description: "Look up field metadata."
+              call: "blpapi.field-info-request"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: field-search-request
+              description: "Search for fields."
+              call: "blpapi.field-search-request"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: market-data-mcp
+      transport: http
+      description: "MCP server for AI-assisted Bloomberg market data analysis."
+      tools:
+        - name: reference-data-request
+          description: "Request reference data for securities and fields."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "blpapi.reference-data-request"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: historical-data-request
+          description: "Request end-of-day historical data for securities."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "blpapi.historical-data-request"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: intraday-bar-request
+          description: "Request intraday OHLC bars for a security."
+          hints:
+            readOnly: true
+          call: "blpapi.intraday-bar-request"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: intraday-tick-request
+          description: "Request raw intraday tick data for a security."
+          hints:
+            readOnly: true
+          call: "blpapi.intraday-tick-request"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: field-info-request
+          description: "Look up metadata for Bloomberg field mnemonics."
+          hints:
+            readOnly: true
+          call: "blpapi.field-info-request"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: field-search-request
+          description: "Search the Bloomberg API Data Dictionary for fields."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "blpapi.field-search-request"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: subscribe-market-data
+          description: "Subscribe to streaming real-time market data."
+          hints:
+            readOnly: true
+          call: "blpapi.subscribe-market-data"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: subscribe-market-bar
+          description: "Subscribe to interval-based real-time bars."
+          hints:
+            readOnly: true
+          call: "blpapi.subscribe-market-bar"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: subscribe-market-vwap
+          description: "Subscribe to custom VWAP stream."
+          hints:
+            readOnly: true
+          call: "blpapi.subscribe-market-vwap"
+          outputParameters:
+            - type: object
+              mapping: "$."

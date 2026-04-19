@@ -23,7 +23,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
-modified: '2026-04-06'
+modified: '2026-04-18'
 specificationVersion: '0.19'
 apis:
   - aid: bloomberg:bloomberg-market-data-api
@@ -41,7 +41,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
-      - type: SDKs
+      - type: SDK
         url: https://bloomberg.github.io/blpapi-docs/
   - aid: bloomberg:bloomberg-server-api
     name: Bloomberg Server API (SAPI)
@@ -60,7 +60,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
-      - type: SDKs
+      - type: SDK
         url: https://bloomberg.github.io/blpapi-docs/
   - aid: bloomberg:bloomberg-data-license-api
     name: Bloomberg Data License API
@@ -121,35 +121,87 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
-      - type: SDKs
+      - type: SDK
         url: https://bloomberg.github.io/blpapi-docs/
-      - type: Core Developer Guide (PDF)
-        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/BLPAPI-Core-Developer-Guide%20(1).pdf
-      - type: Core User Guide (PDF)
-        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/BLPAPI-Core-User-Guide.pdf
       - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/openapi/blpapi-core.yml
-      - type: JSON Schema
-        url: https://raw.githubusercontent.com/api-evangelist/bloomberg/main/json-schema/blpapi-core-messages-schema.json
+        url: openapi/blpapi-core.yml
+      - type: JSONSchema
+        url: json-schema/blpapi-core-messages-schema.json
+      - type: JSONSchema
+        url: json-schema/blpapi-core-error-message-schema.json
+      - type: JSONSchema
+        url: json-schema/blpapi-core-market-data-event-schema.json
+      - type: JSONSchema
+        url: json-schema/blpapi-core-subscription-schema.json
+      - type: JSONSchema
+        url: json-schema/blpapi-core-subscription-list-schema.json
+      - type: JSONSchema
+        url: json-schema/bloomberg-market-data-schema.json
+      - type: JSONSchema
+        url: json-schema/bloomberg-security-schema.json
+      - type: JSONLD
+        url: json-ld/bloomberg-context.jsonld
+      - type: JSONLD
+        url: json-ld/blpapi-core-context.jsonld
 common:
   - type: Portal
     url: https://developer.bloomberg.com/
   - type: Documentation
     url: https://www.bloomberg.com/professional/support/api-library/
-  - type: SDKs
+  - type: SDK
     url: https://bloomberg.github.io/blpapi-docs/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/bloomberg
-  - type: Getting Started
+  - type: GettingStarted
     url: https://www.bloomberg.com/professional/solutions/asset-management/developer/
   - type: Login
     url: https://console.bloomberg.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.bloomberg.com/notices/tos/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.bloomberg.com/privacy
   - type: Support
     url: https://www.bloomberg.com/professional/support/
+  - type: SpectralRules
+    url: rules/bloomberg-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/bloomberg-vocabulary.yaml
+  - type: NaftikoCapability
+    url: capabilities/market-data.yaml
+  - type: Features
+    data:
+      - name: Real-Time Market Data
+        description: Stream live market data for equities, fixed income, commodities, and currencies via subscription.
+      - name: Historical Data
+        description: Access end-of-day historical time series with periodicity, currency, and corporate-action adjustments.
+      - name: Intraday Tick Data
+        description: Retrieve raw tick-by-tick trade and quote data for granular intraday analysis.
+      - name: Reference Data
+        description: Query current reference, descriptive, fundamental, and pricing field values for securities.
+      - name: Field Discovery
+        description: Search and discover Bloomberg field mnemonics and metadata via the API Data Dictionary.
+      - name: Multi-Language SDK
+        description: Access BLPAPI through C, C++, Java, .NET, Python, Perl, and COM Excel SDKs.
+  - type: UseCases
+    data:
+      - name: Quantitative Research
+        description: Build quantitative models using historical and real-time market data for alpha generation.
+      - name: Risk Management
+        description: Monitor portfolio risk exposure using real-time pricing and reference data feeds.
+      - name: Algorithmic Trading
+        description: Feed market data into trading algorithms via EMSX for automated order execution.
+      - name: Regulatory Reporting
+        description: Access regulatory and compliance data through Data License for reporting requirements.
+  - type: Integrations
+    data:
+      - name: Bloomberg Terminal
+        description: Extend Bloomberg Terminal capabilities through the Desktop API integration.
+      - name: Excel
+        description: Access BLPAPI data directly from Excel spreadsheets using the COM Excel SDK.
+      - name: Python
+        description: Build data analytics and machine learning pipelines with the Python BLPAPI SDK.
+      - name: B-PIPE
+        description: Distribute Bloomberg data across enterprise infrastructure using the B-PIPE product.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
