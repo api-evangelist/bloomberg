@@ -4,112 +4,55 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Bloomberg
 providerId: bloomberg
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Analytics
-  - Business Intelligence
-  - Data License
-  - Enterprise
-  - Execution Management
-  - Financial Services
-  - Market Data
-  - News
-  - Quantitative Analysis
-  - Trading
-  - Transaction Cost Analysis
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Bloomberg API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Market Data
+  - Financial Services
+  - Enterprise
+description: Bloomberg's BLPAPI and enterprise data services do not publish numeric rate limits on the
+  open internet; quotas are governed contractually by the Terminal seat license and by data-feed
+  agreements (B-PIPE, Data License). The platform enforces per-application daily caps (notably for
+  BDH/BDP historical and reference data calls) and per-feed bandwidth ceilings, but precise numbers
+  are released only through customer-facing documentation behind the Terminal login.
+sources:
+  - https://www.bloomberg.com/professional/products/bloomberg-terminal/
+notes: Concrete BLPAPI quotas (e.g. WAPI<GO> daily field/security limits, monthly reference data
+  caps, B-PIPE update-rate ceilings) are documented inside the Terminal under WAPI<GO>, BPS<GO>, and
+  the relevant Data License customer guides. Reconcile against the active customer agreement.
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  throttled: see BLPAPI session response status
+  quotaExceeded: see BLPAPI session response status
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Bloomberg Market Data API
-      - Bloomberg Server API (SAPI)
-      - Bloomberg Data License API
-      - Bloomberg EMSX API
-      - Bloomberg BLPAPI Core
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Bloomberg Market Data API
-      - Bloomberg Server API (SAPI)
-      - Bloomberg Data License API
-      - Bloomberg EMSX API
-      - Bloomberg BLPAPI Core
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Bloomberg Market Data API
-      - Bloomberg Server API (SAPI)
-      - Bloomberg Data License API
-      - Bloomberg EMSX API
-      - Bloomberg BLPAPI Core
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Bloomberg Market Data API
-      - Bloomberg Server API (SAPI)
-      - Bloomberg Data License API
-      - Bloomberg EMSX API
-      - Bloomberg BLPAPI Core
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+  - name: BLPAPI request/response (Terminal-connected)
+    scope: account/terminal
+    metric: varies
+    limit: see WAPI<GO> in Bloomberg Terminal
+    notes: Daily and monthly caps on number of unique securities and field requests are enforced per
+      Terminal user; exact numbers visible inside the Terminal.
+  - name: B-PIPE streaming
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Bloomberg Market Data API
-      - Bloomberg Server API (SAPI)
-      - Bloomberg Data License API
-      - Bloomberg EMSX API
-      - Bloomberg BLPAPI Core
+    metric: varies
+    limit: see B-PIPE service-level agreement
+    notes: Update rate, subscription count, and concurrent session ceilings governed by the
+      negotiated B-PIPE contract.
+  - name: Bloomberg Data License (EDF / DLWS / HAPI)
+    scope: contract
+    metric: varies
+    limit: see Data License agreement
+    notes: Per-application, per-batch, and redistribution caps are contractual; HAPI request rates
+      published in the Data License Web Services customer documentation.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Contractual governance
+    description: All limits flow from the Terminal Subscription Agreement and the relevant data-feed
+      contract; raise-via-account-manager rather than self-service.
+  - name: Terminal-bound BLPAPI
+    description: BLPAPI sessions normally require a logged-in Terminal on the same workstation;
+      ServerAPI and B-PIPE remove this constraint via licensed gateways.
+  - name: Backoff
+    description: Clients should respect SessionStatus / ServiceStatus events from BLPAPI and back off
+      when slow-consumer or capacity events are signaled.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

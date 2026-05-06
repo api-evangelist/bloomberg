@@ -1,190 +1,98 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Bloomberg
+providerId: bloomberg
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Market Data
+  - Enterprise
+  - Financial Services
+description: 'FOCUS-aligned FinOps for Bloomberg: per-user Terminal seat subscriptions plus
+  contract-negotiated enterprise data feeds (B-PIPE, Data License). Spend is dominated by named-user
+  Terminal seats and per-feed enterprise data licenses.'
+sources:
+  - https://www.bloomberg.com/professional/products/bloomberg-terminal/
+  - https://en.wikipedia.org/wiki/Bloomberg_Terminal
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: Bloomberg
-providerId: bloomberg
-publisherName: Bloomberg
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Analytics
-  - Business Intelligence
-  - Data License
-  - Enterprise
-  - Execution Management
-  - Financial Services
-  - Market Data
-  - News
-  - Quantitative Analysis
-  - Trading
-  - Transaction Cost Analysis
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Bloomberg API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: Bloomberg L.P.
+serviceCategory: Market Data / Financial Services
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Subscription (Seat) + Enterprise Data License
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
+    - Usage
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Bloomberg
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Market Data
   ProviderName: Bloomberg
-  PublisherName: Bloomberg
-  InvoiceIssuerName: Bloomberg
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Bloomberg L.P.
+  InvoiceIssuerName: Bloomberg L.P.
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: terminal_seats
+    unit: seat-year
+    aggregation: sum
+    dimensions:
+      - named_user
+      - office
+      - cost_center
+  - name: blpapi_requests
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - service
+      - terminal_user
+      - application
+  - name: bpipe_updates
+    unit: update
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - exchange
+      - feed
+      - application
+  - name: data_license_records
+    unit: record
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Bloomberg Market Data API
-    baseURL: ''
-    tags:
-      - Financial Data
-      - Indices
-      - Market Data
-      - Real-Time
-      - Stocks
-    serviceName: Bloomberg Market Data API
-    serviceCategory: API
-  - name: Bloomberg Server API (SAPI)
-    baseURL: ''
-    tags:
-      - Enterprise
-      - Historical Data
-      - Market Data
-      - Real-Time
-      - Reference Data
-      - Server API
-    serviceName: Bloomberg Server API (SAPI)
-    serviceCategory: API
-  - name: Bloomberg Data License API
-    baseURL: ''
-    tags:
-      - Data License
-      - Enterprise
-      - ESG
-      - Pricing Data
-      - Reference Data
-      - Regulatory Data
-    serviceName: Bloomberg Data License API
-    serviceCategory: API
-  - name: Bloomberg EMSX API
-    baseURL: ''
-    tags:
-      - Equities
-      - Execution Management
-      - Futures
-      - Options
-      - Orders
-      - Trading
-    serviceName: Bloomberg EMSX API
-    serviceCategory: API
-  - name: Bloomberg BLPAPI Core
-    baseURL: ''
-    tags:
-      - B-PIPE
-      - BLPAPI
-      - Desktop API
-      - Historical Data
-      - Intraday Bars
-      - Intraday Ticks
-      - Market Data
-      - Open API
-      - Reference Data
-      - Request Response
-      - Server API
-      - Subscription
-    serviceName: Bloomberg BLPAPI Core
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - product
+      - field
+      - exchange
+  - name: enterprise_module_subscriptions
+    unit: month
+    aggregation: sum
+    dimensions:
+      - product
+      - department
+principles:
+  - name: Visibility
+    description: Use BPS<GO> (Bloomberg Profile Statistics) and the Customer Service portal for
+      seat-level usage; pull WAPI<GO> usage tables to track BDH/BDP daily quota burn against
+      contractual ceilings.
+  - name: Allocation
+    description: Map each Terminal login (BUID) to a cost center / desk; reconcile annual
+      seat-license invoices against the named-user roster.
+  - name: Optimization
+    description: Reclaim inactive seats during the annual renewal window; consolidate B-PIPE
+      symbol subscriptions; favor Bloomberg Anywhere for hoteling instead of dedicated seats; route
+      bulk historical pulls through Data License (EDF) instead of BLPAPI to avoid per-Terminal caps.
+  - name: Accountability
+    description: Designate a Terminal Administrator per legal entity; review the SR<GO> Service
+      Reports monthly; run quarterly seat-utilization reviews with the Bloomberg account team.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
