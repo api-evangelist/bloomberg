@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Bloomberg BLPAPI Core — Real-Time Market Data
+  description: 'Bloomberg BLPAPI Core — Real-Time Market Data. 1 operations. Lead operation: Subscribe to Streaming Real-time
+    Market Data for a List of Topics.. Self-contained Naftiko capability covering one Bloomberg business surface.'
+  tags:
+  - Bloomberg
+  - Real-Time Market Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BLOOMBERG_API_KEY: BLOOMBERG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: blpapi-core-real-time-market-data
+    baseUri: ''
+    description: Bloomberg BLPAPI Core — Real-Time Market Data business capability. Self-contained, no shared references.
+    resources:
+    - name: mktdata-subscribe
+      path: /mktdata/subscribe
+      operations:
+      - name: subscribemarketdata
+        method: POST
+        description: Subscribe to Streaming Real-time Market Data for a List of Topics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: blpapi-core-real-time-market-data-rest
+    port: 8080
+    description: REST adapter for Bloomberg BLPAPI Core — Real-Time Market Data. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/mktdata/subscribe
+      name: mktdata-subscribe
+      description: REST surface for mktdata-subscribe.
+      operations:
+      - method: POST
+        name: subscribemarketdata
+        description: Subscribe to Streaming Real-time Market Data for a List of Topics.
+        call: blpapi-core-real-time-market-data.subscribemarketdata
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: blpapi-core-real-time-market-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Bloomberg BLPAPI Core — Real-Time Market Data. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: subscribe-streaming-real-time-market
+      description: Subscribe to Streaming Real-time Market Data for a List of Topics.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: blpapi-core-real-time-market-data.subscribemarketdata
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

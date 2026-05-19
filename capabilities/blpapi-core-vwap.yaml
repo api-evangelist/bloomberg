@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Bloomberg BLPAPI Core — VWAP
+  description: 'Bloomberg BLPAPI Core — VWAP. 1 operations. Lead operation: Subscribe to a Custom Vwap Stream With Override
+    Field/value Pairings.. Self-contained Naftiko capability covering one Bloomberg business surface.'
+  tags:
+  - Bloomberg
+  - VWAP
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BLOOMBERG_API_KEY: BLOOMBERG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: blpapi-core-vwap
+    baseUri: ''
+    description: Bloomberg BLPAPI Core — VWAP business capability. Self-contained, no shared references.
+    resources:
+    - name: mktvwap-subscribe
+      path: /mktvwap/subscribe
+      operations:
+      - name: subscribemarketvwap
+        method: POST
+        description: Subscribe to a Custom Vwap Stream With Override Field/value Pairings.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: blpapi-core-vwap-rest
+    port: 8080
+    description: REST adapter for Bloomberg BLPAPI Core — VWAP. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/mktvwap/subscribe
+      name: mktvwap-subscribe
+      description: REST surface for mktvwap-subscribe.
+      operations:
+      - method: POST
+        name: subscribemarketvwap
+        description: Subscribe to a Custom Vwap Stream With Override Field/value Pairings.
+        call: blpapi-core-vwap.subscribemarketvwap
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: blpapi-core-vwap-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Bloomberg BLPAPI Core — VWAP. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: subscribe-custom-vwap-stream-override
+      description: Subscribe to a Custom Vwap Stream With Override Field/value Pairings.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: blpapi-core-vwap.subscribemarketvwap
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
