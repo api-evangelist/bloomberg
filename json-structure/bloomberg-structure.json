@@ -1,0 +1,126 @@
+{
+  "provider": "Bloomberg",
+  "providerId": "bloomberg",
+  "kind": "json-structure",
+  "description": "Structural overview of the Bloomberg API surface; extracted from openapi/.",
+  "schemaCount": 4,
+  "operationCount": 9,
+  "schemas": [
+    {
+      "name": "SubscriptionList",
+      "type": null,
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Subscription",
+      "type": null,
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "MarketDataEvent",
+      "type": null,
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ErrorMessage",
+      "type": null,
+      "propertyCount": 0,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/refdata/ReferenceDataRequest",
+      "operationId": "referenceDataRequest",
+      "summary": "Request Reference Data for One or More Securities and Fields.",
+      "tags": [
+        "Reference Data",
+        "Request/Response"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/refdata/HistoricalDataRequest",
+      "operationId": "historicalDataRequest",
+      "summary": "Request End-of-day Historical Data for One or More Securities.",
+      "tags": [
+        "Historical Data",
+        "Request/Response"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/refdata/IntradayBarRequest",
+      "operationId": "intradayBarRequest",
+      "summary": "Request Intraday Ohlc Bars for a Single Security.",
+      "tags": [
+        "Intraday Bars",
+        "Request/Response"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/refdata/IntradayTickRequest",
+      "operationId": "intradayTickRequest",
+      "summary": "Request Raw Intraday Tick Data for a Single Security.",
+      "tags": [
+        "Intraday Ticks",
+        "Request/Response"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/apiflds/FieldInfoRequest",
+      "operationId": "fieldInfoRequest",
+      "summary": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+      "tags": [
+        "Field Discovery",
+        "Request/Response"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/apiflds/FieldSearchRequest",
+      "operationId": "fieldSearchRequest",
+      "summary": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+      "tags": [
+        "Field Discovery",
+        "Request/Response"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/mktdata/subscribe",
+      "operationId": "subscribeMarketData",
+      "summary": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+      "tags": [
+        "Real-Time Market Data",
+        "Subscriptions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/mktbar/subscribe",
+      "operationId": "subscribeMarketBar",
+      "summary": "Subscribe to Interval-based Real-time Bars.",
+      "tags": [
+        "Real-Time Bars",
+        "Subscriptions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/mktvwap/subscribe",
+      "operationId": "subscribeMarketVwap",
+      "summary": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+      "tags": [
+        "VWAP",
+        "Subscriptions"
+      ]
+    }
+  ]
+}

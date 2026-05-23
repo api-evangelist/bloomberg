@@ -1,0 +1,26 @@
+name: Bloomberg Domain Vocabulary
+provider: Bloomberg
+providerId: bloomberg
+description: Tag-derived vocabulary for the Bloomberg API surface; sourced from openapi/ tags.
+terms:
+- term: Reference Data
+  description: Current reference, descriptive, fundamental, and pricing field values for securities (//blp/refdata · ReferenceDataRequest).
+- term: Historical Data
+  description: End-of-day historical time series with periodicity, currency, and corporate-action adjustments (//blp/refdata
+    · HistoricalDataRequest).
+- term: Intraday Bars
+  description: Time-bucketed OHLC bar data for a single security (//blp/refdata · IntradayBarRequest).
+- term: Intraday Ticks
+  description: Raw tick-by-tick trade and quote data for a single security (//blp/refdata · IntradayTickRequest).
+- term: Real-Time Market Data
+  description: Streaming real-time market data subscriptions (//blp/mktdata).
+- term: Real-Time Bars
+  description: Streaming interval-based OHLC bar subscriptions (//blp/mktbar).
+- term: VWAP
+  description: Custom Volume-Weighted Average Price subscriptions with override field/value pairings (//blp/mktvwap).
+- term: Field Discovery
+  description: Bloomberg API Data Dictionary lookup, search, and field metadata (//blp/apiflds).
+- term: Subscriptions
+  description: Operations using the BLPAPI Subscription paradigm (Session.subscribe / SUBSCRIPTION_DATA events).
+- term: Request/Response
+  description: Operations using the BLPAPI Request/Response paradigm (PARTIAL_RESPONSE + RESPONSE message sequence).
