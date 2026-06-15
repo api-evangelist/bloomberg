@@ -1,0 +1,1813 @@
+{
+  "item": [
+    {
+      "id": "8c81bba7-6aba-477f-83e8-b3d32e0eaf6a",
+      "name": "Reference Data",
+      "description": {
+        "content": "Current reference, descriptive, fundamental, and pricing field values for securities (//blp/refdata · ReferenceDataRequest).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e8444de-9914-4187-96e6-22aace6b0e3b",
+          "name": "Request Reference Data for One or More Securities and Fields.",
+          "request": {
+            "name": "Request Reference Data for One or More Securities and Fields.",
+            "description": {
+              "content": "Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current\nreference, descriptive, fundamental, and pricing field values for up to thousands of\nsecurities at once. Limited to 400 fields per request; the API will internally split\nsecurities into groups of 10 and fields into groups of 128 against the session's\n`MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted\nvalues, UTC timestamps, and forced delayed pricing.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "ReferenceDataRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5b00d08-6d78-421e-9555-314aba03282a",
+              "name": "ReferenceDataResponse — sequence of zero or more PARTIAL_RESPONSE messages followed by exactly one RESPONSE.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd6bd7b5-33bf-469e-9231-3b0a1cd8e8dd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2bad348f-e86b-43a2-8e90-ab74a4fad4ab",
+      "name": "Historical Data",
+      "description": {
+        "content": "End-of-day historical time series with periodicity, currency, and corporate-action adjustments (//blp/refdata · HistoricalDataRequest).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a529bc9-b961-4a04-9409-d865bfa9d265",
+          "name": "Request End-of-day Historical Data for One or More Securities.",
+          "request": {
+            "name": "Request End-of-day Historical Data for One or More Securities.",
+            "description": {
+              "content": "Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time\nseries data. Limited to 25 fields per request. Supports periodicity selection\n(daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment\n(ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,\ncorporate action adjustments (normal, abnormal, split, DPDF), and a maximum data\npoint cap.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "HistoricalDataRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d7b6c99-d2f8-4bad-9935-2547a3617de1",
+              "name": "HistoricalDataResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "HistoricalDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a26bd6e2-6c16-409f-b61f-49361d4863d5",
+      "name": "Intraday Bars",
+      "description": {
+        "content": "Time-bucketed OHLC bar data for a single security (//blp/refdata · IntradayBarRequest).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "98ab9f97-bc96-448b-bebc-e34042ea1ad1",
+          "name": "Request Intraday Ohlc Bars for a Single Security.",
+          "request": {
+            "name": "Request Intraday Ohlc Bars for a Single Security.",
+            "description": {
+              "content": "Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed\nOHLC bar data on a single security. Bar interval is configurable from 1 to 1440\nminutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,\nand BEST_ASK, gap fill of the initial bar, EID return, and corporate action\nadjustments.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "IntradayBarRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be3e7825-4520-446f-a4ad-aa479d11dc1d",
+              "name": "IntradayBarResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "IntradayBarRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "747db5ba-6a37-4419-a5ea-76c60afad229",
+      "name": "Intraday Ticks",
+      "description": {
+        "content": "Raw tick-by-tick trade and quote data for a single security (//blp/refdata · IntradayTickRequest).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ed748c9-d85a-43b3-969e-1ca58c926f5f",
+          "name": "Request Raw Intraday Tick Data for a Single Security.",
+          "request": {
+            "name": "Request Raw Intraday Tick Data for a Single Security.",
+            "description": {
+              "content": "Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick\ndata on a single security between two timestamps. Supports multiple event types\n(TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional\ninclusion of condition codes, exchange codes, broker codes, RPS codes, and\nnon-plottable events.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "IntradayTickRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "427c17bd-4b59-4095-9691-5885f02bc9de",
+              "name": "IntradayTickResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "IntradayTickRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0583cb06-503a-4f71-abbe-11d7e05b207d",
+      "name": "Real-Time Market Data",
+      "description": {
+        "content": "Streaming real-time market data subscriptions (//blp/mktdata).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73624df0-70cb-4352-b63d-96e86a2ec8bd",
+          "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+          "request": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktdata",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a705f1a9-539e-4de2-bc75-0e6ea7581578",
+              "name": "SUBSCRIPTION_STATUS / SUBSCRIPTION_DATA stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktdata",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "81c162d6-a51e-4c31-adba-567e33d06763",
+      "name": "Real-Time Bars",
+      "description": {
+        "content": "Streaming interval-based OHLC bar subscriptions (//blp/mktbar).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba687246-300f-4494-8585-656f7b939d91",
+          "name": "Subscribe to Interval-based Real-time Bars.",
+          "request": {
+            "name": "Subscribe to Interval-based Real-time Bars.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktbar",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35070cff-5862-4927-9bcd-c351d7fc68cc",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktbar",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a9e5f2df-5603-4612-a903-0183b46c2285",
+      "name": "VWAP",
+      "description": {
+        "content": "Custom Volume-Weighted Average Price subscriptions with override field/value pairings (//blp/mktvwap).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d23e900-01b3-4221-b5d3-66598cfea728",
+          "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+          "request": {
+            "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktvwap",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d588b4ac-e171-45fe-b859-12eb7b35a88c",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktvwap",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c30bacb3-5a07-435b-be7a-437dcd70b12d",
+      "name": "Field Discovery",
+      "description": {
+        "content": "Bloomberg API Data Dictionary lookup, search, and field metadata (//blp/apiflds).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d119a4a-0512-4bfd-809f-970dc58b92b1",
+          "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+          "request": {
+            "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+            "description": {
+              "content": "Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata\n(mnemonic, description, data type, category, documentation) for the specified\nfield IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apiflds",
+                "FieldInfoRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d93c7033-120d-4a75-a641-c4acb9c9fe70",
+              "name": "FieldResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apiflds",
+                    "FieldInfoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d8e355a-a475-4432-ac8e-954eb6b71630",
+          "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+          "request": {
+            "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+            "description": {
+              "content": "Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API\nData Dictionary by free-text spec, with optional include/exclude filters on\nfield type (All / Static / RealTime) and product type. Returns matching fields\nand optionally their documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apiflds",
+                "FieldSearchRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cad1c95b-342c-4935-9ce8-6ae92e83794b",
+              "name": "FieldResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apiflds",
+                    "FieldSearchRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6f26f0fe-27e7-4687-84aa-ef459e374ee1",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Operations using the BLPAPI Subscription paradigm (Session.subscribe / SUBSCRIPTION_DATA events).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc2529fc-acec-46f4-8fe5-e35cd2c59276",
+          "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+          "request": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktdata",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b13d25c6-2d50-4f29-a2fc-be0d39defe2a",
+              "name": "SUBSCRIPTION_STATUS / SUBSCRIPTION_DATA stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktdata",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d687ad6b-ab8c-4be3-94f5-6965fdf690b2",
+          "name": "Subscribe to Interval-based Real-time Bars.",
+          "request": {
+            "name": "Subscribe to Interval-based Real-time Bars.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktbar",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8cf8afd-9e22-4d0a-960d-1134f73dcab9",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktbar",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64b59291-6024-48c3-a784-a2cd94b819b3",
+          "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+          "request": {
+            "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktvwap",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8abe5e05-483e-4a61-9a3f-7dd3760ce22b",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktvwap",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5170a3c7-3315-4cb4-8f39-6c664a88e779",
+      "name": "Request/Response",
+      "description": {
+        "content": "Operations using the BLPAPI Request/Response paradigm (PARTIAL_RESPONSE + RESPONSE message sequence).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f706e8c-7889-4a85-99b1-5c9bacf5c777",
+          "name": "Request Reference Data for One or More Securities and Fields.",
+          "request": {
+            "name": "Request Reference Data for One or More Securities and Fields.",
+            "description": {
+              "content": "Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current\nreference, descriptive, fundamental, and pricing field values for up to thousands of\nsecurities at once. Limited to 400 fields per request; the API will internally split\nsecurities into groups of 10 and fields into groups of 128 against the session's\n`MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted\nvalues, UTC timestamps, and forced delayed pricing.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "ReferenceDataRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13dccef3-34ea-44c9-962a-87c93e97a617",
+              "name": "ReferenceDataResponse — sequence of zero or more PARTIAL_RESPONSE messages followed by exactly one RESPONSE.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f292f47f-64ac-41c1-a87c-b9ee3b3e5b24",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77b03236-bbd5-441c-baaa-2eaece71f1e0",
+          "name": "Request End-of-day Historical Data for One or More Securities.",
+          "request": {
+            "name": "Request End-of-day Historical Data for One or More Securities.",
+            "description": {
+              "content": "Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time\nseries data. Limited to 25 fields per request. Supports periodicity selection\n(daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment\n(ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,\ncorporate action adjustments (normal, abnormal, split, DPDF), and a maximum data\npoint cap.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "HistoricalDataRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b298902-c57a-4eb6-a703-c297c9f07a29",
+              "name": "HistoricalDataResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "HistoricalDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "406974f3-9eac-4878-846d-c18dafc7b2db",
+          "name": "Request Intraday Ohlc Bars for a Single Security.",
+          "request": {
+            "name": "Request Intraday Ohlc Bars for a Single Security.",
+            "description": {
+              "content": "Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed\nOHLC bar data on a single security. Bar interval is configurable from 1 to 1440\nminutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,\nand BEST_ASK, gap fill of the initial bar, EID return, and corporate action\nadjustments.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "IntradayBarRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acf49a4c-05f2-4461-804a-3fbc8718a1a1",
+              "name": "IntradayBarResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "IntradayBarRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddd04c6d-d63d-4dfa-abce-b3fafecbce58",
+          "name": "Request Raw Intraday Tick Data for a Single Security.",
+          "request": {
+            "name": "Request Raw Intraday Tick Data for a Single Security.",
+            "description": {
+              "content": "Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick\ndata on a single security between two timestamps. Supports multiple event types\n(TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional\ninclusion of condition codes, exchange codes, broker codes, RPS codes, and\nnon-plottable events.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "IntradayTickRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7549e591-f6b5-4929-a8e5-0b1e8e2f9b0b",
+              "name": "IntradayTickResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "IntradayTickRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9688\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02b586f1-999e-4e0d-b153-9afa1ae704c7",
+          "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+          "request": {
+            "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+            "description": {
+              "content": "Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata\n(mnemonic, description, data type, category, documentation) for the specified\nfield IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apiflds",
+                "FieldInfoRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93f0ee5b-6684-4c11-810c-79528b8ca5e5",
+              "name": "FieldResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apiflds",
+                    "FieldInfoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae6781d3-d3e2-4981-85fb-c012cb6494a2",
+          "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+          "request": {
+            "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+            "description": {
+              "content": "Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API\nData Dictionary by free-text spec, with optional include/exclude filters on\nfield type (All / Static / RealTime) and product type. Returns matching fields\nand optionally their documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apiflds",
+                "FieldSearchRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85b42d0a-8678-4e37-994d-7114815f24d2",
+              "name": "FieldResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apiflds",
+                    "FieldSearchRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f0bb9e39-3536-488f-80ec-918a7422cfcb",
+    "name": "Bloomberg BLPAPI Core",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

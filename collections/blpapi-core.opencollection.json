@@ -1,0 +1,209 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Reference Data for One or More Securities and Fields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/ReferenceDataRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current\nreference, descriptive, fundamental, and pricing field values for up to thousands of\nsecurities at once. Limited to 400 fields per request; the API will internally split\nsecurities into groups of 10 and fields into groups of 128 against the session's\n`MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted\nvalues, UTC timestamps, and forced delayed pricing.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Historical Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request End-of-day Historical Data for One or More Securities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/HistoricalDataRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time\nseries data. Limited to 25 fields per request. Supports periodicity selection\n(daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment\n(ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,\ncorporate action adjustments (normal, abnormal, split, DPDF), and a maximum data\npoint cap.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Intraday Bars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Intraday Ohlc Bars for a Single Security.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/IntradayBarRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed\nOHLC bar data on a single security. Bar interval is configurable from 1 to 1440\nminutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,\nand BEST_ASK, gap fill of the initial bar, EID return, and corporate action\nadjustments.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Intraday Ticks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Raw Intraday Tick Data for a Single Security.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/IntradayTickRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick\ndata on a single security between two timestamps. Supports multiple event types\n(TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional\ninclusion of condition codes, exchange codes, broker codes, RPS codes, and\nnon-plottable events.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Field Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/apiflds/FieldInfoRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata\n(mnemonic, description, data type, category, documentation) for the specified\nfield IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.\n"
+        },
+        {
+          "info": {
+            "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/apiflds/FieldSearchRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API\nData Dictionary by free-text spec, with optional include/exclude filters on\nfield type (All / Static / RealTime) and product type. Returns matching fields\nand optionally their documentation.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Real-Time Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktdata/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Real-Time Bars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to Interval-based Real-time Bars.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktbar/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "VWAP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktvwap/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
