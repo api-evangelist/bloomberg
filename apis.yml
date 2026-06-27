@@ -36,7 +36,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
-      - type: SDK
+      - type: SDKs
         url: https://bloomberg.github.io/blpapi-docs/
   - aid: bloomberg:bloomberg-server-api
     name: Bloomberg Server API (SAPI)
@@ -54,7 +54,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
-      - type: SDK
+      - type: SDKs
         url: https://bloomberg.github.io/blpapi-docs/
   - aid: bloomberg:bloomberg-data-license-api
     name: Bloomberg Data License API
@@ -112,7 +112,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/support/api-library/
-      - type: SDK
+      - type: SDKs
         url: https://bloomberg.github.io/blpapi-docs/
       - type: OpenAPI
         url: openapi/blpapi-core.yml
@@ -141,7 +141,7 @@ common:
     url: https://developer.bloomberg.com/
   - type: Documentation
     url: https://www.bloomberg.com/professional/support/api-library/
-  - type: SDK
+  - type: SDKs
     url: https://bloomberg.github.io/blpapi-docs/
   - type: GitHubOrganization
     url: https://github.com/bloomberg
