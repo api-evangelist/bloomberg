@@ -135,6 +135,10 @@ apis:
       - type: JSONLD
         url: json-ld/blpapi-core-context.jsonld
 common:
+  - type: VulnerabilityDisclosure
+    url: security/bloomberg-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/bloomberg-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/bloomberg
   - type: Portal
