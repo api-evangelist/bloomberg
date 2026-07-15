@@ -135,6 +135,8 @@ apis:
       - type: JSONLD
         url: json-ld/blpapi-core-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/bloomberg-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/bloomberg-vulnerability-disclosure.yml
   - type: DomainSecurity
