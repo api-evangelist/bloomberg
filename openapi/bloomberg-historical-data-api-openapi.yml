@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Bloomberg BLPAPI Core Field Discovery Historical Data API
+  version: '1.6'
+  summary: OpenAPI representation of the Bloomberg Open API (BLPAPI) Core services.
+  description: 'The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,
+
+    Server API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —
+
+    clients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,
+
+    typically against `localhost:8194` for the Desktop API or against the customer''s Server API host.
+
+
+    This OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so
+
+    that the request/response and subscription paradigms can be cataloged, browsed, and tooled
+
+    alongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6
+
+    (8/30/2016)** and the **BLPAPI Core User Guide**.
+
+
+    Three paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the
+
+    Request/Response paths are modeled here as HTTP operations; subscription topics are documented
+
+    via the `x-blpapi-subscription` extension on the relevant paths and in `tags`.
+
+    '
+  contact:
+    name: Bloomberg L.P. — Enterprise / Open API
+    url: https://www.bloomberg.com/professional/support/api-library/
+  license:
+    name: Bloomberg API SDK License
+    url: https://bloomberg.github.io/blpapi-docs/
+servers:
+- url: tcp://localhost:8194
+  description: Desktop API (default local Bloomberg Professional terminal session)
+- url: tcp://{sapiHost}:8194
+  description: Server API / B-PIPE host
+  variables:
+    sapiHost:
+      default: sapi.example.com
+tags:
+- name: Historical Data
+  description: End-of-day historical time series with periodicity, currency, and corporate-action adjustments (//blp/refdata · HistoricalDataRequest).
+paths:
+  /refdata/HistoricalDataRequest:
+    post:
+      tags:
+      - Historical Data
+      summary: Request End-of-day Historical Data for One or More Securities.
+      description: 'Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time
+
+        series data. Limited to 25 fields per request. Supports periodicity selection
+
+        (daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment
+
+        (ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,
+
+        corporate action adjustments (normal, abnormal, split, DPDF), and a maximum data
+
+        point cap.
+
+        '
+      operationId: historicalDataRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/HistoricalDataRequest
+      responses:
+        '200':
+          description: HistoricalDataResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

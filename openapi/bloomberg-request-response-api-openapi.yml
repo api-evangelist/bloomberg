@@ -1,0 +1,246 @@
+openapi: 3.1.0
+info:
+  title: Bloomberg BLPAPI Core Field Discovery Request/Response API
+  version: '1.6'
+  summary: OpenAPI representation of the Bloomberg Open API (BLPAPI) Core services.
+  description: 'The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,
+
+    Server API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —
+
+    clients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,
+
+    typically against `localhost:8194` for the Desktop API or against the customer''s Server API host.
+
+
+    This OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so
+
+    that the request/response and subscription paradigms can be cataloged, browsed, and tooled
+
+    alongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6
+
+    (8/30/2016)** and the **BLPAPI Core User Guide**.
+
+
+    Three paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the
+
+    Request/Response paths are modeled here as HTTP operations; subscription topics are documented
+
+    via the `x-blpapi-subscription` extension on the relevant paths and in `tags`.
+
+    '
+  contact:
+    name: Bloomberg L.P. — Enterprise / Open API
+    url: https://www.bloomberg.com/professional/support/api-library/
+  license:
+    name: Bloomberg API SDK License
+    url: https://bloomberg.github.io/blpapi-docs/
+servers:
+- url: tcp://localhost:8194
+  description: Desktop API (default local Bloomberg Professional terminal session)
+- url: tcp://{sapiHost}:8194
+  description: Server API / B-PIPE host
+  variables:
+    sapiHost:
+      default: sapi.example.com
+tags:
+- name: Request/Response
+  description: Operations using the BLPAPI Request/Response paradigm (PARTIAL_RESPONSE + RESPONSE message sequence).
+paths:
+  /refdata/ReferenceDataRequest:
+    post:
+      tags:
+      - Request/Response
+      summary: Request Reference Data for One or More Securities and Fields.
+      description: 'Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current
+
+        reference, descriptive, fundamental, and pricing field values for up to thousands of
+
+        securities at once. Limited to 400 fields per request; the API will internally split
+
+        securities into groups of 10 and fields into groups of 128 against the session''s
+
+        `MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted
+
+        values, UTC timestamps, and forced delayed pricing.
+
+        '
+      operationId: referenceDataRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/ReferenceDataRequest
+      responses:
+        '200':
+          description: ReferenceDataResponse — sequence of zero or more PARTIAL_RESPONSE messages followed by exactly one RESPONSE.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        4XX:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/ErrorMessage
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /refdata/HistoricalDataRequest:
+    post:
+      tags:
+      - Request/Response
+      summary: Request End-of-day Historical Data for One or More Securities.
+      description: 'Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time
+
+        series data. Limited to 25 fields per request. Supports periodicity selection
+
+        (daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment
+
+        (ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,
+
+        corporate action adjustments (normal, abnormal, split, DPDF), and a maximum data
+
+        point cap.
+
+        '
+      operationId: historicalDataRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/HistoricalDataRequest
+      responses:
+        '200':
+          description: HistoricalDataResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /refdata/IntradayBarRequest:
+    post:
+      tags:
+      - Request/Response
+      summary: Request Intraday Ohlc Bars for a Single Security.
+      description: 'Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed
+
+        OHLC bar data on a single security. Bar interval is configurable from 1 to 1440
+
+        minutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,
+
+        and BEST_ASK, gap fill of the initial bar, EID return, and corporate action
+
+        adjustments.
+
+        '
+      operationId: intradayBarRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayBarRequest
+      responses:
+        '200':
+          description: IntradayBarResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /refdata/IntradayTickRequest:
+    post:
+      tags:
+      - Request/Response
+      summary: Request Raw Intraday Tick Data for a Single Security.
+      description: 'Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick
+
+        data on a single security between two timestamps. Supports multiple event types
+
+        (TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional
+
+        inclusion of condition codes, exchange codes, broker codes, RPS codes, and
+
+        non-plottable events.
+
+        '
+      operationId: intradayTickRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayTickRequest
+      responses:
+        '200':
+          description: IntradayTickResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /apiflds/FieldInfoRequest:
+    post:
+      tags:
+      - Request/Response
+      summary: Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.
+      description: 'Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata
+
+        (mnemonic, description, data type, category, documentation) for the specified
+
+        field IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.
+
+        '
+      operationId: fieldInfoRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldInfoRequest
+      responses:
+        '200':
+          description: FieldResponse
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /apiflds/FieldSearchRequest:
+    post:
+      tags:
+      - Request/Response
+      summary: Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.
+      description: 'Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API
+
+        Data Dictionary by free-text spec, with optional include/exclude filters on
+
+        field type (All / Static / RealTime) and product type. Returns matching fields
+
+        and optionally their documentation.
+
+        '
+      operationId: fieldSearchRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldSearchRequest
+      responses:
+        '200':
+          description: FieldResponse
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

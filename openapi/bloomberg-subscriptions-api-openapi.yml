@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Bloomberg BLPAPI Core Field Discovery Subscriptions API
+  version: '1.6'
+  summary: OpenAPI representation of the Bloomberg Open API (BLPAPI) Core services.
+  description: 'The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,
+
+    Server API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —
+
+    clients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,
+
+    typically against `localhost:8194` for the Desktop API or against the customer''s Server API host.
+
+
+    This OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so
+
+    that the request/response and subscription paradigms can be cataloged, browsed, and tooled
+
+    alongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6
+
+    (8/30/2016)** and the **BLPAPI Core User Guide**.
+
+
+    Three paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the
+
+    Request/Response paths are modeled here as HTTP operations; subscription topics are documented
+
+    via the `x-blpapi-subscription` extension on the relevant paths and in `tags`.
+
+    '
+  contact:
+    name: Bloomberg L.P. — Enterprise / Open API
+    url: https://www.bloomberg.com/professional/support/api-library/
+  license:
+    name: Bloomberg API SDK License
+    url: https://bloomberg.github.io/blpapi-docs/
+servers:
+- url: tcp://localhost:8194
+  description: Desktop API (default local Bloomberg Professional terminal session)
+- url: tcp://{sapiHost}:8194
+  description: Server API / B-PIPE host
+  variables:
+    sapiHost:
+      default: sapi.example.com
+tags:
+- name: Subscriptions
+  description: Operations using the BLPAPI Subscription paradigm (Session.subscribe / SUBSCRIPTION_DATA events).
+paths:
+  /mktdata/subscribe:
+    post:
+      tags:
+      - Subscriptions
+      summary: Subscribe to Streaming Real-time Market Data for a List of Topics.
+      description: 'Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.
+
+        Streamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.
+
+        '
+      operationId: subscribeMarketData
+      x-blpapi-paradigm: Subscription
+      x-blpapi-service: //blp/mktdata
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList
+      responses:
+        '200':
+          description: SUBSCRIPTION_STATUS / SUBSCRIPTION_DATA stream
+          content:
+            application/json:
+              schema:
+                $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/MarketDataEvent
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /mktbar/subscribe:
+    post:
+      tags:
+      - Subscriptions
+      summary: Subscribe to Interval-based Real-time Bars.
+      description: 'Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service
+
+        for streaming OHLC bars at a configurable interval. Each topic in the
+
+        SubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA
+
+        events containing bar messages until the subscription is cancelled.
+
+        '
+      operationId: subscribeMarketBar
+      x-blpapi-paradigm: Subscription
+      x-blpapi-service: //blp/mktbar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList
+      responses:
+        '200':
+          description: Subscription stream
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /mktvwap/subscribe:
+    post:
+      tags:
+      - Subscriptions
+      summary: Subscribe to a Custom Vwap Stream With Override Field/value Pairings.
+      description: 'Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service
+
+        for a custom Volume-Weighted Average Price stream. Override field/value pairings
+
+        (e.g. start/end time, market session, calculation method) are passed via the
+
+        subscription `options` map and shape how VWAP is computed and updated.
+
+        '
+      operationId: subscribeMarketVwap
+      x-blpapi-paradigm: Subscription
+      x-blpapi-service: //blp/mktvwap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList
+      responses:
+        '200':
+          description: Subscription stream
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

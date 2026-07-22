@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: Bloomberg BLPAPI Core Field Discovery Intraday Ticks API
+  version: '1.6'
+  summary: OpenAPI representation of the Bloomberg Open API (BLPAPI) Core services.
+  description: 'The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,
+
+    Server API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —
+
+    clients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,
+
+    typically against `localhost:8194` for the Desktop API or against the customer''s Server API host.
+
+
+    This OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so
+
+    that the request/response and subscription paradigms can be cataloged, browsed, and tooled
+
+    alongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6
+
+    (8/30/2016)** and the **BLPAPI Core User Guide**.
+
+
+    Three paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the
+
+    Request/Response paths are modeled here as HTTP operations; subscription topics are documented
+
+    via the `x-blpapi-subscription` extension on the relevant paths and in `tags`.
+
+    '
+  contact:
+    name: Bloomberg L.P. — Enterprise / Open API
+    url: https://www.bloomberg.com/professional/support/api-library/
+  license:
+    name: Bloomberg API SDK License
+    url: https://bloomberg.github.io/blpapi-docs/
+servers:
+- url: tcp://localhost:8194
+  description: Desktop API (default local Bloomberg Professional terminal session)
+- url: tcp://{sapiHost}:8194
+  description: Server API / B-PIPE host
+  variables:
+    sapiHost:
+      default: sapi.example.com
+tags:
+- name: Intraday Ticks
+  description: Raw tick-by-tick trade and quote data for a single security (//blp/refdata · IntradayTickRequest).
+paths:
+  /refdata/IntradayTickRequest:
+    post:
+      tags:
+      - Intraday Ticks
+      summary: Request Raw Intraday Tick Data for a Single Security.
+      description: 'Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick
+
+        data on a single security between two timestamps. Supports multiple event types
+
+        (TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional
+
+        inclusion of condition codes, exchange codes, broker codes, RPS codes, and
+
+        non-plottable events.
+
+        '
+      operationId: intradayTickRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayTickRequest
+      responses:
+        '200':
+          description: IntradayTickResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

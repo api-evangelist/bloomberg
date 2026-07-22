@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/ + json-schema/blpapi-core-messages-schema.json (BLPAPI Core Developer Guide v1.6 projection) + https://bloomberg.github.io/blpapi-docs/
+authentication:
+  style: session-identity (Desktop API terminal session; SAPI/B-PIPE //blp/apiauth Identity)
+  artifact: authentication/bloomberg-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key or replay-safety contract is documented. Request/Response calls are reads;
+    duplicate subscription attempts are managed by CorrelationID rather than an idempotency header.
+request_tracing:
+  mechanism: CorrelationID
+  notes: >-
+    Every request and subscription carries a client-assigned CorrelationID; all resulting events and
+    messages (PARTIAL_RESPONSE, RESPONSE, SUBSCRIPTION_DATA, SUBSCRIPTION_STATUS) are correlated back
+    to it. This is the BLPAPI equivalent of a request-id.
+  schema: json-schema/blpapi-core-messages-schema.json#/$defs/CorrelationId
+pagination:
+  style: none
+  notes: >-
+    Responses are complete, delivered as one or more PARTIAL_RESPONSE events terminated by a RESPONSE
+    event. HistoricalDataRequest bounds result size with maxDataPoints; intraday requests bound by
+    startDateTime/endDateTime windows.
+field_selection:
+  style: explicit-field-lists
+  notes: >-
+    Requests enumerate Bloomberg field mnemonics (fields[]); overrides adjust calculation inputs.
+    Field discovery via //blp/apiflds (fieldSearchRequest / fieldInfoRequest) replaces sparse-field
+    conventions.
+versioning:
+  scheme: sdk-semver (current 3.26.6)
+  artifact: lifecycle/bloomberg-lifecycle.yml
+error_envelope:
+  shape: ErrorMessage (source, errorCode, category, subcategory, message) via responseError / securityError / fieldExceptions / SubscriptionFailure
+  artifact: errors/bloomberg-problem-types.yml
+rate_limits:
+  signaling: >-
+    No HTTP rate-limit headers (non-HTTP transport). Limits are product-level (subscription counts,
+    daily/monthly data caps per Desktop/SAPI/B-PIPE entitlements); LIMIT-category responseError
+    signals when a cap is hit.
+  artifact: rate-limits/bloomberg-rate-limits.yml
+events:
+  paradigm: Subscription (SUBSCRIPTION_DATA / SUBSCRIPTION_STATUS events over the session)
+  artifact: asyncapi/bloomberg-market-data-asyncapi.yml

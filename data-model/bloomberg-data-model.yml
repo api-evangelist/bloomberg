@@ -1,0 +1,69 @@
+generated: '2026-06-20'
+method: derived
+source: json-schema/blpapi-core-messages-schema.json + openapi/
+entities:
+  - name: Security
+    description: A Bloomberg security/topic (ticker + yellow-key or identifier), the subject of every request and subscription.
+    schema: json-schema/bloomberg-security-schema.json
+  - name: Field
+    description: A Bloomberg field mnemonic (e.g. PX_LAST) from the API Data Dictionary (//blp/apiflds).
+  - name: Subscription
+    description: One streaming topic — service, topic string, fields, options, and its CorrelationID.
+    schema: json-schema/blpapi-core-subscription-schema.json
+  - name: SubscriptionList
+    description: The batch of Subscriptions passed to Session.subscribe.
+    schema: json-schema/blpapi-core-subscription-list-schema.json
+  - name: MarketDataEvent
+    description: A streamed SUBSCRIPTION_DATA payload (LAST_PRICE, BID, ASK, sizes, event type/subtype).
+    schema: json-schema/blpapi-core-market-data-event-schema.json
+  - name: CorrelationId
+    description: Client-assigned identifier binding requests/subscriptions to their events and messages.
+  - name: ErrorMessage
+    description: The BLPAPI error envelope (source, errorCode, category, subcategory, message).
+    schema: json-schema/blpapi-core-error-message-schema.json
+  - name: Request
+    description: >-
+      Request/Response paradigm messages — ReferenceDataRequest, HistoricalDataRequest,
+      IntradayBarRequest, IntradayTickRequest, FieldInfoRequest, FieldSearchRequest.
+    schema: json-schema/blpapi-core-messages-schema.json
+relationships:
+  - from: SubscriptionList
+    to: Subscription
+    kind: has_many
+    via: items
+  - from: Subscription
+    to: Security
+    kind: belongs_to
+    via: topic
+  - from: Subscription
+    to: Field
+    kind: has_many
+    via: fields
+  - from: Subscription
+    to: CorrelationId
+    kind: has_one
+    via: correlationId
+  - from: Subscription
+    to: MarketDataEvent
+    kind: has_many
+    via: SUBSCRIPTION_DATA events
+  - from: Request
+    to: Security
+    kind: has_many
+    via: securities
+  - from: Request
+    to: Field
+    kind: has_many
+    via: fields
+  - from: Request
+    to: CorrelationId
+    kind: has_one
+    via: correlationId
+  - from: Request
+    to: ErrorMessage
+    kind: has_one
+    via: responseError
+  - from: MarketDataEvent
+    to: CorrelationId
+    kind: belongs_to
+    via: correlationId

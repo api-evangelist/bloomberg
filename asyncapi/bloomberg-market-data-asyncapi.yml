@@ -1,0 +1,93 @@
+# generated: '2026-06-20'
+# method: derived
+# source: openapi/bloomberg-subscriptions-api-openapi.yml + json-schema/blpapi-core-messages-schema.json
+# notes: Bloomberg publishes no AsyncAPI document. This is an honest derivation of the real BLPAPI
+#   Subscription paradigm (//blp/mktdata, //blp/mktbar, //blp/mktvwap) already captured in this
+#   repo's OpenAPI projection and JSON Schemas — a streaming event surface, not webhooks.
+asyncapi: 3.0.0
+info:
+  title: Bloomberg BLPAPI Market Data Subscriptions
+  version: '1.6'
+  description: >-
+    Event surface of the Bloomberg Open API (BLPAPI) Subscription paradigm. Clients call
+    Session.subscribe(SubscriptionList) over a BLPAPI SDK session (Desktop API localhost:8194 or
+    SAPI/B-PIPE host); streamed updates arrive as SUBSCRIPTION_DATA events correlated by
+    CorrelationID, with lifecycle signals as SUBSCRIPTION_STATUS events (SubscriptionStarted /
+    SubscriptionFailure). Derived from the BLPAPI Core Developer Guide v1.6 projection in this
+    repository — Bloomberg does not publish a first-party AsyncAPI document.
+  contact:
+    name: Bloomberg L.P. — Enterprise / Open API
+    url: https://www.bloomberg.com/professional/support/api-library/
+defaultContentType: application/json
+servers:
+  desktop:
+    host: 'localhost:8194'
+    protocol: tcp
+    description: Desktop API (local Bloomberg Professional terminal session, BLPAPI SDK transport)
+  sapi:
+    host: '{sapiHost}:8194'
+    protocol: tcp
+    description: Server API / B-PIPE host (BLPAPI SDK transport)
+    variables:
+      sapiHost:
+        default: sapi.example.com
+channels:
+  mktdata:
+    address: //blp/mktdata
+    description: Streaming real-time market data (quotes, trades, sizes) per subscribed topic.
+    messages:
+      marketDataEvent:
+        $ref: '#/components/messages/marketDataEvent'
+      subscriptionStarted:
+        $ref: '#/components/messages/subscriptionStarted'
+      subscriptionFailure:
+        $ref: '#/components/messages/subscriptionFailure'
+  mktbar:
+    address: //blp/mktbar
+    description: Interval-based real-time OHLC bars per subscribed topic.
+    messages:
+      subscriptionStarted:
+        $ref: '#/components/messages/subscriptionStarted'
+      subscriptionFailure:
+        $ref: '#/components/messages/subscriptionFailure'
+  mktvwap:
+    address: //blp/mktvwap
+    description: Custom VWAP stream with override field/value pairings.
+    messages:
+      subscriptionStarted:
+        $ref: '#/components/messages/subscriptionStarted'
+      subscriptionFailure:
+        $ref: '#/components/messages/subscriptionFailure'
+operations:
+  receiveMarketData:
+    action: receive
+    channel:
+      $ref: '#/channels/mktdata'
+    summary: Receive SUBSCRIPTION_DATA events with MarketDataEvents messages (maps to operationId subscribeMarketData).
+  receiveMarketBars:
+    action: receive
+    channel:
+      $ref: '#/channels/mktbar'
+    summary: Receive interval OHLC bar messages (maps to operationId subscribeMarketBar).
+  receiveVwap:
+    action: receive
+    channel:
+      $ref: '#/channels/mktvwap'
+    summary: Receive custom VWAP stream updates (maps to operationId subscribeMarketVwap).
+components:
+  messages:
+    marketDataEvent:
+      name: MarketDataEvent
+      title: Market data event
+      payload:
+        $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/MarketDataEvent
+    subscriptionStarted:
+      name: SubscriptionStarted
+      title: Subscription started (SUBSCRIPTION_STATUS)
+      payload:
+        $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionStarted
+    subscriptionFailure:
+      name: SubscriptionFailure
+      title: Subscription failure (SUBSCRIPTION_STATUS)
+      payload:
+        $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionFailure

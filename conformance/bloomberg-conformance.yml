@@ -1,0 +1,45 @@
+generated: '2026-06-20'
+method: searched
+source: live probes of www.bloomberg.com /.well-known/ + repo openapi/ + json-schema/ artifacts
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      RFC 8414 authorization-server metadata published at
+      https://www.bloomberg.com/.well-known/oauth-authorization-server — authorization_code +
+      refresh_token grants, PKCE S256, endpoints on login.bloomberg.com. Governs Bloomberg web/console
+      login; BLPAPI itself uses SDK session/identity authorization (//blp/apiauth), not OAuth.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      OpenID Connect discovery document at https://www.bloomberg.com/.well-known/openid-configuration
+      (issuer https://www.bloomberg.com, scopes openid/user/entitlements, RS256 id tokens).
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: https://www.bloomberg.com/.well-known/security.txt (Contact, Canonical, Policy, Expires).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      BLPAPI does not use application/problem+json; errors are BLPAPI ErrorMessage elements
+      (source, errorCode, category, subcategory, message) — see errors/bloomberg-problem-types.yml.
+  - id: json-api
+    conforms: false
+    evidence: BLPAPI messages are service-schema elements, not JSON:API documents.
+  - id: scim
+    conforms: false
+    evidence: no SCIM surface found.
+  - id: odata
+    conforms: false
+    evidence: no OData surface found.
+  - id: fhir
+    conforms: false
+    evidence: not a healthcare API.
+  - id: pagination
+    conforms: false
+    evidence: >-
+      BLPAPI Request/Response returns complete (possibly multi-event) responses correlated by
+      CorrelationID rather than cursor/offset pagination; HistoricalDataRequest bounds result size
+      with maxDataPoints.
+  - id: idempotency
+    conforms: false
+    evidence: no Idempotency-Key or equivalent replay-safety contract documented for BLPAPI.

@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Bloomberg BLPAPI Core Field Discovery Real-Time Market Data API
+  version: 1.0.0
+  x-generated: '2026-06-20'
+  x-method: generated
+extends: openapi/bloomberg-real-time-market-data-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: bloomberg
+      apis-json: https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
+      agentic-access: agentic-access/bloomberg-agentic-access.yml
+      authentication: authentication/bloomberg-authentication.yml
+      conventions: conventions/bloomberg-conventions.yml
+      errors: errors/bloomberg-problem-types.yml
+      rate-limits: rate-limits/bloomberg-rate-limits.yml
+- target: $.info
+  update:
+    x-blpapi-note: REST-style projection of the socket-based BLPAPI; real transport is the BLPAPI SDK over TCP (Desktop
+      API localhost:8194 or SAPI/B-PIPE host).

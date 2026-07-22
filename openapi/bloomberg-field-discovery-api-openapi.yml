@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: Bloomberg BLPAPI Core Field Discovery API
+  version: '1.6'
+  summary: OpenAPI representation of the Bloomberg Open API (BLPAPI) Core services.
+  description: 'The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,
+
+    Server API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —
+
+    clients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,
+
+    typically against `localhost:8194` for the Desktop API or against the customer''s Server API host.
+
+
+    This OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so
+
+    that the request/response and subscription paradigms can be cataloged, browsed, and tooled
+
+    alongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6
+
+    (8/30/2016)** and the **BLPAPI Core User Guide**.
+
+
+    Three paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the
+
+    Request/Response paths are modeled here as HTTP operations; subscription topics are documented
+
+    via the `x-blpapi-subscription` extension on the relevant paths and in `tags`.
+
+    '
+  contact:
+    name: Bloomberg L.P. — Enterprise / Open API
+    url: https://www.bloomberg.com/professional/support/api-library/
+  license:
+    name: Bloomberg API SDK License
+    url: https://bloomberg.github.io/blpapi-docs/
+servers:
+- url: tcp://localhost:8194
+  description: Desktop API (default local Bloomberg Professional terminal session)
+- url: tcp://{sapiHost}:8194
+  description: Server API / B-PIPE host
+  variables:
+    sapiHost:
+      default: sapi.example.com
+tags:
+- name: Field Discovery
+  description: Bloomberg API Data Dictionary lookup, search, and field metadata (//blp/apiflds).
+paths:
+  /apiflds/FieldInfoRequest:
+    post:
+      tags:
+      - Field Discovery
+      summary: Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.
+      description: 'Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata
+
+        (mnemonic, description, data type, category, documentation) for the specified
+
+        field IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.
+
+        '
+      operationId: fieldInfoRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldInfoRequest
+      responses:
+        '200':
+          description: FieldResponse
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /apiflds/FieldSearchRequest:
+    post:
+      tags:
+      - Field Discovery
+      summary: Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.
+      description: 'Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API
+
+        Data Dictionary by free-text spec, with optional include/exclude filters on
+
+        field type (All / Static / RealTime) and product type. Returns matching fields
+
+        and optionally their documentation.
+
+        '
+      operationId: fieldSearchRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldSearchRequest
+      responses:
+        '200':
+          description: FieldResponse
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

@@ -1,0 +1,32 @@
+{
+  "provider": "bloomberg",
+  "sources": [
+    "bloomberg-field-discovery-api-openapi.yml",
+    "bloomberg-historical-data-api-openapi.yml",
+    "bloomberg-intraday-bars-api-openapi.yml",
+    "bloomberg-intraday-ticks-api-openapi.yml",
+    "bloomberg-real-time-bars-api-openapi.yml",
+    "bloomberg-real-time-market-data-api-openapi.yml",
+    "bloomberg-reference-data-api-openapi.yml",
+    "bloomberg-request-response-api-openapi.yml",
+    "bloomberg-subscriptions-api-openapi.yml",
+    "bloomberg-vwap-api-openapi.yml"
+  ],
+  "outputs": [
+    "bloomberg-field-discovery-api-openapi.yml",
+    "bloomberg-historical-data-api-openapi.yml",
+    "bloomberg-intraday-bars-api-openapi.yml",
+    "bloomberg-intraday-ticks-api-openapi.yml",
+    "bloomberg-real-time-bars-api-openapi.yml",
+    "bloomberg-real-time-market-data-api-openapi.yml",
+    "bloomberg-reference-data-api-openapi.yml",
+    "bloomberg-request-response-api-openapi.yml",
+    "bloomberg-subscriptions-api-openapi.yml",
+    "bloomberg-vwap-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

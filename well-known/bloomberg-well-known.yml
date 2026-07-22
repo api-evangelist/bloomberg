@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+notes: >-
+  www.bloomberg.com serves a real RFC 9116 security.txt plus OIDC / OAuth 2.0 authorization-server
+  discovery metadata (issuer www.bloomberg.com, endpoints on login.bloomberg.com, PKCE S256, scopes
+  openid/user/entitlements). developer.bloomberg.com returns HTTP 200 soft-404s ("Found. Redirecting
+  to /error-404") for every /.well-known/ path probed, recorded below as 404.
+hosts:
+  - host: https://www.bloomberg.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: bloomberg-security.txt
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: bloomberg-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: bloomberg-oauth-authorization-server.json
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://developer.bloomberg.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        note: soft-404 (HTTP 200 body "Found. Redirecting to /error-404")
+      - path: /.well-known/openid-configuration
+        status: 404
+        note: soft-404
+      - path: /.well-known/api-catalog
+        status: 404
+        note: soft-404
+      - path: /llms.txt
+        status: 404
+        note: soft-404

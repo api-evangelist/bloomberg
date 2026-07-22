@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+source: https://bloomberg.github.io/blpapi-docs/ (BLPAPI Core Developer/User Guides, SDK AuthOptions/AuthUser/Identity) + https://www.bloomberg.com/.well-known/oauth-authorization-server
+docs: https://bloomberg.github.io/blpapi-docs/
+notes: >-
+  The BLPAPI OpenAPI projections in this repo declare no HTTP securitySchemes because BLPAPI is a
+  socket/SDK API — authentication is session- and identity-based, not header-based. The derive pass
+  (derive-authentication.py) therefore found 0 schemes; this profile is searched from the SDK docs
+  and Bloomberg's published OAuth discovery metadata.
+summary:
+  types: [session-identity, oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode, refreshToken]
+schemes:
+  - name: DesktopAPISession
+    type: session-identity
+    description: >-
+      Desktop API — the BLPAPI SDK connects to localhost:8194 and inherits the identity of the
+      logged-in Bloomberg Professional (Terminal) user. No separate credentials are exchanged.
+    sources: [openapi/bloomberg-reference-data-api-openapi.yml]
+  - name: ServerApiAuthorization
+    type: session-identity
+    description: >-
+      Server API (SAPI) / B-PIPE — applications authorize users and applications through the
+      //blp/apiauth service (AuthorizationRequest), producing Identity objects attached to requests
+      and subscriptions. The SDK models this as AuthOptions / AuthUser / Identity (see the Python SDK
+      reference). Entitlements (EIDs) gate which data an identity may receive.
+    docs: https://bloomberg.github.io/blpapi-docs/python/3.26.6/
+  - name: BloombergOAuth
+    type: oauth2
+    description: >-
+      OAuth 2.0 / OIDC for Bloomberg web login and HTTP-delivered services — RFC 8414 metadata
+      published at www.bloomberg.com/.well-known/oauth-authorization-server; authorization and token
+      endpoints on login.bloomberg.com; authorization_code + refresh_token grants with PKCE (S256);
+      scopes openid, user, entitlements. See scopes/bloomberg-scopes.yml.
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://login.bloomberg.com/api/oauth/authorize
+        tokenUrl: https://login.bloomberg.com/api/oauth/token
+    sources: [well-known/bloomberg-oauth-authorization-server.json]

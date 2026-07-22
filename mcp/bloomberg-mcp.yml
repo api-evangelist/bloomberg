@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/ (BLPAPI Core REST-style projection)
+notes: >-
+  No official Bloomberg-hosted MCP server was found (official MCP registry search for "bloomberg"
+  returned no results; no MCP surface on developer.bloomberg.com as of 2026-06-20). This is a
+  candidate tool list derived from the BLPAPI Core OpenAPI projections in this repo — one tool per
+  operationId. A real implementation would wrap the BLPAPI SDK session (Desktop API localhost:8194
+  or SAPI/B-PIPE host) behind these tools.
+server:
+  name: bloomberg-blpapi
+  transport: http
+tools:
+  - name: reference_data_request
+    description: Get current reference, descriptive, fundamental, and pricing field values for securities (//blp/refdata ReferenceDataRequest).
+    source_operation: openapi/bloomberg-reference-data-api-openapi.yml#referenceDataRequest
+  - name: historical_data_request
+    description: Get end-of-day historical time series with periodicity, currency, and corporate-action adjustments (//blp/refdata HistoricalDataRequest).
+    source_operation: openapi/bloomberg-historical-data-api-openapi.yml#historicalDataRequest
+  - name: intraday_bar_request
+    description: Get interval-based OHLCV intraday bars for a security (//blp/refdata IntradayBarRequest).
+    source_operation: openapi/bloomberg-intraday-bars-api-openapi.yml#intradayBarRequest
+  - name: intraday_tick_request
+    description: Get raw tick-by-tick trade and quote data for a security (//blp/refdata IntradayTickRequest).
+    source_operation: openapi/bloomberg-intraday-ticks-api-openapi.yml#intradayTickRequest
+  - name: field_info_request
+    description: Look up Bloomberg field mnemonic metadata and documentation (//blp/apiflds FieldInfoRequest).
+    source_operation: openapi/bloomberg-field-discovery-api-openapi.yml#fieldInfoRequest
+  - name: field_search_request
+    description: Search the Bloomberg API Data Dictionary for fields matching a search spec (//blp/apiflds FieldSearchRequest).
+    source_operation: openapi/bloomberg-field-discovery-api-openapi.yml#fieldSearchRequest
+  - name: subscribe_market_data
+    description: Subscribe to streaming real-time market data for a list of topics (//blp/mktdata).
+    source_operation: openapi/bloomberg-subscriptions-api-openapi.yml#subscribeMarketData
+  - name: subscribe_market_bar
+    description: Subscribe to interval-based real-time OHLC bars (//blp/mktbar).
+    source_operation: openapi/bloomberg-subscriptions-api-openapi.yml#subscribeMarketBar
+  - name: subscribe_market_vwap
+    description: Subscribe to a custom VWAP stream with override field/value pairings (//blp/mktvwap).
+    source_operation: openapi/bloomberg-subscriptions-api-openapi.yml#subscribeMarketVwap

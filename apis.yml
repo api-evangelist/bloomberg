@@ -5,7 +5,7 @@ description: >-
   Businessweek and Bloomberg News. Bloomberg provides a suite of developer APIs including BLPAPI, Server API, and the
   Hypermedia API for programmatic access to market data, analytics, and enterprise services.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bloomberg.png
 tags:
   - Analytics
   - Business Intelligence
@@ -20,7 +20,7 @@ tags:
   - Transaction Cost Analysis
 url: https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: bloomberg:bloomberg-market-data-api
@@ -72,6 +72,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+    baseURL: https://api.bloomberg.com
   - aid: bloomberg:bloomberg-emsx-api
     name: Bloomberg EMSX API
     description: >-
@@ -115,7 +116,25 @@ apis:
       - type: SDKs
         url: https://bloomberg.github.io/blpapi-docs/
       - type: OpenAPI
-        url: openapi/blpapi-core.yml
+        url: openapi/bloomberg-reference-data-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-historical-data-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-intraday-bars-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-intraday-ticks-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-field-discovery-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-subscriptions-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-real-time-bars-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-real-time-market-data-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-request-response-api-openapi.yml
+      - type: OpenAPI
+        url: openapi/bloomberg-vwap-api-openapi.yml
       - type: JSONSchema
         url: json-schema/blpapi-core-messages-schema.json
       - type: JSONSchema
@@ -134,6 +153,28 @@ apis:
         url: json-ld/bloomberg-context.jsonld
       - type: JSONLD
         url: json-ld/blpapi-core-context.jsonld
+      - type: Overlay
+        url: overlays/bloomberg-reference-data-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-historical-data-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-intraday-bars-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-intraday-ticks-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-field-discovery-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-subscriptions-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-real-time-bars-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-real-time-market-data-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-request-response-api-overlay.yaml
+      - type: Overlay
+        url: overlays/bloomberg-vwap-api-overlay.yaml
+      - type: AsyncAPI
+        url: asyncapi/bloomberg-market-data-asyncapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/bloomberg-agentic-access.yml
@@ -165,6 +206,42 @@ common:
     url: rules/bloomberg-spectral-rules.yml
   - type: Vocabulary
     url: vocabulary/bloomberg-vocabulary.yaml
+  - type: APIReference
+    url: https://bloomberg.github.io/blpapi-docs/
+  - type: Blog
+    url: https://www.techatbloomberg.com/blog/
+  - type: Security
+    url: https://www.bloomberg.com/responsible-disclosure
+  - type: Packages
+    url: packages/bloomberg-packages.yml
+  - type: WellKnown
+    url: well-known/bloomberg-well-known.yml
+  - type: SecurityTxt
+    url: well-known/bloomberg-security.txt
+  - type: MCPServer
+    url: mcp/bloomberg-mcp.yml
+  - type: LLMsTxt
+    url: llms/bloomberg-llms.txt
+  - type: Conformance
+    url: conformance/bloomberg-conformance.yml
+  - type: ErrorCatalog
+    url: errors/bloomberg-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/bloomberg-lifecycle.yml
+  - type: OAuthScopes
+    url: scopes/bloomberg-scopes.yml
+  - type: Authentication
+    url: authentication/bloomberg-authentication.yml
+  - type: Conventions
+    url: conventions/bloomberg-conventions.yml
+  - type: ChangeLog
+    url: changelog/bloomberg-changelog.yml
+  - type: DataModel
+    url: data-model/bloomberg-data-model.yml
+  - type: AsyncAPI
+    url: asyncapi/bloomberg-market-data-asyncapi.yml
+  - type: AgentSkill
+    url: skills/_index.yml
   - type: Features
     data:
       - name: Real-Time Market Data

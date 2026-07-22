@@ -1,0 +1,46 @@
+generated: '2026-06-20'
+method: derived
+format: blpapi-error-message
+source: json-schema/blpapi-core-messages-schema.json + openapi/ (BLPAPI Core Developer Guide v1.6 projection)
+envelope:
+  description: >-
+    BLPAPI does not signal errors with HTTP status codes (it is a socket/SDK API). Request-level
+    failures arrive as a responseError element; per-security and per-field failures arrive as
+    securityError / fieldExceptions elements inside otherwise-successful responses; subscription
+    failures arrive as SUBSCRIPTION_STATUS events carrying SubscriptionFailure messages.
+  fields: [source, errorCode, category, subcategory, message]
+  schema: json-schema/blpapi-core-error-message-schema.json
+problems:
+  - id: responseError
+    title: Request-level failure
+    detail: >-
+      The whole request failed (service down, invalid request, timeout, or daily/concurrent limit
+      reached). Delivered as a responseError ErrorMessage in a RESPONSE event.
+    source_schema: json-schema/blpapi-core-messages-schema.json#/$defs/ErrorMessage
+  - id: securityError
+    title: Invalid or unresolvable security (BAD_SEC)
+    detail: >-
+      A requested security could not be resolved; returned per-security inside the response so the
+      remaining securities still resolve. Remediation — verify the topic string, ticker and
+      pricing-source suffix, or resolve via //blp/instruments.
+    source_operation: openapi/bloomberg-reference-data-api-openapi.yml#referenceDataRequest
+  - id: fieldException
+    title: Invalid or inapplicable field (BAD_FLD)
+    detail: >-
+      A requested field mnemonic is unknown or not applicable to the security; returned per-field as
+      a fieldExceptions entry. Remediation — discover valid mnemonics via //blp/apiflds
+      (fieldSearchRequest / fieldInfoRequest).
+    source_operation: openapi/bloomberg-field-discovery-api-openapi.yml#fieldSearchRequest
+  - id: subscriptionFailure
+    title: Subscription failure
+    detail: >-
+      A subscription could not be established or was terminated; delivered as a SUBSCRIPTION_STATUS
+      event with a SubscriptionFailure message carrying a reason. Correlate via the subscription's
+      CorrelationID.
+    source_schema: json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionFailure
+  - id: subscriptionStartedWithExceptions
+    title: Subscription started with per-field exceptions
+    detail: >-
+      SubscriptionStarted messages may carry an exceptions[] list for fields that could not be
+      included in the stream.
+    source_schema: json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionStarted

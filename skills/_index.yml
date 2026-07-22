@@ -1,0 +1,19 @@
+generated: '2026-06-20'
+method: generated
+notes: >-
+  No provider-published agent skills or AGENTS.md found on developer.bloomberg.com or
+  github.com/bloomberg. These skills are generated from the BLPAPI Core OpenAPI projections in this
+  repo; every operation referenced exists verbatim in the named spec.
+skills:
+  - file: bloomberg-reference-data-snapshot.md
+    name: Look up reference data for securities
+    api: openapi/bloomberg-reference-data-api-openapi.yml
+    operations: [referenceDataRequest, fieldSearchRequest, fieldInfoRequest]
+  - file: bloomberg-historical-analysis.md
+    name: Pull historical and intraday time series
+    api: openapi/bloomberg-historical-data-api-openapi.yml
+    operations: [historicalDataRequest, intradayBarRequest, intradayTickRequest]
+  - file: bloomberg-market-data-stream.md
+    name: Stream real-time market data
+    api: openapi/bloomberg-subscriptions-api-openapi.yml
+    operations: [subscribeMarketData, subscribeMarketBar, subscribeMarketVwap]

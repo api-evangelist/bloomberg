@@ -1,0 +1,50 @@
+generated: '2026-06-20'
+method: searched
+source: https://registry.npmjs.org/blpapi + https://blpapi.bloomberg.com/repository/releases/python/simple/blpapi/ + https://bloomberg.github.io/blpapi-docs/
+notes: >-
+  Bloomberg distributes the BLPAPI SDK primarily through its own channels: the Python wheel is served
+  from Bloomberg's own pip index (not PyPI — pypi.org/pypi/blpapi returns 404), and the C++, Java, and
+  .NET SDKs are downloaded from the Bloomberg Professional API library page. The Node.js binding is the
+  one first-party package on a public community registry (npm). Maven Central and NuGet carry no
+  first-party Bloomberg BLPAPI artifacts (verified 2026-06-20).
+packages:
+  - language: python
+    registry: bloomberg-pip-index
+    name: blpapi
+    url: https://blpapi.bloomberg.com/repository/releases/python/simple/blpapi/
+    install: pip install blpapi --index-url=https://blpapi.bloomberg.com/repository/releases/python/simple/
+    latest: 3.26.6.1
+    docs: https://bloomberg.github.io/blpapi-docs/python/3.26.6/
+    official: true
+  - language: javascript
+    registry: npm
+    name: blpapi
+    url: https://www.npmjs.com/package/blpapi
+    install: npm install blpapi
+    latest: 1.2.0
+    repository: https://github.com/bloomberg/blpapi-node
+    official: true
+  - language: cpp
+    registry: vendor
+    name: BLPAPI C++ SDK
+    url: https://www.bloomberg.com/professional/support/api-library/
+    install: Download from the Bloomberg API library page
+    latest: 3.26.6
+    docs: https://bloomberg.github.io/blpapi-docs/cpp/3.26.6/
+    official: true
+  - language: java
+    registry: vendor
+    name: BLPAPI Java SDK
+    url: https://www.bloomberg.com/professional/support/api-library/
+    install: Download from the Bloomberg API library page
+    latest: 3.26.6
+    docs: https://bloomberg.github.io/blpapi-docs/java/3.26.6/
+    official: true
+  - language: dotnet
+    registry: vendor
+    name: BLPAPI .NET (C#) SDK
+    url: https://www.bloomberg.com/professional/support/api-library/
+    install: Download from the Bloomberg API library page
+    latest: 3.26.6
+    docs: https://bloomberg.github.io/blpapi-docs/dotnet/3.26.6/
+    official: true

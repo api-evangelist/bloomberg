@@ -1,0 +1,33 @@
+generated: '2026-06-20'
+method: searched
+source: https://www.bloomberg.com/.well-known/oauth-authorization-server
+docs: https://www.bloomberg.com/.well-known/openid-configuration
+notes: >-
+  Bloomberg's BLPAPI OpenAPI projections declare no oauth2 securitySchemes (BLPAPI uses SDK
+  session/identity authorization). These scopes come from Bloomberg's published OAuth 2.0 /
+  OIDC authorization-server discovery metadata (endpoints on login.bloomberg.com), which fronts
+  Bloomberg web/console login and token issuance for HTTP-delivered services.
+schemes:
+  - name: BloombergOAuth
+    source: https://www.bloomberg.com/.well-known/oauth-authorization-server
+    issuer: https://www.bloomberg.com
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://login.bloomberg.com/api/oauth/authorize
+        tokenUrl: https://login.bloomberg.com/api/oauth/token
+        pkce: S256
+      - flow: refreshToken
+        tokenUrl: https://login.bloomberg.com/api/oauth/token
+scopes:
+  - scope: openid
+    description: OpenID Connect authentication — issues an RS256-signed ID token for the Bloomberg identity.
+    flows: [authorizationCode]
+    sources: [https://www.bloomberg.com/.well-known/oauth-authorization-server]
+  - scope: user
+    description: Access to the authenticated Bloomberg user profile.
+    flows: [authorizationCode]
+    sources: [https://www.bloomberg.com/.well-known/oauth-authorization-server]
+  - scope: entitlements
+    description: Access to the user's Bloomberg product/data entitlements.
+    flows: [authorizationCode]
+    sources: [https://www.bloomberg.com/.well-known/oauth-authorization-server]

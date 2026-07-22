@@ -1,0 +1,25 @@
+generated: '2026-06-20'
+method: searched
+source: https://bloomberg.github.io/blpapi-docs/ + https://blpapi.bloomberg.com/repository/releases/python/simple/blpapi/
+versioning:
+  scheme: sdk-semver
+  current: 3.26.6
+  docs: https://bloomberg.github.io/blpapi-docs/
+  notes: >-
+    BLPAPI versioning is carried by the SDK, released in lockstep across C++, Java, .NET, and Python
+    (all at 3.26.6 as of 2026-06-20). Previous SDK releases remain documented in the blpapi-docs
+    archive. The wire protocol/service schemas (//blp/refdata et al.) evolve behind the SDK.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No public deprecation policy or RFC 8594 Sunset-header contract is published; older SDK versions
+    are archived on the docs site and superseded by new releases. Not scored as a deprecation policy.
+sla:
+  url: null
+  notes: Service levels are governed by Bloomberg enterprise agreements, not a public SLA page.
+status_page: null
+status_page_notes: >-
+  No public status page found (status.bloomberg.com does not resolve); operational support runs
+  through https://www.bloomberg.com/professional/support/.
+deprecated_operations: []
