@@ -5,6 +5,19 @@ description: >-
   Businessweek and Bloomberg News. Bloomberg provides a suite of developer APIs including BLPAPI, Server API, and the
   Hypermedia API for programmatic access to market data, analytics, and enterprise services.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bloomberg.png
 tags:
   - Analytics
@@ -176,6 +189,8 @@ apis:
       - type: AsyncAPI
         url: asyncapi/bloomberg-market-data-asyncapi.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/bloomberg/overview
   - type: AgenticAccess
     url: agentic-access/bloomberg-agentic-access.yml
   - type: VulnerabilityDisclosure
