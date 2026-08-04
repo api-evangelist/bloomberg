@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "a51def9b-f24e-4168-91d1-c474dcfb6ca2",
+    "name": "Bloomberg BLPAPI Core Field Discovery Intraday Bars API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:15:02.000Z",
+    "updatedAt": "2026-07-28T01:15:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a51def9b-f24e-4168-91d1-c474dcfb6ca2"
+  },
+  "item": [
+    {
+      "name": "refdata",
+      "item": [
+        {
+          "name": "IntradayBarRequest",
+          "item": [
+            {
+              "name": "Request Intraday Ohlc Bars for a Single Security.",
+              "id": "1311056a-8335-4cb7-9378-be8a8c4072da",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayBarRequest not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refdata/IntradayBarRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refdata",
+                    "IntradayBarRequest"
+                  ]
+                },
+                "description": "Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed\nOHLC bar data on a single security. Bar interval is configurable from 1 to 1440\nminutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,\nand BEST_ASK, gap fill of the initial bar, EID return, and corporate action\nadjustments.\n"
+              },
+              "response": [
+                {
+                  "id": "3159fdf8-9356-42ed-9553-cf2da90b7dbf",
+                  "name": "IntradayBarResponse",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayBarRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refdata/IntradayBarRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refdata",
+                        "IntradayBarRequest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"aliquip_d\": false,\n  \"ea2f7\": 44510014.765770614\n}",
+                  "createdAt": "2026-07-28T01:15:03.000Z",
+                  "updatedAt": "2026-07-28T01:15:03.000Z",
+                  "uid": "35240-3159fdf8-9356-42ed-9553-cf2da90b7dbf"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:02.000Z",
+              "updatedAt": "2026-07-28T01:15:02.000Z",
+              "uid": "35240-1311056a-8335-4cb7-9378-be8a8c4072da"
+            }
+          ],
+          "id": "39b648dd-fdf0-479f-ab68-1d8ab1382c18",
+          "createdAt": "2026-07-28T01:15:02.000Z",
+          "updatedAt": "2026-07-28T01:15:02.000Z",
+          "uid": "35240-39b648dd-fdf0-479f-ab68-1d8ab1382c18"
+        }
+      ],
+      "id": "28dd44c4-9e93-4fb1-9d05-3d141d4e7ea8",
+      "createdAt": "2026-07-28T01:15:02.000Z",
+      "updatedAt": "2026-07-28T01:15:02.000Z",
+      "uid": "35240-28dd44c4-9e93-4fb1-9d05-3d141d4e7ea8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

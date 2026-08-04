@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "443c8003-6ef7-495b-8fc6-dd85ad6d0473",
+    "name": "Bloomberg BLPAPI Core Field Discovery Real-Time Market Data API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:15:22.000Z",
+    "updatedAt": "2026-07-28T01:15:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-443c8003-6ef7-495b-8fc6-dd85ad6d0473"
+  },
+  "item": [
+    {
+      "name": "mktdata",
+      "item": [
+        {
+          "name": "subscribe",
+          "item": [
+            {
+              "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+              "id": "c7d2f12d-6039-4c2e-8485-12bb11ae930b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/mktdata/subscribe",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mktdata",
+                    "subscribe"
+                  ]
+                },
+                "description": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n"
+              },
+              "response": [
+                {
+                  "id": "6e8a0109-f2d9-4406-9d71-07024646cc8d",
+                  "name": "SUBSCRIPTION_STATUS / SUBSCRIPTION_DATA stream",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/mktdata/subscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mktdata",
+                        "subscribe"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/MarketDataEvent not found in the OpenAPI spec\"\n}",
+                  "createdAt": "2026-07-28T01:15:23.000Z",
+                  "updatedAt": "2026-07-28T01:15:23.000Z",
+                  "uid": "35240-6e8a0109-f2d9-4406-9d71-07024646cc8d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:23.000Z",
+              "updatedAt": "2026-07-28T01:15:23.000Z",
+              "uid": "35240-c7d2f12d-6039-4c2e-8485-12bb11ae930b"
+            }
+          ],
+          "id": "0173d26b-45b6-43db-96cb-8e46b8998aa3",
+          "createdAt": "2026-07-28T01:15:23.000Z",
+          "updatedAt": "2026-07-28T01:15:23.000Z",
+          "uid": "35240-0173d26b-45b6-43db-96cb-8e46b8998aa3"
+        }
+      ],
+      "id": "c60be34c-b87f-4044-854a-88205d1601b0",
+      "createdAt": "2026-07-28T01:15:23.000Z",
+      "updatedAt": "2026-07-28T01:15:23.000Z",
+      "uid": "35240-c60be34c-b87f-4044-854a-88205d1601b0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

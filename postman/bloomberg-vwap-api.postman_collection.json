@@ -1,0 +1,123 @@
+{
+  "info": {
+    "_postman_id": "0ecbe8f7-f469-4597-99fc-f93e1f67a2d6",
+    "name": "Bloomberg BLPAPI Core Field Discovery VWAP API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:15:29.000Z",
+    "updatedAt": "2026-07-28T01:15:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0ecbe8f7-f469-4597-99fc-f93e1f67a2d6"
+  },
+  "item": [
+    {
+      "name": "mktvwap",
+      "item": [
+        {
+          "name": "subscribe",
+          "item": [
+            {
+              "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+              "id": "b73dcdb0-5315-4e0e-a769-df7cf7a07f17",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/mktvwap/subscribe",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mktvwap",
+                    "subscribe"
+                  ]
+                },
+                "description": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n"
+              },
+              "response": [
+                {
+                  "id": "64db1c51-ee81-4364-a137-8f333e14b066",
+                  "name": "Subscription stream",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/mktvwap/subscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mktvwap",
+                        "subscribe"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:15:30.000Z",
+                  "updatedAt": "2026-07-28T01:15:30.000Z",
+                  "uid": "35240-64db1c51-ee81-4364-a137-8f333e14b066"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:30.000Z",
+              "updatedAt": "2026-07-28T01:15:30.000Z",
+              "uid": "35240-b73dcdb0-5315-4e0e-a769-df7cf7a07f17"
+            }
+          ],
+          "id": "1cb5c172-42db-460e-b20b-19f7dc3e6b05",
+          "createdAt": "2026-07-28T01:15:30.000Z",
+          "updatedAt": "2026-07-28T01:15:30.000Z",
+          "uid": "35240-1cb5c172-42db-460e-b20b-19f7dc3e6b05"
+        }
+      ],
+      "id": "a4a87439-c156-4c31-866d-691bd74ef991",
+      "createdAt": "2026-07-28T01:15:30.000Z",
+      "updatedAt": "2026-07-28T01:15:30.000Z",
+      "uid": "35240-a4a87439-c156-4c31-866d-691bd74ef991"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

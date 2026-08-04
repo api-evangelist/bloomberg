@@ -1,0 +1,217 @@
+{
+  "info": {
+    "_postman_id": "7b2638c8-aacc-499b-8442-48b539af6c0c",
+    "name": "Bloomberg BLPAPI Core Field Discovery API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:15:04.000Z",
+    "updatedAt": "2026-07-28T01:15:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7b2638c8-aacc-499b-8442-48b539af6c0c"
+  },
+  "item": [
+    {
+      "name": "apiflds",
+      "item": [
+        {
+          "name": "FieldInfoRequest",
+          "item": [
+            {
+              "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+              "id": "21bbef29-5b62-4179-af64-8c4a7cbc65b8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldInfoRequest not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apiflds/FieldInfoRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apiflds",
+                    "FieldInfoRequest"
+                  ]
+                },
+                "description": "Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata\n(mnemonic, description, data type, category, documentation) for the specified\nfield IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.\n"
+              },
+              "response": [
+                {
+                  "id": "72e38fc9-2242-4182-b8fe-38a3bfb045e1",
+                  "name": "FieldResponse",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldInfoRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apiflds/FieldInfoRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apiflds",
+                        "FieldInfoRequest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:15:05.000Z",
+                  "updatedAt": "2026-07-28T01:15:05.000Z",
+                  "uid": "35240-72e38fc9-2242-4182-b8fe-38a3bfb045e1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:05.000Z",
+              "updatedAt": "2026-07-28T01:15:05.000Z",
+              "uid": "35240-21bbef29-5b62-4179-af64-8c4a7cbc65b8"
+            }
+          ],
+          "id": "2768e560-3dc7-49c9-9016-a9ebf9860eaf",
+          "createdAt": "2026-07-28T01:15:05.000Z",
+          "updatedAt": "2026-07-28T01:15:05.000Z",
+          "uid": "35240-2768e560-3dc7-49c9-9016-a9ebf9860eaf"
+        },
+        {
+          "name": "FieldSearchRequest",
+          "item": [
+            {
+              "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+              "id": "6b0e2326-7262-49bf-b59b-351adc28468e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldSearchRequest not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apiflds/FieldSearchRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apiflds",
+                    "FieldSearchRequest"
+                  ]
+                },
+                "description": "Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API\nData Dictionary by free-text spec, with optional include/exclude filters on\nfield type (All / Static / RealTime) and product type. Returns matching fields\nand optionally their documentation.\n"
+              },
+              "response": [
+                {
+                  "id": "8914ffb1-bb23-4a73-b79d-4783b32acd85",
+                  "name": "FieldResponse",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/FieldSearchRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apiflds/FieldSearchRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apiflds",
+                        "FieldSearchRequest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:15:05.000Z",
+                  "updatedAt": "2026-07-28T01:15:05.000Z",
+                  "uid": "35240-8914ffb1-bb23-4a73-b79d-4783b32acd85"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:05.000Z",
+              "updatedAt": "2026-07-28T01:15:05.000Z",
+              "uid": "35240-6b0e2326-7262-49bf-b59b-351adc28468e"
+            }
+          ],
+          "id": "f7e8ba6e-623b-4de0-83b3-dee297ffd36c",
+          "createdAt": "2026-07-28T01:15:05.000Z",
+          "updatedAt": "2026-07-28T01:15:05.000Z",
+          "uid": "35240-f7e8ba6e-623b-4de0-83b3-dee297ffd36c"
+        }
+      ],
+      "id": "4854cd78-f75c-4dc6-9d2a-802c30184c54",
+      "createdAt": "2026-07-28T01:15:05.000Z",
+      "updatedAt": "2026-07-28T01:15:05.000Z",
+      "uid": "35240-4854cd78-f75c-4dc6-9d2a-802c30184c54"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

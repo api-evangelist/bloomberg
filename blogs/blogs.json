@@ -1,0 +1,14 @@
+{
+  "repo": "bloomberg",
+  "feeds": [
+    {
+      "source": "https://bloomberg.github.io/blpapi-docs/",
+      "feed_url": "https://bloomberg.github.io/blpapi-docs/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-01T15:49:00Z"
+}

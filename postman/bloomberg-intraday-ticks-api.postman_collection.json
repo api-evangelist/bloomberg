@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "da6e10d4-7f98-4c2f-aaea-211fd09e4d64",
+    "name": "Bloomberg BLPAPI Core Field Discovery Intraday Ticks API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:15:03.000Z",
+    "updatedAt": "2026-07-28T01:15:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-da6e10d4-7f98-4c2f-aaea-211fd09e4d64"
+  },
+  "item": [
+    {
+      "name": "refdata",
+      "item": [
+        {
+          "name": "IntradayTickRequest",
+          "item": [
+            {
+              "name": "Request Raw Intraday Tick Data for a Single Security.",
+              "id": "8feadc7e-3d56-4bf6-b0d0-0698358b10d5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayTickRequest not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refdata/IntradayTickRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refdata",
+                    "IntradayTickRequest"
+                  ]
+                },
+                "description": "Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick\ndata on a single security between two timestamps. Supports multiple event types\n(TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional\ninclusion of condition codes, exchange codes, broker codes, RPS codes, and\nnon-plottable events.\n"
+              },
+              "response": [
+                {
+                  "id": "8655e4d3-53e6-4119-a185-98f57ce7043a",
+                  "name": "IntradayTickResponse",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/IntradayTickRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refdata/IntradayTickRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refdata",
+                        "IntradayTickRequest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"nulla31\": true,\n  \"mollit833\": \"est commodo incididunt\",\n  \"Excepteur_72\": -80444773,\n  \"in_8d\": false\n}",
+                  "createdAt": "2026-07-28T01:15:04.000Z",
+                  "updatedAt": "2026-07-28T01:15:04.000Z",
+                  "uid": "35240-8655e4d3-53e6-4119-a185-98f57ce7043a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:04.000Z",
+              "updatedAt": "2026-07-28T01:15:04.000Z",
+              "uid": "35240-8feadc7e-3d56-4bf6-b0d0-0698358b10d5"
+            }
+          ],
+          "id": "185a20f2-34b7-4c05-9783-7bff46fe9246",
+          "createdAt": "2026-07-28T01:15:04.000Z",
+          "updatedAt": "2026-07-28T01:15:04.000Z",
+          "uid": "35240-185a20f2-34b7-4c05-9783-7bff46fe9246"
+        }
+      ],
+      "id": "546b5050-3b25-4a8e-80f0-a662b282ace6",
+      "createdAt": "2026-07-28T01:15:04.000Z",
+      "updatedAt": "2026-07-28T01:15:04.000Z",
+      "uid": "35240-546b5050-3b25-4a8e-80f0-a662b282ace6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

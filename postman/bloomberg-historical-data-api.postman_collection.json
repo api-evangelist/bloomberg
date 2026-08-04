@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "889494b4-8c48-4d52-8ce7-f54a933c9ef0",
+    "name": "Bloomberg BLPAPI Core Field Discovery Historical Data API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:14:44.000Z",
+    "updatedAt": "2026-07-28T01:14:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-889494b4-8c48-4d52-8ce7-f54a933c9ef0"
+  },
+  "item": [
+    {
+      "name": "refdata",
+      "item": [
+        {
+          "name": "HistoricalDataRequest",
+          "item": [
+            {
+              "name": "Request End-of-day Historical Data for One or More Securities.",
+              "id": "a4a4e8b9-2fb5-4f36-bfbf-6a79014e1f92",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/HistoricalDataRequest not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refdata/HistoricalDataRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refdata",
+                    "HistoricalDataRequest"
+                  ]
+                },
+                "description": "Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time\nseries data. Limited to 25 fields per request. Supports periodicity selection\n(daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment\n(ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,\ncorporate action adjustments (normal, abnormal, split, DPDF), and a maximum data\npoint cap.\n"
+              },
+              "response": [
+                {
+                  "id": "3d3d5ad5-9123-46a3-926e-c2011b0cd4c0",
+                  "name": "HistoricalDataResponse",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/HistoricalDataRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refdata/HistoricalDataRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refdata",
+                        "HistoricalDataRequest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"aliqua_182\": 17171830\n}",
+                  "createdAt": "2026-07-28T01:14:45.000Z",
+                  "updatedAt": "2026-07-28T01:14:45.000Z",
+                  "uid": "35240-3d3d5ad5-9123-46a3-926e-c2011b0cd4c0"
+                }
+              ],
+              "createdAt": "2026-07-28T01:14:45.000Z",
+              "updatedAt": "2026-07-28T01:14:45.000Z",
+              "uid": "35240-a4a4e8b9-2fb5-4f36-bfbf-6a79014e1f92"
+            }
+          ],
+          "id": "1d3fc770-8c83-473f-b1e9-e6c8d4da3193",
+          "createdAt": "2026-07-28T01:14:45.000Z",
+          "updatedAt": "2026-07-28T01:14:45.000Z",
+          "uid": "35240-1d3fc770-8c83-473f-b1e9-e6c8d4da3193"
+        }
+      ],
+      "id": "717025a5-a62b-498f-b451-1958890c5b73",
+      "createdAt": "2026-07-28T01:14:45.000Z",
+      "updatedAt": "2026-07-28T01:14:45.000Z",
+      "uid": "35240-717025a5-a62b-498f-b451-1958890c5b73"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

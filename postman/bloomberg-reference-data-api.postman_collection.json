@@ -1,0 +1,188 @@
+{
+  "info": {
+    "_postman_id": "5a850515-5254-4820-ab9c-2997fb1148c2",
+    "name": "Bloomberg BLPAPI Core Field Discovery Reference Data API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:14:36.000Z",
+    "updatedAt": "2026-07-28T01:14:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5a850515-5254-4820-ab9c-2997fb1148c2"
+  },
+  "item": [
+    {
+      "name": "refdata",
+      "item": [
+        {
+          "name": "ReferenceDataRequest",
+          "item": [
+            {
+              "name": "Request Reference Data for One or More Securities and Fields.",
+              "id": "c8bf4fe4-a94b-4fea-b849-4407714dcd9a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/ReferenceDataRequest not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/refdata/ReferenceDataRequest",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ]
+                },
+                "description": "Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current\nreference, descriptive, fundamental, and pricing field values for up to thousands of\nsecurities at once. Limited to 400 fields per request; the API will internally split\nsecurities into groups of 10 and fields into groups of 128 against the session's\n`MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted\nvalues, UTC timestamps, and forced delayed pricing.\n"
+              },
+              "response": [
+                {
+                  "id": "0b898c5d-1552-4b71-af69-1ee1eeab19d7",
+                  "name": "ReferenceDataResponse \u2014 sequence of zero or more PARTIAL_RESPONSE messages followed by exactly one RESPONSE.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/ReferenceDataRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refdata/ReferenceDataRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refdata",
+                        "ReferenceDataRequest"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"eiusmod_d\": \"quis qui\",\n  \"reprehenderit3b\": false,\n  \"eu310\": -76184687.85536994,\n  \"sedf8\": \"adipisicing pariatur reprehenderit labore\"\n}",
+                  "createdAt": "2026-07-28T01:14:37.000Z",
+                  "updatedAt": "2026-07-28T01:14:37.000Z",
+                  "uid": "35240-0b898c5d-1552-4b71-af69-1ee1eeab19d7"
+                },
+                {
+                  "id": "5985d74b-b43e-4849-b332-afcf337205c7",
+                  "name": "Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/ReferenceDataRequest not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/refdata/ReferenceDataRequest",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "refdata",
+                        "ReferenceDataRequest"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/ErrorMessage not found in the OpenAPI spec\"\n}",
+                  "createdAt": "2026-07-28T01:14:37.000Z",
+                  "updatedAt": "2026-07-28T01:14:37.000Z",
+                  "uid": "35240-5985d74b-b43e-4849-b332-afcf337205c7"
+                }
+              ],
+              "createdAt": "2026-07-28T01:14:37.000Z",
+              "updatedAt": "2026-07-28T01:14:37.000Z",
+              "uid": "35240-c8bf4fe4-a94b-4fea-b849-4407714dcd9a"
+            }
+          ],
+          "id": "5ca508a1-01b4-4668-9d72-0500875604c6",
+          "createdAt": "2026-07-28T01:14:37.000Z",
+          "updatedAt": "2026-07-28T01:14:37.000Z",
+          "uid": "35240-5ca508a1-01b4-4668-9d72-0500875604c6"
+        }
+      ],
+      "id": "48d45f59-f9af-4cbd-878e-216e8fbd869e",
+      "createdAt": "2026-07-28T01:14:37.000Z",
+      "updatedAt": "2026-07-28T01:14:37.000Z",
+      "uid": "35240-48d45f59-f9af-4cbd-878e-216e8fbd869e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}

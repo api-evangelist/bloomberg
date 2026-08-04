@@ -1,0 +1,123 @@
+{
+  "info": {
+    "_postman_id": "4eec50e7-6e0e-4e3d-a97e-4cc6e0014da5",
+    "name": "Bloomberg BLPAPI Core Field Discovery Real-Time Bars API",
+    "description": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** \u2014\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. \u2014 Enterprise / Open API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:15:21.000Z",
+    "updatedAt": "2026-07-28T01:15:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4eec50e7-6e0e-4e3d-a97e-4cc6e0014da5"
+  },
+  "item": [
+    {
+      "name": "mktbar",
+      "item": [
+        {
+          "name": "subscribe",
+          "item": [
+            {
+              "name": "Subscribe to Interval-based Real-time Bars.",
+              "id": "804bf28d-b7e7-440f-a6eb-a6f79a108982",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList not found in the OpenAPI spec\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/mktbar/subscribe",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "mktbar",
+                    "subscribe"
+                  ]
+                },
+                "description": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n"
+              },
+              "response": [
+                {
+                  "id": "f54637ad-3f5b-4e79-b62d-4eb625760a27",
+                  "name": "Subscription stream",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"value\": \"reference ../json-schema/blpapi-core-messages-schema.json#/$defs/SubscriptionList not found in the OpenAPI spec\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/mktbar/subscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mktbar",
+                        "subscribe"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:15:22.000Z",
+                  "updatedAt": "2026-07-28T01:15:22.000Z",
+                  "uid": "35240-f54637ad-3f5b-4e79-b62d-4eb625760a27"
+                }
+              ],
+              "createdAt": "2026-07-28T01:15:22.000Z",
+              "updatedAt": "2026-07-28T01:15:22.000Z",
+              "uid": "35240-804bf28d-b7e7-440f-a6eb-a6f79a108982"
+            }
+          ],
+          "id": "bc09406d-122d-4167-8f94-b6f79436034d",
+          "createdAt": "2026-07-28T01:15:22.000Z",
+          "updatedAt": "2026-07-28T01:15:22.000Z",
+          "uid": "35240-bc09406d-122d-4167-8f94-b6f79436034d"
+        }
+      ],
+      "id": "22068afa-e6fb-4060-95ab-04256338595a",
+      "createdAt": "2026-07-28T01:15:22.000Z",
+      "updatedAt": "2026-07-28T01:15:22.000Z",
+      "uid": "35240-22068afa-e6fb-4060-95ab-04256338595a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "tcp://localhost:8194"
+    }
+  ]
+}
