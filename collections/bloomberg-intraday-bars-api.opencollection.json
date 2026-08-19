@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery Intraday Bars API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Intraday Bars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Intraday Ohlc Bars for a Single Security.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/IntradayBarRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed\nOHLC bar data on a single security. Bar interval is configurable from 1 to 1440\nminutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,\nand BEST_ASK, gap fill of the initial bar, EID return, and corporate action\nadjustments.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

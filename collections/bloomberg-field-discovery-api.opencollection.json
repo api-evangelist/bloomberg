@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Field Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/apiflds/FieldInfoRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata\n(mnemonic, description, data type, category, documentation) for the specified\nfield IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.\n"
+        },
+        {
+          "info": {
+            "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/apiflds/FieldSearchRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API\nData Dictionary by free-text spec, with optional include/exclude filters on\nfield type (All / Static / RealTime) and product type. Returns matching fields\nand optionally their documentation.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

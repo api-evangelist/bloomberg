@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery Real-Time Market Data API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Real-Time Market Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktdata/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

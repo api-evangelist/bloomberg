@@ -1,0 +1,115 @@
+{
+  "item": [
+    {
+      "id": "c4b511cb-15af-446a-a6a2-c0ee854cefbe",
+      "name": "Real-Time Bars",
+      "description": {
+        "content": "Streaming interval-based OHLC bar subscriptions (//blp/mktbar).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "51459f38-4cae-4d8e-8603-0e9dc3c0e78f",
+          "name": "Subscribe to Interval-based Real-time Bars.",
+          "request": {
+            "name": "Subscribe to Interval-based Real-time Bars.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktbar",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b193e4c-8e9e-4d39-8b33-9ac4743036e5",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktbar",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "99cdd95b-f774-4e05-acde-014b445e412b",
+    "name": "Bloomberg BLPAPI Core Field Discovery Real-Time Bars API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

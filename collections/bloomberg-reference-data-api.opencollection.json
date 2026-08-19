@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery Reference Data API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Reference Data for One or More Securities and Fields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/ReferenceDataRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current\nreference, descriptive, fundamental, and pricing field values for up to thousands of\nsecurities at once. Limited to 400 fields per request; the API will internally split\nsecurities into groups of 10 and fields into groups of 128 against the session's\n`MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted\nvalues, UTC timestamps, and forced delayed pricing.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

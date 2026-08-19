@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "974b7841-2051-44c2-b329-13fc8aee2118",
+      "name": "Field Discovery",
+      "description": {
+        "content": "Bloomberg API Data Dictionary lookup, search, and field metadata (//blp/apiflds).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22acb2a3-6912-40c3-9023-517d27caadb6",
+          "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+          "request": {
+            "name": "Look up Metadata for One or More Bloomberg Field Mnemonics or Ids.",
+            "description": {
+              "content": "Sends a `FieldInfoRequest` to the `//blp/apiflds` service to retrieve metadata\n(mnemonic, description, data type, category, documentation) for the specified\nfield IDs. Equivalent to programmatic `{FLDS <GO>}` lookups.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apiflds",
+                "FieldInfoRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3403d328-7634-458c-8e40-84b13b33a5f5",
+              "name": "FieldResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apiflds",
+                    "FieldInfoRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea653d2b-6b25-4fa5-bc91-4a89b61b1848",
+          "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+          "request": {
+            "name": "Search the Bloomberg Api Data Dictionary for Fields Matching a Spec.",
+            "description": {
+              "content": "Sends a `FieldSearchRequest` to the `//blp/apiflds` service to search the API\nData Dictionary by free-text spec, with optional include/exclude filters on\nfield type (All / Static / RealTime) and product type. Returns matching fields\nand optionally their documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apiflds",
+                "FieldSearchRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84331afe-27ca-4c2d-ba1b-76aaccf64fd2",
+              "name": "FieldResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apiflds",
+                    "FieldSearchRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b9c2ab53-d59f-4528-8f2f-68b72fee41f9",
+    "name": "Bloomberg BLPAPI Core Field Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

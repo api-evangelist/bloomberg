@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "6244303c-bc81-4384-a6b7-bda412877b62",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Operations using the BLPAPI Subscription paradigm (Session.subscribe / SUBSCRIPTION_DATA events).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef33d0cb-f18b-469e-9538-29d0139ccbea",
+          "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+          "request": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktdata",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4f766c5-efff-4e93-a0f8-869a5144d449",
+              "name": "SUBSCRIPTION_STATUS / SUBSCRIPTION_DATA stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktdata",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a84d57d2-7bc6-45d1-bdc0-60f76fbcae6b",
+          "name": "Subscribe to Interval-based Real-time Bars.",
+          "request": {
+            "name": "Subscribe to Interval-based Real-time Bars.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktbar",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d0441f2-b54e-4093-943a-661422e54da3",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktbar",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a74608e-1ef1-4c29-80c2-806c29f1cc63",
+          "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+          "request": {
+            "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktvwap",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "163a6bfd-19ba-47dd-ada6-318463206988",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktvwap",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e911ad20-ea09-4fb1-9d56-d92ef0f9fc43",
+    "name": "Bloomberg BLPAPI Core Field Discovery Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

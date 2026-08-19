@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "f6c9f7c3-6408-4689-a38f-a53cdba181e1",
+      "name": "Real-Time Market Data",
+      "description": {
+        "content": "Streaming real-time market data subscriptions (//blp/mktdata).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3bf94c78-0988-44f6-ac98-98b0210725fd",
+          "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+          "request": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktdata",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a00b49b-6f6f-4520-9806-a80857e06677",
+              "name": "SUBSCRIPTION_STATUS / SUBSCRIPTION_DATA stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktdata",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2f501fbb-5bbe-4d39-b1d0-1e92d90679d0",
+    "name": "Bloomberg BLPAPI Core Field Discovery Real-Time Market Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "item": [
+    {
+      "id": "0232cc0d-5c9d-4f32-8e68-bb183695326c",
+      "name": "VWAP",
+      "description": {
+        "content": "Custom Volume-Weighted Average Price subscriptions with override field/value pairings (//blp/mktvwap).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "83a60672-54ea-440d-9e45-3d53ef48b07e",
+          "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+          "request": {
+            "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+            "description": {
+              "content": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mktvwap",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c01b1cf-49d1-4496-b6f4-699ba19f714e",
+              "name": "Subscription stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mktvwap",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8f5c3a25-0ebe-44f2-a81b-7dcfa4900756",
+    "name": "Bloomberg BLPAPI Core Field Discovery VWAP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

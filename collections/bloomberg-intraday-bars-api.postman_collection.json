@@ -1,0 +1,125 @@
+{
+  "item": [
+    {
+      "id": "b9d23e9e-bae0-4c53-b4ec-a57186ab66bd",
+      "name": "Intraday Bars",
+      "description": {
+        "content": "Time-bucketed OHLC bar data for a single security (//blp/refdata · IntradayBarRequest).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19d9abda-630e-47d6-893f-33cec403c3f6",
+          "name": "Request Intraday Ohlc Bars for a Single Security.",
+          "request": {
+            "name": "Request Intraday Ohlc Bars for a Single Security.",
+            "description": {
+              "content": "Sends an `IntradayBarRequest` to the `//blp/refdata` service for time-bucketed\nOHLC bar data on a single security. Bar interval is configurable from 1 to 1440\nminutes. Supports event types of TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID,\nand BEST_ASK, gap fill of the initial bar, EID return, and corporate action\nadjustments.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "IntradayBarRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16f07295-e752-4f2e-861a-ff0606df2a6b",
+              "name": "IntradayBarResponse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "IntradayBarRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "54e2f062-738e-40c7-a5b3-c6a7decb8809",
+    "name": "Bloomberg BLPAPI Core Field Discovery Intraday Bars API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}

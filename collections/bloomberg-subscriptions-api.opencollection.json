@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery Subscriptions API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to Streaming Real-time Market Data for a List of Topics.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktdata/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktdata` service.\nStreamed updates arrive as `SUBSCRIPTION_DATA` events with `MarketDataEvents` messages.\n"
+        },
+        {
+          "info": {
+            "name": "Subscribe to Interval-based Real-time Bars.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktbar/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktbar` service\nfor streaming OHLC bars at a configurable interval. Each topic in the\nSubscriptionList is tagged by a CorrelationID and produces SUBSCRIPTION_DATA\nevents containing bar messages until the subscription is cancelled.\n"
+        },
+        {
+          "info": {
+            "name": "Subscribe to a Custom Vwap Stream With Override Field/value Pairings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/mktvwap/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Models `Session.subscribe(SubscriptionList)` against the `//blp/mktvwap` service\nfor a custom Volume-Weighted Average Price stream. Override field/value pairings\n(e.g. start/end time, market session, calculation method) are passed via the\nsubscription `options` map and shape how VWAP is computed and updated.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

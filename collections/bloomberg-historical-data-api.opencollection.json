@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery Historical Data API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Historical Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request End-of-day Historical Data for One or More Securities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/HistoricalDataRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a `HistoricalDataRequest` to the `//blp/refdata` service for end-of-day time\nseries data. Limited to 25 fields per request. Supports periodicity selection\n(daily/weekly/monthly/quarterly/semi-annually/yearly), periodicity adjustment\n(ACTUAL/CALENDAR/FISCAL), currency conversion, non-trading day fill options,\ncorporate action adjustments (normal, abnormal, split, DPDF), and a maximum data\npoint cap.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

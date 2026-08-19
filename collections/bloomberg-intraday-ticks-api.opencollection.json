@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bloomberg BLPAPI Core Field Discovery Intraday Ticks API",
+    "version": "1.6"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Intraday Ticks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Raw Intraday Tick Data for a Single Security.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "tcp://localhost:8194/refdata/IntradayTickRequest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an `IntradayTickRequest` to the `//blp/refdata` service for raw tick-by-tick\ndata on a single security between two timestamps. Supports multiple event types\n(TRADE, BID, ASK, BID_BEST, ASK_BEST, BEST_BID, BEST_ASK, AT_TRADE) and optional\ninclusion of condition codes, exchange codes, broker codes, RPS codes, and\nnon-plottable events.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

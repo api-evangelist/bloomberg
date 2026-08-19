@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "e64695f3-eb1c-49d0-b868-126a17230adf",
+      "name": "Reference Data",
+      "description": {
+        "content": "Current reference, descriptive, fundamental, and pricing field values for securities (//blp/refdata · ReferenceDataRequest).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c316a9a6-3e7e-42d3-99f4-71d84ac97ee6",
+          "name": "Request Reference Data for One or More Securities and Fields.",
+          "request": {
+            "name": "Request Reference Data for One or More Securities and Fields.",
+            "description": {
+              "content": "Sends a `ReferenceDataRequest` to the `//blp/refdata` service to retrieve current\nreference, descriptive, fundamental, and pricing field values for up to thousands of\nsecurities at once. Limited to 400 fields per request; the API will internally split\nsecurities into groups of 10 and fields into groups of 128 against the session's\n`MaxPendingRequests` (default 1024). Supports field overrides, EID return, formatted\nvalues, UTC timestamps, and forced delayed pricing.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refdata",
+                "ReferenceDataRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25b60553-55a5-4372-bc5c-facf1b6ebd38",
+              "name": "ReferenceDataResponse — sequence of zero or more PARTIAL_RESPONSE messages followed by exactly one RESPONSE.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false,\n  \"key_1\": true,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af5934d9-c142-4176-85ef-ec5c606325ad",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refdata",
+                    "ReferenceDataRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "tcp://localhost:8194",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d50d60f-45a7-4d4c-bb53-9a6c5ba35292",
+    "name": "Bloomberg BLPAPI Core Field Discovery Reference Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bloomberg Open API (BLPAPI) is a service-oriented, socket-based API used by the Desktop API,\nServer API (SAPI), B-PIPE, and Bloomberg Platform products. It is **not natively HTTP/REST** —\nclients use the BLPAPI SDK (C, C++, Java, .NET, Python, Perl, COM Excel) over a TCP session,\ntypically against `localhost:8194` for the Desktop API or against the customer's Server API host.\n\nThis OpenAPI document is a best-effort REST-style projection of the BLPAPI service surface so\nthat the request/response and subscription paradigms can be cataloged, browsed, and tooled\nalongside other API artifacts. It is derived from the **BLPAPI Core Developer Guide v1.6\n(8/30/2016)** and the **BLPAPI Core User Guide**.\n\nThree paradigms exist in BLPAPI: Request/Response, Subscription, and Publishing. Only the\nRequest/Response paths are modeled here as HTTP operations; subscription topics are documented\nvia the `x-blpapi-subscription` extension on the relevant paths and in `tags`.\n\n\nContact Support:\n Name: Bloomberg L.P. — Enterprise / Open API",
+      "type": "text/plain"
+    }
+  }
+}
