@@ -34,7 +34,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: bloomberg:bloomberg-market-data-api
     name: Bloomberg Market Data API
