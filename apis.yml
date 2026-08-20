@@ -25,6 +25,18 @@ tags:
   - Data License
   - Enterprise
   - Execution Management
+  - Financial-Services
+  - Market Data
+  - News
+  - Quantitative Analysis
+  - Trading
+  - Transaction Cost Analysis
+tags_raw:
+  - Analytics
+  - Business Intelligence
+  - Data License
+  - Enterprise
+  - Execution Management
   - Financial Services
   - Market Data
   - News
@@ -97,6 +109,13 @@ apis:
       - Execution Management
       - Futures
       - Options
+      - Order
+      - Trading
+    tags_raw:
+      - Equities
+      - Execution Management
+      - Futures
+      - Options
       - Orders
       - Trading
     properties:
@@ -111,6 +130,19 @@ apis:
       //blp/mktdepthdata, //blp/apiflds, //blp/instruments, //blp/pagedata, and //blp/tasvc.
     humanURL: https://www.bloomberg.com/professional/support/api-library/
     tags:
+      - B-PIPE
+      - BLPAPI
+      - Desktop API
+      - Historical Data
+      - Intraday Bars
+      - Intraday Ticks
+      - Market Data
+      - OpenAPI
+      - Reference Data
+      - Request Response
+      - Server API
+      - Subscription
+    tags_raw:
       - B-PIPE
       - BLPAPI
       - Desktop API
