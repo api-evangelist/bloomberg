@@ -4,6 +4,18 @@ description: Bloomberg delivers business and markets news, data, analysis, and v
   from Businessweek and Bloomberg News. Bloomberg provides a suite of developer APIs including BLPAPI, Server API,
   and the Hypermedia API for programmatic access to market data, analytics, and enterprise services.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
