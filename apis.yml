@@ -273,8 +273,14 @@ common:
   url: well-known/bloomberg-well-known.yml
 - type: SecurityTxt
   url: well-known/bloomberg-security.txt
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/bloomberg-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03: the manifest self-describes as status: candidate --
+    a tool list we derived from the BLPAPI OpenAPI projections, with its own notes recording
+    that no official Bloomberg-hosted MCP server exists (registry searched, developer.bloomberg.com
+    checked, 2026-06-20). The scorer already read this correctly as mcp_server: false; the
+    MCPServer type was feeding "MCP" into artifact_types and the coverage matrix, crediting a
+    server that does not exist. Reported through report_correction 2026-09-01.'
 - type: LLMsTxt
   url: llms/bloomberg-llms.txt
 - type: Conformance
