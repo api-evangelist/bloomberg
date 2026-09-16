@@ -1,8 +1,9 @@
 aid: bloomberg
 name: Bloomberg
-description: Bloomberg delivers business and markets news, data, analysis, and video to the world, featuring stories
-  from Businessweek and Bloomberg News. Bloomberg provides a suite of developer APIs including BLPAPI, Server API,
-  and the Hypermedia API for programmatic access to market data, analytics, and enterprise services.
+description: Bloomberg delivers business and markets news, data, analysis, and video to the world, featuring
+  stories from Businessweek and Bloomberg News. Bloomberg provides a suite of developer APIs including
+  BLPAPI, Server API, and the Hypermedia API for programmatic access to market data, analytics, and enterprise
+  services.
 type: Index
 deliveryModel:
   model: saas
@@ -56,13 +57,13 @@ tags_raw:
 - Transaction Cost Analysis
 url: https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
-modified: '2026-08-27'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: bloomberg:bloomberg-market-data-api
   name: Bloomberg Market Data API
-  description: >-
-    Provides real-time and historical market data, including stock prices, indices, commodities, and currencies.
+  description: Provides real-time and historical market data, including stock prices, indices, commodities,
+    and currencies.
   humanURL: https://www.bloomberg.com/professional/support/api-library/
   tags:
   - Financial Data
@@ -77,9 +78,8 @@ apis:
     url: https://bloomberg.github.io/blpapi-docs/
 - aid: bloomberg:bloomberg-server-api
   name: Bloomberg Server API (SAPI)
-  description: >-
-    Delivers real-time market data, historical data, reference data, and calculation engine capabilities
-    from the Bloomberg Terminal for server applications.
+  description: Delivers real-time market data, historical data, reference data, and calculation engine
+    capabilities from the Bloomberg Terminal for server applications.
   humanURL: https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/
   tags:
   - Enterprise
@@ -95,9 +95,8 @@ apis:
     url: https://bloomberg.github.io/blpapi-docs/
 - aid: bloomberg:bloomberg-data-license-api
   name: Bloomberg Data License API
-  description: >-
-    Provides programmatic access to Bloomberg Data License content including reference, pricing, regulatory,
-    ESG, corporate actions, fundamentals, and alternative data.
+  description: Provides programmatic access to Bloomberg Data License content including reference, pricing,
+    regulatory, ESG, corporate actions, fundamentals, and alternative data.
   humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
   tags:
   - Data License
@@ -112,9 +111,8 @@ apis:
   baseURL: https://api.bloomberg.com
 - aid: bloomberg:bloomberg-emsx-api
   name: Bloomberg EMSX API
-  description: >-
-    Enables programmatic management and automation of equities, futures, and options trading through the
-    Bloomberg Execution Management System.
+  description: Enables programmatic management and automation of equities, futures, and options trading
+    through the Bloomberg Execution Management System.
   humanURL: https://www.bloomberg.com/professional/products/trading/execution-management-system/
   tags:
   - Equities
@@ -135,11 +133,11 @@ apis:
     url: https://emsx-api-doc.readthedocs.io/
 - aid: bloomberg:bloomberg-blpapi-core
   name: Bloomberg BLPAPI Core
-  description: >-
-    The Bloomberg Open API (BLPAPI) Core — the foundational service-oriented, socket-based API used by
-    the Desktop API, Server API (SAPI), B-PIPE, and Bloomberg Platform products. Provides Request/Response,
-    Subscription, and Publishing paradigms across services including //blp/refdata, //blp/mktdata, //blp/mktbar,
-    //blp/mktvwap, //blp/mktdepthdata, //blp/apiflds, //blp/instruments, //blp/pagedata, and //blp/tasvc.
+  description: The Bloomberg Open API (BLPAPI) Core — the foundational service-oriented, socket-based
+    API used by the Desktop API, Server API (SAPI), B-PIPE, and Bloomberg Platform products. Provides
+    Request/Response, Subscription, and Publishing paradigms across services including //blp/refdata,
+    //blp/mktdata, //blp/mktbar, //blp/mktvwap, //blp/mktdepthdata, //blp/apiflds, //blp/instruments,
+    //blp/pagedata, and //blp/tasvc.
   humanURL: https://www.bloomberg.com/professional/support/api-library/
   tags:
   - B-PIPE
@@ -228,6 +226,254 @@ apis:
     url: overlays/bloomberg-vwap-api-overlay.yaml
   - type: AsyncAPI
     url: asyncapi/bloomberg-market-data-asyncapi.yml
+- name: Bloomberg BLPAPI (Desktop API)
+  description: BLPAPI is Bloomberg's core programming interface for the Bloomberg Terminal Desktop API,
+    Server API (SAPI), B-PIPE, and Platform products. It exposes a unified asynchronous session/event/subscription
+    model for requesting reference data, historical data, intraday bars and ticks, market data subscriptions,
+    instrument lookup, and field information via services such as //blp/refdata, //blp/mktdata, //blp/apiflds,
+    and //blp/instruments. SDKs are published in C++, Java, Python, and .NET; the Python SDK alone has
+    39 releases and ships against version 3.26.4.
+  humanURL: https://bloomberg.github.io/blpapi-docs/
+  tags:
+  - BLPAPI
+  - Desktop API
+  - Reference Data
+  - Historical Data
+  - Market Data
+  - SDK
+  properties:
+  - type: Documentation
+    url: https://bloomberg.github.io/blpapi-docs/
+  - type: APIReference
+    url: https://bloomberg.github.io/blpapi-docs/cpp/3.26/index.html
+  - type: GettingStarted
+    url: https://bloomberg.github.io/blpapi-docs/
+  - type: DeveloperGuide
+    url: https://data.bloomberglp.com/professional/sites/10/2017/03/BLPAPI-Core-Developer-Guide.pdf
+  - type: GitHubOrganization
+    url: https://github.com/bloomberg
+  - type: SDKs
+    url: https://github.com/msitt/blpapi-python
+  - type: SDKPython
+    url: https://pypi.org/project/blpapi/
+  - type: SDKJava
+    url: https://bloomberg.github.io/blpapi-docs/java/3.26/index.html
+  - type: SDKDotNet
+    url: https://bloomberg.github.io/blpapi-docs/dotnet/3.26/index.html
+  - type: SDKCPP
+    url: https://bloomberg.github.io/blpapi-docs/cpp/3.26/index.html
+  - type: Pricing
+    url: https://www.bloomberg.com/professional/pricing/
+  - type: License
+    url: https://github.com/msitt/blpapi-python/blob/master/License.txt
+- name: Bloomberg B-PIPE
+  description: Bloomberg's flagship enterprise market data feed, delivering normalized, consolidated,
+    real-time and reference data across all asset classes with Bloomberg's entitlement and identifier
+    infrastructure. Offered as Bloomberg-hosted B-PIPE and Managed B-PIPE, with access via BLPAPI.
+  humanURL: https://www.bloomberg.com/professional/products/data/enterprise-catalog/data-feeds/b-pipe/
+  tags:
+  - B-PIPE
+  - Market Data Feed
+  - Enterprise
+  - Real-Time Data
+  properties:
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/products/data/enterprise-catalog/data-feeds/b-pipe/
+  - type: APIReference
+    url: https://bloomberg.github.io/blpapi-docs/
+  - type: Pricing
+    url: https://www.bloomberg.com/professional/pricing/
+- name: Bloomberg Data License (DL / BEAP)
+  description: Bulk reference, pricing, regulatory, and alternative-data delivery service covering over
+    50 million securities and 30,000+ fields. Accessed via REST API (HAPI / Bloomberg Enterprise Access
+    Point), SFTP, or cloud delivery (AWS, Azure, GCP). Suited to back-office, risk, compliance and research
+    use cases that do not require streaming market data.
+  humanURL: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+  tags:
+  - Data License
+  - Reference Data
+  - Bulk Data
+  - Regulatory Data
+  - Alternative Data
+  properties:
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/products/data/data-management/data-license/
+  - type: APIReference
+    url: https://developer.bloomberg.com/
+  - type: Pricing
+    url: https://www.bloomberg.com/professional/pricing/
+- name: Bloomberg Terminal
+  description: Bloomberg's flagship subscription product — a desktop application delivering real-time
+    market data, news, analytics, trading, messaging, and research to financial professionals globally.
+    The Terminal is also the entitlement host for the Desktop BLPAPI.
+  humanURL: https://www.bloomberg.com/professional/products/bloomberg-terminal/
+  tags:
+  - Terminal
+  - Subscription
+  - Workstation
+  properties:
+  - type: Documentation
+    url: https://www.bloomberg.com/professional/products/bloomberg-terminal/
+  - type: Pricing
+    url: https://www.bloomberg.com/professional/pricing/
+  - type: Signup
+    url: https://www.bloomberg.com/professional/request-demo/
+- name: Bloomberg L.P. Filter API
+  description: Filtered, paginated search across the FIGI universe.
+  humanURL: https://www.openfigi.com/api
+  baseURL: https://api.openfigi.com/v3
+  tags:
+  - Filter
+  properties:
+  - type: OpenAPI
+    url: openapi/bloomberg-lp-filter-api-openapi.yml
+  - type: Documentation
+    url: https://www.openfigi.com/api/documentation
+  - type: APIReference
+    url: https://www.openfigi.com/api/documentation
+  - type: GettingStarted
+    url: https://www.openfigi.com/api
+  - type: Signup
+    url: https://www.openfigi.com/user/signup
+  - type: APIKey
+    url: https://www.openfigi.com/user/signup
+  - type: RateLimits
+    url: https://www.openfigi.com/api/documentation
+  - type: TermsOfService
+    url: https://www.openfigi.com/about/terms
+  - type: GitHubOrganization
+    url: https://github.com/OpenFIGI
+  - type: SDKs
+    url: https://github.com/OpenFIGI/api-examples
+  - type: SpectralRules
+    url: rules/openfigi-rules.yml
+  - type: JSONSchema
+    url: json-schema/openfigi-figi-record-schema.json
+  - type: JSONSchemaMappingJob
+    url: json-schema/openfigi-mapping-job-schema.json
+  - type: JSONStructure
+    url: json-structure/openfigi-figi-record-structure.json
+  - type: JSONLDContext
+    url: json-ld/bloomberg-lp-context.jsonld
+  - type: Examples
+    url: examples/
+- name: Bloomberg L.P. Mapping API
+  description: Map third-party identifiers to FIGIs.
+  humanURL: https://www.openfigi.com/api
+  baseURL: https://api.openfigi.com/v3
+  tags:
+  - Mapping
+  properties:
+  - type: OpenAPI
+    url: openapi/bloomberg-lp-mapping-api-openapi.yml
+  - type: Documentation
+    url: https://www.openfigi.com/api/documentation
+  - type: APIReference
+    url: https://www.openfigi.com/api/documentation
+  - type: GettingStarted
+    url: https://www.openfigi.com/api
+  - type: Signup
+    url: https://www.openfigi.com/user/signup
+  - type: APIKey
+    url: https://www.openfigi.com/user/signup
+  - type: RateLimits
+    url: https://www.openfigi.com/api/documentation
+  - type: TermsOfService
+    url: https://www.openfigi.com/about/terms
+  - type: GitHubOrganization
+    url: https://github.com/OpenFIGI
+  - type: SDKs
+    url: https://github.com/OpenFIGI/api-examples
+  - type: SpectralRules
+    url: rules/openfigi-rules.yml
+  - type: JSONSchema
+    url: json-schema/openfigi-figi-record-schema.json
+  - type: JSONSchemaMappingJob
+    url: json-schema/openfigi-mapping-job-schema.json
+  - type: JSONStructure
+    url: json-structure/openfigi-figi-record-structure.json
+  - type: JSONLDContext
+    url: json-ld/bloomberg-lp-context.jsonld
+  - type: Examples
+    url: examples/
+- name: Bloomberg L.P. Reference API
+  description: Enumerated values for request and response fields.
+  humanURL: https://www.openfigi.com/api
+  baseURL: https://api.openfigi.com/v3
+  tags:
+  - Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/bloomberg-lp-reference-api-openapi.yml
+  - type: Documentation
+    url: https://www.openfigi.com/api/documentation
+  - type: APIReference
+    url: https://www.openfigi.com/api/documentation
+  - type: GettingStarted
+    url: https://www.openfigi.com/api
+  - type: Signup
+    url: https://www.openfigi.com/user/signup
+  - type: APIKey
+    url: https://www.openfigi.com/user/signup
+  - type: RateLimits
+    url: https://www.openfigi.com/api/documentation
+  - type: TermsOfService
+    url: https://www.openfigi.com/about/terms
+  - type: GitHubOrganization
+    url: https://github.com/OpenFIGI
+  - type: SDKs
+    url: https://github.com/OpenFIGI/api-examples
+  - type: SpectralRules
+    url: rules/openfigi-rules.yml
+  - type: JSONSchema
+    url: json-schema/openfigi-figi-record-schema.json
+  - type: JSONSchemaMappingJob
+    url: json-schema/openfigi-mapping-job-schema.json
+  - type: JSONStructure
+    url: json-structure/openfigi-figi-record-structure.json
+  - type: JSONLDContext
+    url: json-ld/bloomberg-lp-context.jsonld
+  - type: Examples
+    url: examples/
+- name: Bloomberg L.P. Search API
+  description: Keyword search across the FIGI universe.
+  humanURL: https://www.openfigi.com/api
+  baseURL: https://api.openfigi.com/v3
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/bloomberg-lp-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.openfigi.com/api/documentation
+  - type: APIReference
+    url: https://www.openfigi.com/api/documentation
+  - type: GettingStarted
+    url: https://www.openfigi.com/api
+  - type: Signup
+    url: https://www.openfigi.com/user/signup
+  - type: APIKey
+    url: https://www.openfigi.com/user/signup
+  - type: RateLimits
+    url: https://www.openfigi.com/api/documentation
+  - type: TermsOfService
+    url: https://www.openfigi.com/about/terms
+  - type: GitHubOrganization
+    url: https://github.com/OpenFIGI
+  - type: SDKs
+    url: https://github.com/OpenFIGI/api-examples
+  - type: SpectralRules
+    url: rules/openfigi-rules.yml
+  - type: JSONSchema
+    url: json-schema/openfigi-figi-record-schema.json
+  - type: JSONSchemaMappingJob
+    url: json-schema/openfigi-mapping-job-schema.json
+  - type: JSONStructure
+    url: json-structure/openfigi-figi-record-structure.json
+  - type: JSONLDContext
+    url: json-ld/bloomberg-lp-context.jsonld
+  - type: Examples
+    url: examples/
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/bloomberg/overview
@@ -275,12 +521,12 @@ common:
   url: well-known/bloomberg-security.txt
 - type: X-MCPServerCandidate
   url: mcp/bloomberg-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03: the manifest self-describes as status: candidate --
-    a tool list we derived from the BLPAPI OpenAPI projections, with its own notes recording
-    that no official Bloomberg-hosted MCP server exists (registry searched, developer.bloomberg.com
-    checked, 2026-06-20). The scorer already read this correctly as mcp_server: false; the
-    MCPServer type was feeding "MCP" into artifact_types and the coverage matrix, crediting a
-    server that does not exist. Reported through report_correction 2026-09-01.'
+  note: 'Renamed from MCPServer 2026-09-03: the manifest self-describes as status: candidate -- a tool
+    list we derived from the BLPAPI OpenAPI projections, with its own notes recording that no official
+    Bloomberg-hosted MCP server exists (registry searched, developer.bloomberg.com checked, 2026-06-20).
+    The scorer already read this correctly as mcp_server: false; the MCPServer type was feeding "MCP"
+    into artifact_types and the coverage matrix, crediting a server that does not exist. Reported through
+    report_correction 2026-09-01.'
 - type: LLMsTxt
   url: llms/bloomberg-llms.txt
 - type: Conformance
@@ -308,7 +554,8 @@ common:
   - name: Real-Time Market Data
     description: Stream live market data for equities, fixed income, commodities, and currencies via subscription.
   - name: Historical Data
-    description: Access end-of-day historical time series with periodicity, currency, and corporate-action adjustments.
+    description: Access end-of-day historical time series with periodicity, currency, and corporate-action
+      adjustments.
   - name: Intraday Tick Data
     description: Retrieve raw tick-by-tick trade and quote data for granular intraday analysis.
   - name: Reference Data
@@ -521,3 +768,5 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-aliases:
+- Bloomberg L.P.
