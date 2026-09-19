@@ -115,7 +115,7 @@ apis:
     through the Bloomberg Execution Management System.
   humanURL: https://www.bloomberg.com/professional/products/trading/execution-management-system/
   tags:
-  - Equities
+  - Stocks
   - Execution Management
   - Futures
   - Options
