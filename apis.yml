@@ -40,12 +40,13 @@ tags:
 - Data License
 - Enterprise
 - Execution Management
-- Financial-Services
+- Financial Services
 - Market Data
 - News
 - Quantitative Analysis
 - Trading
 - Transaction Cost Analysis
+- Financial Data
 tags_raw:
 - Analytics
 - Business Intelligence
@@ -58,6 +59,8 @@ tags_raw:
 - Quantitative Analysis
 - Trading
 - Transaction Cost Analysis
+- Financial-Services
+- Financial Data
 url: https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml
 created: '2024-01-20'
 modified: '2026-09-16'
