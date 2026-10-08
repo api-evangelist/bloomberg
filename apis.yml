@@ -325,6 +325,12 @@ apis:
   - type: Signup
     url: https://www.bloomberg.com/professional/request-demo/
 common:
+- type: Plans
+  url: plans/bloomberg-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bloomberg-rate-limits.yml
+- type: FinOps
+  url: finops/bloomberg-finops.yml
 - type: Website
   url: https://bloomberg.com
 - type: PostmanWorkspace
