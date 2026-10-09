@@ -1,21 +1,26 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/blpapi-core.yml
+source: openapi/bloomberg-field-discovery-api-openapi.yml, openapi/bloomberg-historical-data-api-openapi.yml,
+  openapi/bloomberg-intraday-bars-api-openapi.yml, openapi/bloomberg-intraday-ticks-api-openapi.yml,
+  openapi/bloomberg-real-time-bars-api-openapi.yml, openapi/bloomberg-real-time-market-data-api-openapi.yml,
+  openapi/bloomberg-reference-data-api-openapi.yml, openapi/bloomberg-vwap-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 9
   by_action_class:
-    acting: 9
+    acting: 8
+    connected: 1
   by_consequence:
-    write: 8
+    write: 7
+    read: 1
     safety-critical: 1
   human_in_the_loop_required: 1
 operations:
-- path: /refdata/ReferenceDataRequest
+- path: /apiflds/FieldInfoRequest
   method: post
-  operationId: referenceDataRequest
+  operationId: fieldInfoRequest
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -29,6 +34,16 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /apiflds/FieldSearchRequest
+  method: post
+  operationId: fieldSearchRequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /refdata/HistoricalDataRequest
   method: post
   operationId: historicalDataRequest
@@ -77,25 +92,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /apiflds/FieldInfoRequest
+- path: /mktbar/subscribe
   method: post
-  operationId: fieldInfoRequest
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /apiflds/FieldSearchRequest
-  method: post
-  operationId: fieldSearchRequest
+  operationId: subscribeMarketBar
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -125,9 +124,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /mktbar/subscribe
+- path: /refdata/ReferenceDataRequest
   method: post
-  operationId: subscribeMarketBar
+  operationId: referenceDataRequest
   x-agentic-access:
     action-class: acting
     consequence: write
