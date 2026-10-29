@@ -1,4 +1,4 @@
-# Bloomberg (bloomberg)
+# Bloomberg
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,175 +66,248 @@
 
 Bloomberg delivers business and markets news, data, analysis, and video to the world, featuring stories from Businessweek and Bloomberg News. Bloomberg provides a suite of developer APIs including BLPAPI, Server API, and the Hypermedia API for programmatic access to market data, analytics, and enterprise services.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bloomberg/refs/heads/main/apis.yml)
+**Areas:** Analytics · Business Intelligence · Data License · Enterprise · Execution Management · Financial Services · Market Data · News · Quantitative Analysis · Trading · Transaction Cost Analysis · Financial Data
 
-## Scope
+## Bloomberg on APIs.io
 
-- **Type:** Index
+Everything profiled for Bloomberg is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bloomberg/](https://apis.io/providers/bloomberg/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Analytics
-- Business Intelligence
-- Data License
-- Enterprise
-- Execution Management
-- Financial Services
-- Market Data
-- News
-- Quantitative Analysis
-- Trading
-- Transaction Cost Analysis
+- [Bloomberg Market Data API](https://apis.io/apis/bloomberg/bloomberg-market-data-api/) — Provides real-time and historical market data, including stock prices, indices, commodities, and currencies.
+- [Bloomberg Server API (SAPI)](https://apis.io/apis/bloomberg/bloomberg-server-api/) — Delivers real-time market data, historical data, reference data, and calculation engine capabilities from the Bloomberg Terminal for server applications.
+- [Bloomberg Data License API](https://apis.io/apis/bloomberg/bloomberg-data-license-api/) — Provides programmatic access to Bloomberg Data License content including reference, pricing, regulatory, ESG, corporate actions, fundamentals, and…
+- [Bloomberg EMSX API](https://apis.io/apis/bloomberg/bloomberg-emsx-api/) — Enables programmatic management and automation of equities, futures, and options trading through the Bloomberg Execution Management System.
+- [Bloomberg BLPAPI Core](https://apis.io/apis/bloomberg/bloomberg-blpapi-core/) — The Bloomberg Open API (BLPAPI) Core — the foundational service-oriented, socket-based API used by the Desktop API, Server API (SAPI), B-PIPE, and Bloomberg…
+- [Bloomberg BLPAPI (Desktop API)](https://apis.io/apis/bloomberg/bloomberg-blpapi-desktop-api/) — BLPAPI is Bloomberg's core programming interface for the Bloomberg Terminal Desktop API, Server API (SAPI), B-PIPE, and Platform products. It exposes a…
+- [Bloomberg B-PIPE](https://apis.io/apis/bloomberg/bloomberg-b-pipe/) — Bloomberg's flagship enterprise market data feed, delivering normalized, consolidated, real-time and reference data across all asset classes with…
+- [Bloomberg Data License (DL / BEAP)](https://apis.io/apis/bloomberg/bloomberg-data-license-dl-beap/) — Bulk reference, pricing, regulatory, and alternative-data delivery service covering over 50 million securities and 30,000+ fields. Accessed via REST API…
+- [Bloomberg Terminal](https://apis.io/apis/bloomberg/bloomberg-terminal/) — Bloomberg's flagship subscription product — a desktop application delivering real-time market data, news, analytics, trading, messaging, and research to…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-20
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Bloomberg Market Data API
+Event-driven and webhook contracts.
 
-Provides real-time and historical market data, including stock prices, indices, commodities, and currencies.
+- [Bloomberg BLPAPI Market Data Subscriptions](https://apis.io/asyncapis/bloomberg/bloomberg-market-data-asyncapi/)
 
-- **Human URL:** [https://www.bloomberg.com/professional/support/api-library/](https://www.bloomberg.com/professional/support/api-library/)
+#### Event channels (3)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Financial Data
-- Indices
-- Market Data
-- Real-Time
-- Stocks
+- [//blp/mktbar](https://apis.io/channels/bloomberg/blp-mktbar/)
+- [//blp/mktdata](https://apis.io/channels/bloomberg/blp-mktdata/)
+- [//blp/mktvwap](https://apis.io/channels/bloomberg/blp-mktvwap/)
 
-#### Properties
+#### MCP servers (1)
 
+Model Context Protocol servers that expose the API to agents.
+
+- [bloomberg-blpapi](https://apis.io/servers/bloomberg/bloomberg-blpapi/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Bloomberg Agentic Access](https://apis.io/agentic-access/bloomberg/bloomberg-agentic-access/)
+
+#### JSON Schema (11)
+
+The data models the API reads and writes.
+
+- [ErrorMessage](https://apis.io/schemas/bloomberg/bloomberg-errormessage/)
+- [Bloomberg Market Data](https://apis.io/schemas/bloomberg/bloomberg-market-data/)
+- [MarketDataEvent](https://apis.io/schemas/bloomberg/bloomberg-marketdataevent/)
+- [Bloomberg Security](https://apis.io/schemas/bloomberg/bloomberg-security/)
+- [Subscription](https://apis.io/schemas/bloomberg/bloomberg-subscription/)
+- [SubscriptionList](https://apis.io/schemas/bloomberg/bloomberg-subscriptionlist/)
+- [ErrorMessage](https://apis.io/schemas/bloomberg/blpapi-core-error-message/)
+- [MarketDataEvent](https://apis.io/schemas/bloomberg/blpapi-core-market-data-event/)
+- [Bloomberg BLPAPI Core Message Types](https://apis.io/schemas/bloomberg/blpapi-core-messages/)
+- [Subscription](https://apis.io/schemas/bloomberg/blpapi-core-subscription/)
+- [SubscriptionList](https://apis.io/schemas/bloomberg/blpapi-core-subscription-list/)
+
+#### JSON Structure (5)
+
+Data models expressed in JSON Structure.
+
+- [Bloomberg Structure](https://apis.io/json-structure/bloomberg/bloomberg-structure/)
+- [Blpapi Core Error Message Structure](https://apis.io/json-structure/bloomberg/blpapi-core-error-message-structure/)
+- [Blpapi Core Market Data Event Structure](https://apis.io/json-structure/bloomberg/blpapi-core-market-data-event-structure/)
+- [Blpapi Core Subscription List Structure](https://apis.io/json-structure/bloomberg/blpapi-core-subscription-list-structure/)
+- [Blpapi Core Subscription Structure](https://apis.io/json-structure/bloomberg/blpapi-core-subscription-structure/)
+
+#### JSON-LD (2)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Bloomberg Context](https://apis.io/jsonld/bloomberg/bloomberg-context/)
+- [Blpapi Core Context](https://apis.io/jsonld/bloomberg/blpapi-core-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Bloomberg Domain Vocabulary](https://apis.io/vocabularies/bloomberg/bloomberg-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Blpapi Core Error Message Example](https://apis.io/examples/bloomberg/blpapi-core-error-message-example/)
+- [Blpapi Core Market Data Event Example](https://apis.io/examples/bloomberg/blpapi-core-market-data-event-example/)
+- [Blpapi Core Subscription Example](https://apis.io/examples/bloomberg/blpapi-core-subscription-example/)
+- [Blpapi Core Subscription List Example](https://apis.io/examples/bloomberg/blpapi-core-subscription-list-example/)
+
+#### Collections (21)
+
+Postman and Open Collection request collections.
+
+- [Bloomberg BLPAPI Core Field Discovery API](https://apis.io/collections/bloomberg/open-bloomberg-field-discovery-api/)
+- [Bloomberg BLPAPI Core Field Discovery Historical Data API](https://apis.io/collections/bloomberg/open-bloomberg-historical-data-api/)
+- [Bloomberg BLPAPI Core Field Discovery Intraday Bars API](https://apis.io/collections/bloomberg/open-bloomberg-intraday-bars-api/)
+- [Bloomberg BLPAPI Core Field Discovery Intraday Ticks API](https://apis.io/collections/bloomberg/open-bloomberg-intraday-ticks-api/)
+- [Bloomberg BLPAPI Core Field Discovery Real-Time Bars API](https://apis.io/collections/bloomberg/open-bloomberg-real-time-bars-api/)
+- [Bloomberg BLPAPI Core Field Discovery Real-Time Market Data API](https://apis.io/collections/bloomberg/open-bloomberg-real-time-market-data-api/)
+- [Bloomberg BLPAPI Core Field Discovery Reference Data API](https://apis.io/collections/bloomberg/open-bloomberg-reference-data-api/)
+- [Bloomberg BLPAPI Core Field Discovery Request/Response API](https://apis.io/collections/bloomberg/open-bloomberg-request-response-api/)
+- [Bloomberg BLPAPI Core Field Discovery Subscriptions API](https://apis.io/collections/bloomberg/open-bloomberg-subscriptions-api/)
+- [Bloomberg BLPAPI Core Field Discovery VWAP API](https://apis.io/collections/bloomberg/open-bloomberg-vwap-api/)
+- [Bloomberg BLPAPI Core](https://apis.io/collections/bloomberg/open-blpapi-core/)
+- [Bloomberg BLPAPI Core Field Discovery API](https://apis.io/collections/bloomberg/postman-bloomberg-field-discovery-api/)
+- [Bloomberg BLPAPI Core Field Discovery Historical Data API](https://apis.io/collections/bloomberg/postman-bloomberg-historical-data-api/)
+- [Bloomberg BLPAPI Core Field Discovery Intraday Bars API](https://apis.io/collections/bloomberg/postman-bloomberg-intraday-bars-api/)
+- [Bloomberg BLPAPI Core Field Discovery Intraday Ticks API](https://apis.io/collections/bloomberg/postman-bloomberg-intraday-ticks-api/)
+- [Bloomberg BLPAPI Core Field Discovery Real-Time Bars API](https://apis.io/collections/bloomberg/postman-bloomberg-real-time-bars-api/)
+- [Bloomberg BLPAPI Core Field Discovery Real-Time Market Data API](https://apis.io/collections/bloomberg/postman-bloomberg-real-time-market-data-api/)
+- [Bloomberg BLPAPI Core Field Discovery Reference Data API](https://apis.io/collections/bloomberg/postman-bloomberg-reference-data-api/)
+- [Bloomberg BLPAPI Core Field Discovery Request/Response API](https://apis.io/collections/bloomberg/postman-bloomberg-request-response-api/)
+- [Bloomberg BLPAPI Core Field Discovery Subscriptions API](https://apis.io/collections/bloomberg/postman-bloomberg-subscriptions-api/)
+- [Bloomberg BLPAPI Core Field Discovery VWAP API](https://apis.io/collections/bloomberg/postman-bloomberg-vwap-api/)
+
+#### Overlays (10)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Bloomberg Field Discovery Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-field-discovery-api-overlay/)
+- [Bloomberg Historical Data Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-historical-data-api-overlay/)
+- [Bloomberg Intraday Bars Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-intraday-bars-api-overlay/)
+- [Bloomberg Intraday Ticks Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-intraday-ticks-api-overlay/)
+- [Bloomberg Real Time Bars Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-real-time-bars-api-overlay/)
+- [Bloomberg Real Time Market Data Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-real-time-market-data-api-overlay/)
+- [Bloomberg Reference Data Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-reference-data-api-overlay/)
+- [Bloomberg Request Response Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-request-response-api-overlay/)
+- [Bloomberg Subscriptions Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-subscriptions-api-overlay/)
+- [Bloomberg Vwap Api Overlay](https://apis.io/overlays/bloomberg/bloomberg-vwap-api-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Bloomberg — jsonschema rules](https://apis.io/rules/bloomberg/bloomberg-jsonschema-spectral-rules/)
+- [Bloomberg API Rules](https://apis.io/rules/bloomberg/bloomberg-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Bloomberg Authentication](https://apis.io/security/bloomberg/bloomberg-authentication/)
+- [Bloomberg Domain Security](https://apis.io/security/bloomberg/bloomberg-domain-security/)
+- [Bloomberg Vulnerability Disclosure](https://apis.io/security/bloomberg/bloomberg-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Bloomberg Scopes](https://apis.io/scopes/bloomberg/bloomberg-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Bloomberg Plans Pricing](https://apis.io/plans/bloomberg/bloomberg-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Bloomberg Rate Limits](https://apis.io/rate-limits/bloomberg/bloomberg-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Bloomberg Finops](https://apis.io/finops/bloomberg/bloomberg-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://bloomberg.com)
 - [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [SDK](https://bloomberg.github.io/blpapi-docs/)
-- [Postman Collection](collections/blpapi-core.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/blpapi-core.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Bloomberg Server API (SAPI)
-
-Delivers real-time market data, historical data, reference data, and calculation engine capabilities from the Bloomberg Terminal for server applications.
-
-- **Human URL:** [https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/](https://www.bloomberg.com/professional/products/data/data-connectivity/server-api/)
-
-#### Tags
-
-- Enterprise
-- Historical Data
-- Market Data
-- Real-Time
-- Reference Data
-- Server API
-
-#### Properties
-
-- [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [SDK](https://bloomberg.github.io/blpapi-docs/)
-- [Postman Collection](collections/blpapi-core.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/blpapi-core.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Bloomberg Data License API
-
-Provides programmatic access to Bloomberg Data License content including reference, pricing, regulatory, ESG, corporate actions, fundamentals, and alternative data.
-
-- **Human URL:** [https://www.bloomberg.com/professional/products/data/data-management/data-license/](https://www.bloomberg.com/professional/products/data/data-management/data-license/)
-
-#### Tags
-
-- Data License
-- Enterprise
-- ESG
-- Pricing Data
-- Reference Data
-- Regulatory Data
-
-#### Properties
-
-- [Documentation](https://www.bloomberg.com/professional/products/data/data-management/data-license/)
-- [Postman Collection](collections/blpapi-core.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/blpapi-core.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Bloomberg EMSX API
-
-Enables programmatic management and automation of equities, futures, and options trading through the Bloomberg Execution Management System.
-
-- **Human URL:** [https://www.bloomberg.com/professional/products/trading/execution-management-system/](https://www.bloomberg.com/professional/products/trading/execution-management-system/)
-
-#### Tags
-
-- Equities
-- Execution Management
-- Futures
-- Options
-- Orders
-- Trading
-
-#### Properties
-
-- [Documentation](https://emsx-api-doc.readthedocs.io/)
-- [Postman Collection](collections/blpapi-core.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/blpapi-core.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Bloomberg BLPAPI Core
-
-The Bloomberg Open API (BLPAPI) Core — the foundational service-oriented, socket-based API used by the Desktop API, Server API (SAPI), B-PIPE, and Bloomberg Platform products. Provides Request/Response, Subscription, and Publishing paradigms across services including //blp/refdata, //blp/mktdata, //blp/mktbar, //blp/mktvwap, //blp/mktdepthdata, //blp/apiflds, //blp/instruments, //blp/pagedata, and //blp/tasvc.
-
-- **Human URL:** [https://www.bloomberg.com/professional/support/api-library/](https://www.bloomberg.com/professional/support/api-library/)
-
-#### Tags
-
-- B-PIPE
-- BLPAPI
-- Desktop API
-- Historical Data
-- Intraday Bars
-- Intraday Ticks
-- Market Data
-- Open API
-- Reference Data
-- Request Response
-- Server API
-- Subscription
-
-#### Properties
-
-- [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [SDK](https://bloomberg.github.io/blpapi-docs/)
-- [OpenAPI](openapi/blpapi-core.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/blpapi-core.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/blpapi-core.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/blpapi-core-messages-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/blpapi-core-error-message-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/blpapi-core-market-data-event-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/blpapi-core-subscription-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/blpapi-core-subscription-list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/bloomberg-market-data-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/bloomberg-security-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/bloomberg-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON-LD](json-ld/blpapi-core-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/bloomberg)
-- [Portal](https://developer.bloomberg.com/)
-- [Documentation](https://www.bloomberg.com/professional/support/api-library/)
-- [SDK](https://bloomberg.github.io/blpapi-docs/)
-- [GitHub Organization](https://github.com/bloomberg)
-- [Getting Started](https://www.bloomberg.com/professional/solutions/asset-management/developer/)
-- [Login](https://console.bloomberg.com/)
-- [Terms of Service](https://www.bloomberg.com/notices/tos/)
-- [Privacy Policy](https://www.bloomberg.com/privacy)
+- [Getting started](https://www.bloomberg.com/professional/solutions/asset-management/developer/)
+- [API reference](https://bloomberg.github.io/blpapi-docs/)
 - [Support](https://www.bloomberg.com/professional/support/)
-- [Spectral Rules](rules/bloomberg-spectral-rules.yml)
-- [Vocabulary](vocabulary/bloomberg-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://www.techatbloomberg.com/blog/)
+- [Security](https://www.bloomberg.com/responsible-disclosure)
+- [Terms of service](https://www.bloomberg.com/notices/tos/)
+- [Privacy policy](https://www.bloomberg.com/privacy)
+- [GitHub](https://github.com/bloomberg)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 54.8** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 61.1 |
+| Contract governance | 45.5 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 67.3 |
+| Access clarity | 36.8 |
+
+**Agent readiness 28.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 43.5** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bloomberg/](https://apis.io/providers/bloomberg/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Bloomberg: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bloomberg/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
