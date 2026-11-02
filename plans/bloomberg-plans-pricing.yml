@@ -1,0 +1,134 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Bloomberg
+providerId: bloomberg
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - Market Data
+  - Financial Services
+  - Enterprise
+  - Data License
+  - News
+  - Trading
+description: Bloomberg's flagship commercial offering is the Bloomberg Terminal seat subscription,
+  which bundles desktop access plus the BLPAPI (Bloomberg Open API) for programmatic data access from
+  Excel, Python, and other languages. Streaming and enterprise data products (B-PIPE, Data License,
+  Bloomberg Anywhere, MarketAxess connectivity, etc.) are sold separately on negotiated enterprise
+  contracts; all pricing outside the published Terminal seat fee is custom and requires sales contact.
+sources:
+  - https://www.bloomberg.com/professional/products/bloomberg-terminal/
+  - https://en.wikipedia.org/wiki/Bloomberg_Terminal
+plans:
+  - id: bloomberg-terminal-seat
+    name: Bloomberg Terminal (Seat License)
+    type: subscription
+    description: Annual per-user subscription to the Bloomberg Terminal. Includes BLPAPI access from
+      the Terminal-connected workstation. Multi-year and multi-seat agreements receive negotiated
+      discounts; the publicly cited list price is roughly USD 24,000-30,000 per user per year.
+    entries:
+      - label: Terminal seat (single-user, annual)
+        name: terminal_seat_single
+        type: subscription
+        metric: seat
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: ~$30,000 / user / year (list)
+        userMultiplied: true
+      - label: Terminal seat (2+ users, annual)
+        name: terminal_seat_multi
+        type: subscription
+        metric: seat
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: ~$24,000-$27,000 / user / year (list, volume discounted)
+        userMultiplied: true
+    elements:
+      - name: Bloomberg Terminal desktop application
+      - name: BLPAPI (Bloomberg Open API) access
+      - name: Excel Add-in (=BDP, =BDH, =BDS)
+      - name: Python / C++ / Java / .NET BLPAPI SDKs
+      - name: Bloomberg news, messaging (IB), and analytics
+      - name: Bloomberg Anywhere mobile/web access
+  - id: bloomberg-enterprise-data
+    name: Enterprise Data & Streaming (B-PIPE / Data License / EDF)
+    type: enterprise
+    description: Real-time streaming market data (B-PIPE), end-of-day reference and pricing data
+      (Data License / EDF), and other enterprise feeds delivered outside the Terminal. Pricing is
+      contract-negotiated based on data fields, exchanges, redistribution rights, and number of
+      consuming applications.
+    entries:
+      - label: B-PIPE real-time market data feed
+        name: bpipe
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+      - label: Bloomberg Data License (EDF / PCF / DLWS)
+        name: data_license
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+      - label: Bloomberg AIM, BVAL, PORT+ and other product modules
+        name: enterprise_modules
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: B-PIPE managed streaming
+      - name: Per-Security Pricing (PCF) and EDF
+      - name: Data License Web Services (DLWS / HAPI / BQL)
+      - name: Bloomberg Vault and trade reconstruction
+      - name: Negotiated redistribution and display rights
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  - seat
+  plans:
+  - name: Bloomberg Terminal (Seat License)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - year
+  - name: Enterprise Data & Streaming (B-PIPE / Data License / EDF)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+    - year
